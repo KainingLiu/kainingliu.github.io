@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>对 AI 与 AI 时代大学生活的看法 · 刘铠宁</title>
+<meta name="description" content="对 AI 与 AI 时代大学生活的看法 —— 刘铠宁 PB24000095">
+<style>
+:root{
+  --bg:#f6f7fb; --fg:#0e1220; --mute:#5f6779; --dim:#8a91a3;
+  --a1:#0d9488; --a2:#4f46e5; --a3:#db2777; --red:#e11d48; --gold:#b45309;
+  --card:rgba(255,255,255,.78); --line:rgba(15,20,40,.08);
+  --font:"PingFang SC","HarmonyOS Sans SC","Microsoft YaHei","Noto Sans SC","Source Han Sans SC",system-ui,sans-serif;
+  --serif:"Songti SC","Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;
+  --ease:cubic-bezier(.2,.75,.15,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--fg);font-family:var(--font);-webkit-font-smoothing:antialiased}
+#bg{position:fixed;inset:0;z-index:0}
+.glow{position:fixed;width:70vmax;height:70vmax;border-radius:50%;filter:blur(120px);opacity:.13;z-index:0;pointer-events:none;transition:transform 2.4s var(--ease),background 2.4s}
+.glow.g1{background:#a5b4fc;left:-25vmax;top:-30vmax}
+.glow.g2{background:#99f6e4;right:-30vmax;bottom:-35vmax;opacity:.22}
+
+#viewport{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:1}
+#stage{position:relative;width:1600px;height:900px;flex:none;transform-origin:center center}
+.slide{position:absolute;inset:0;padding:90px 120px;display:flex;flex-direction:column;justify-content:center;opacity:0;visibility:hidden;transition:opacity .7s ease,visibility 0s .7s}
+.slide.active{opacity:1;visibility:visible;transition:opacity .7s ease,visibility 0s}
+.center{align-items:center;text-align:center}
+
+/* entrance animations */
+[data-a]{opacity:0;transition:opacity 1s var(--ease) var(--d,0s),transform 1.1s var(--ease) var(--d,0s),filter 1s var(--ease) var(--d,0s)}
+[data-a=up]{transform:translateY(46px)}
+[data-a=down]{transform:translateY(-46px)}
+[data-a=left]{transform:translateX(-80px)}
+[data-a=right]{transform:translateX(80px)}
+[data-a=zoom]{transform:scale(.82)}
+[data-a=blur]{filter:blur(18px);transform:scale(1.06)}
+.slide.active [data-a]{opacity:1;transform:none;filter:none}
+
+/* typography */
+.kicker{font-size:20px;letter-spacing:.42em;color:var(--mute);text-transform:uppercase;margin-bottom:26px}
+.h1{font-size:84px;font-weight:800;line-height:1.18;letter-spacing:.02em}
+.h2{font-size:54px;font-weight:800;line-height:1.25;letter-spacing:.02em}
+.h3{font-size:34px;font-weight:700;line-height:1.4}
+.p{font-size:27px;line-height:1.85;color:#3a4153}
+.mute{color:var(--mute)}
+.grad{background:linear-gradient(92deg,var(--a1),var(--a2) 55%,var(--a3));-webkit-background-clip:text;background-clip:text;color:transparent}
+.red{color:var(--red)}
+b,.b{font-weight:800;color:var(--fg)}
+.title-bar{display:flex;align-items:baseline;gap:24px;margin-bottom:44px}
+.title-bar .idx{font-size:18px;color:var(--dim);letter-spacing:.3em;font-family:ui-monospace,Consolas,monospace}
+.caption{font-size:40px;font-weight:700;text-align:center;margin-top:34px;letter-spacing:.04em}
+
+/* chrome */
+#progress{position:fixed;left:0;top:0;height:3px;background:linear-gradient(90deg,var(--a1),var(--a2),var(--a3));z-index:5;transition:width .7s var(--ease);box-shadow:0 0 18px var(--a2)}
+#counter{position:fixed;right:28px;bottom:22px;z-index:5;font:14px ui-monospace,Consolas,monospace;color:var(--dim);letter-spacing:.15em}
+#brand{position:fixed;left:28px;bottom:22px;z-index:5;font-size:13px;color:var(--dim);letter-spacing:.2em}
+#brand a{color:inherit;text-decoration:none}
+#nav{position:fixed;right:110px;bottom:14px;z-index:5;display:flex;gap:6px;opacity:0;transition:opacity .4s}
+body:hover #nav{opacity:1}
+#nav button{background:var(--card);border:1px solid var(--line);color:var(--mute);width:34px;height:30px;border-radius:8px;cursor:pointer;font-size:14px}
+#nav button:hover{color:var(--a2);border-color:var(--a2)}
+#hint{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:5;font-size:13px;color:var(--dim);letter-spacing:.15em;transition:opacity 1s}
+
+/* ---------- cover ---------- */
+.cover .h1{font-size:96px}
+.cover .line{width:0;height:2px;margin:46px auto;background:linear-gradient(90deg,transparent,var(--a2),transparent);transition:width 1.6s var(--ease) .7s}
+.cover.active .line{width:620px}
+.cover .who{font-size:28px;letter-spacing:.3em;color:#3a4153}
+.cover .who span{color:var(--mute);margin-left:22px;font-family:ui-monospace,Consolas,monospace;letter-spacing:.12em}
+
+/* ---------- section divider ---------- */
+.section .num{font-size:260px;font-weight:900;line-height:1;color:transparent;-webkit-text-stroke:2px rgba(79,70,229,.16);position:absolute;right:120px;top:50%;transform:translateY(-50%)}
+.section.active .num{animation:numIn 1.6s var(--ease) both}
+@keyframes numIn{from{opacity:0;transform:translateY(-40%) scale(.9)}to{opacity:1;transform:translateY(-50%)}}
+.section .h1{font-size:104px}
+.section .en{font-size:22px;letter-spacing:.5em;color:var(--mute);margin-top:22px}
+.section .bar{width:120px;height:4px;background:linear-gradient(90deg,var(--a1),var(--a2));margin-bottom:40px;border-radius:2px}
+
+/* ---------- question ---------- */
+.question .q{font-size:92px;font-weight:800;line-height:1.35;letter-spacing:.04em}
+.type span{opacity:0;display:inline-block;transform:translateY(.25em);filter:blur(6px);transition:all .5s var(--ease)}
+.slide.active .type span{opacity:1;transform:none;filter:none}
+.cursor{display:inline-block;width:6px;height:.95em;background:var(--a1);vertical-align:-0.1em;margin-left:10px;animation:blink 1s steps(1) infinite;opacity:0}
+.slide.active .cursor{opacity:1}
+@keyframes blink{50%{background:transparent}}
+
+/* ---------- LLM timeline ---------- */
+.tl{position:relative;height:560px;margin-top:10px}
+.tl .axis{position:absolute;left:0;right:0;top:280px;height:2px;background:rgba(15,20,40,.1)}
+.tl .axis i{position:absolute;inset:0;background:linear-gradient(90deg,var(--a1),var(--a2),var(--a3));transform-origin:left;transform:scaleX(0);transition:transform 3.2s cubic-bezier(.45,.05,.2,1) .3s;box-shadow:0 0 14px var(--a2)}
+.slide.active .tl .axis i{transform:scaleX(1)}
+.tl .node{position:absolute;width:170px;margin-left:-85px;text-align:center}
+.tl .node .dot{position:absolute;left:50%;top:280px;width:16px;height:16px;margin:-7px 0 0 -8px;border-radius:50%;background:var(--bg);border:2px solid var(--a2);transform:scale(0);transition:transform .6s var(--ease) var(--d)}
+.slide.active .tl .node .dot{transform:scale(1)}
+.tl .node.up{top:0;height:280px;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:34px}
+.tl .node.dn{top:280px;padding-top:34px}
+.tl .node.up .dot{top:280px}
+.tl .node.dn .dot{top:0}
+.tl .node::after{content:"";position:absolute;left:50%;width:1px;background:linear-gradient(var(--line),transparent);height:26px}
+.tl .node.up::after{bottom:4px;background:linear-gradient(transparent,rgba(15,20,40,.2))}
+.tl .node.dn::after{top:6px;background:linear-gradient(rgba(15,20,40,.2),transparent)}
+.tl .yr{font:700 30px ui-monospace,Consolas,monospace;color:var(--fg)}
+.tl .nm{font-size:21px;font-weight:700;margin:6px 0 4px;color:var(--a1)}
+.tl .ds{font-size:16px;color:var(--mute);line-height:1.55}
+.tl .node.hot .dot{border-color:var(--a3);box-shadow:0 0 0 6px rgba(244,114,182,.15),0 0 24px var(--a3)}
+.tl .node.hot .nm{color:var(--a3)}
+
+/* ---------- hype cycle ---------- */
+.hype svg{width:100%;height:560px;overflow:visible}
+.hype .curve{fill:none;stroke:url(#hg);stroke-width:4;stroke-linecap:round;filter:drop-shadow(0 4px 10px rgba(79,70,229,.25))}
+.hype .draw{stroke-dasharray:var(--len);stroke-dashoffset:var(--len)}
+.hype.active .draw{transition:stroke-dashoffset 3.6s cubic-bezier(.45,.05,.25,1) .3s;stroke-dashoffset:0}
+.hype .fork{fill:none;stroke-width:3;stroke-dasharray:10 10;opacity:0;transition:opacity 1s 3.8s}
+.hype.active .fork{opacity:1;animation:dash 1.2s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-20}}
+.hype .winter{fill:rgba(59,130,246,.08);opacity:0;transition:opacity 1s}
+.hype.active .winter{opacity:1}
+.hype text{font-family:var(--font);fill:#3a4153}
+.hype .lbl{opacity:0;transition:opacity .8s}
+.hype.active .lbl{opacity:1}
+
+/* ---------- bubbles ---------- */
+.bubbles{display:grid;grid-template-columns:repeat(5,1fr);gap:22px;margin-top:6px}
+.bub{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px 24px 28px;position:relative;overflow:hidden}
+.bub svg{width:100%;height:110px;display:block;margin-bottom:16px}
+.bub svg path{fill:none;stroke:var(--mute);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:400;stroke-dashoffset:400}
+.slide.active .bub svg path{transition:stroke-dashoffset 1.6s var(--ease) calc(var(--d) + .3s);stroke-dashoffset:0}
+.bub .yr{font:800 34px ui-monospace,Consolas,monospace}
+.bub .nm{font-size:23px;font-weight:700;margin:8px 0 12px}
+.bub .ds{font-size:17px;line-height:1.7;color:var(--mute)}
+.bub.now{border-color:rgba(244,114,182,.45);background:linear-gradient(160deg,rgba(244,114,182,.12),rgba(129,140,248,.06));box-shadow:0 20px 50px -20px rgba(219,39,119,.35)}
+.bub.now svg path{stroke:var(--a3)}
+.bub.now .q{position:absolute;right:22px;top:12px;font-size:90px;font-weight:900;color:rgba(244,114,182,.18);animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.4;transform:scale(1.08)}}
+
+/* ---------- three lines ---------- */
+.rev{display:flex;flex-direction:column;gap:34px}
+.rev .row{display:grid;grid-template-columns:220px 1fr;align-items:center;gap:30px}
+.rev .tag{font-size:26px;font-weight:700;color:var(--mute);letter-spacing:.1em;text-align:right;padding-right:30px;border-right:2px solid var(--line)}
+.rev .txt{font-size:38px;font-weight:600;line-height:1.5}
+.rev .row.last .tag{color:var(--a3);border-color:var(--a3)}
+.rev .row.last .txt{font-size:44px;font-weight:800}
+.bigq{font-size:36px;line-height:1.7;font-weight:600;text-align:center;margin-top:60px;color:#2a3040}
+
+/* ---------- columns ---------- */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.col{border-radius:24px;padding:36px 40px;border:1px solid var(--line);background:var(--card)}
+.col h3{font-size:30px;margin-bottom:22px;display:flex;align-items:center;gap:14px}
+.col h3 em{font-style:normal;font-size:15px;letter-spacing:.3em;color:var(--mute);font-weight:500}
+.col li{list-style:none;font-size:22px;line-height:1.55;padding:13px 0 13px 38px;position:relative;border-top:1px solid rgba(15,20,40,.06)}
+.col li:first-child{border-top:none}
+.col li::before{content:"";position:absolute;left:4px;top:23px;width:14px;height:14px;border-radius:50%}
+.col.done li::before{background:var(--a1);box-shadow:0 0 12px var(--a1)}
+.col.lack{border-color:rgba(244,114,182,.35);background:linear-gradient(160deg,rgba(244,114,182,.08),transparent)}
+.col.lack li::before{border:2px solid var(--a3);background:transparent}
+.col li small{display:block;font-size:17px;color:var(--mute);margin-top:4px}
+.foot{text-align:center;font-size:34px;font-weight:700;margin-top:38px}
+
+/* ---------- versus ---------- */
+.vs{display:flex;flex-direction:column;gap:22px;width:1200px;margin:0 auto}
+.vs .hd{display:grid;grid-template-columns:1fr 140px 1fr;font-size:18px;letter-spacing:.5em;color:var(--mute);text-align:center;margin-bottom:6px}
+.vs .r{display:grid;grid-template-columns:1fr 140px 1fr;align-items:center}
+.vs .l,.vs .rt{font-size:46px;font-weight:800;padding:26px 0;border-radius:18px;text-align:center}
+.vs .l{background:linear-gradient(90deg,transparent,rgba(13,148,136,.1));color:#0f766e}
+.vs .rt{background:linear-gradient(270deg,transparent,rgba(219,39,119,.08));color:#be185d}
+.vs .x{text-align:center;font-size:24px;font-weight:300;color:var(--dim);font-style:italic;letter-spacing:.1em}
+
+/* ---------- judgments ---------- */
+.judge .no{font:800 22px ui-monospace,Consolas,monospace;color:var(--a2);letter-spacing:.3em;margin-bottom:18px}
+.judge .lead{font-size:56px;font-weight:800;line-height:1.35;margin-bottom:40px}
+.judge .p{font-size:28px;max-width:1340px}
+.hl{background:linear-gradient(transparent 62%,rgba(99,102,241,.2) 62%);padding:0 4px;color:var(--fg);font-weight:700}
+.quote{font-size:33px;line-height:1.9;color:#2a3040;max-width:1360px;text-align:justify}
+.quote b{font-weight:900}
+.punch{font-size:46px;font-weight:900;line-height:1.5;margin:30px 0 34px;letter-spacing:.02em}
+.law{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:40px;margin:10px 0 40px}
+.law .card{height:190px;border-radius:22px;border:1px solid var(--line);background:var(--card);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
+.law .fma{font-family:var(--serif);font-style:italic;font-size:84px;font-weight:600;letter-spacing:.06em}
+.law .card small{font-size:17px;color:var(--mute);letter-spacing:.2em}
+.law .arrow{font-size:40px;color:var(--a2)}
+.law svg{width:340px;height:120px}
+.law svg circle{fill:var(--a1)}
+.law svg line{stroke:rgba(79,70,229,.35);stroke-width:1.2}
+
+/* ---------- energy ---------- */
+.energy{display:grid;grid-template-columns:230px 460px 90px 1fr;row-gap:30px;column-gap:28px;align-items:center}
+.energy .lb{font-size:28px;font-weight:700;text-align:right;white-space:nowrap}
+.energy .track{height:20px;background:rgba(15,20,40,.07);border-radius:10px;overflow:hidden}
+.energy .fill{height:100%;width:0;border-radius:10px;transition:width 1.8s var(--ease) var(--d)}
+.slide.active .energy .fill{width:var(--w)}
+.energy .pc{font:800 34px ui-monospace,Consolas,monospace}
+.energy .ach{font-size:23px;line-height:1.55;padding:18px 26px;border-left:3px solid var(--c);background:linear-gradient(90deg,rgba(15,20,40,.04),transparent);border-radius:0 14px 14px 0}
+.energy .ach small{display:block;color:var(--mute);font-size:17px}
+.warn{font-size:58px;font-weight:900;color:var(--red);text-align:center;margin-top:52px;letter-spacing:.12em;text-shadow:0 6px 30px rgba(225,29,72,.25)}
+
+/* ---------- photos ---------- */
+.gallery{display:grid;grid-template-columns:1.7fr 1fr;grid-template-rows:1fr 1fr;gap:18px;height:600px}
+.gallery figure{position:relative;overflow:hidden;border-radius:20px;border:1px solid var(--line);cursor:zoom-in}
+.gallery figure:first-child{grid-row:1/3}
+.gallery img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.12);transition:transform 6s ease-out}
+.slide.active .gallery img{transform:scale(1)}
+.gallery figure:hover img{transform:scale(1.04);transition:transform .8s var(--ease)}
+.gallery figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 22px 16px;font-size:18px;background:linear-gradient(transparent,rgba(0,0,0,.75));color:#e7eaf2}
+.badge{display:inline-flex;align-items:center;gap:10px;padding:8px 18px;border-radius:999px;border:1px solid rgba(180,83,9,.4);color:var(--gold);font-size:18px;letter-spacing:.2em;margin-left:20px;vertical-align:middle}
+#lightbox{position:fixed;inset:0;z-index:20;background:rgba(0,0,0,.92);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s;cursor:zoom-out}
+#lightbox.on{opacity:1;pointer-events:auto}
+#lightbox img{max-width:92vw;max-height:90vh;border-radius:12px;box-shadow:0 30px 120px rgba(0,0,0,.6)}
+
+/* ---------- advice ---------- */
+.stop{font-size:76px;font-weight:900;letter-spacing:.06em;margin-bottom:40px}
+.chips{display:flex;gap:20px;margin-top:34px}
+.chip{flex:1;padding:24px 28px;border-radius:18px;border:1px solid var(--line);background:var(--card)}
+.chip b{display:block;font-size:26px;margin-bottom:6px}
+.chip span{font-size:18px;color:var(--mute)}
+.list{display:flex;flex-direction:column;gap:16px}
+.list .it{display:grid;grid-template-columns:70px 1fr;align-items:center;padding:16px 26px;border-radius:16px;background:var(--card);border:1px solid var(--line)}
+.list .it .n{font:800 26px ui-monospace,Consolas,monospace;color:var(--a2)}
+.list .it .t{font-size:25px;line-height:1.55}
+.ember{font-size:36px;font-weight:900;color:var(--red);text-align:center;margin-top:36px;letter-spacing:.06em;animation:ember 3s ease-in-out infinite}
+@keyframes ember{50%{text-shadow:0 0 24px rgba(225,29,72,.35),0 0 50px rgba(251,146,60,.3)}}
+
+.three{display:flex;flex-direction:column;gap:46px}
+.three .s .a{font-size:30px;color:var(--mute);font-weight:500;margin-bottom:10px}
+.three .s .b2{font-size:44px;font-weight:900;line-height:1.45}
+.three .s:last-child .b2{font-size:38px}
+
+.essay{font-size:44px;line-height:1.85;font-weight:600;max-width:1300px;margin:0 auto;text-align:justify}
+.essay .q1{font-size:120px;font-family:var(--serif);color:var(--a2);opacity:.4;line-height:.6;display:block;height:50px}
+
+.final .h1{font-size:76px}
+.qr{display:flex;gap:70px;justify-content:center;margin-top:60px}
+.qr figure{text-align:center}
+.qr .box{width:220px;height:220px;padding:14px;border-radius:22px;background:#fff;box-shadow:0 20px 60px -20px rgba(79,70,229,.45);border:1px solid var(--line)}
+.qr img{width:100%;height:100%;display:block}
+.qr figcaption{margin-top:16px;font-size:20px;letter-spacing:.3em;color:var(--mute)}
+.thanks{font-size:52px;font-weight:800;margin-top:40px;letter-spacing:.3em}
+.links{margin-top:22px;font-size:17px;letter-spacing:.15em;color:var(--dim)}
+.links a{color:var(--mute);text-decoration:none;border-bottom:1px dashed var(--dim)}
+
+/* light-theme card depth */
+.bub,.col,.chip,.list .it,.law .card,.gallery figure{box-shadow:0 10px 30px -18px rgba(15,20,40,.25)}
+#nav button{background:#fff}
+@media print{ .slide{position:relative;opacity:1;visibility:visible;page-break-after:always} }
+</style>
+</head>
+<body>
+<canvas id="bg"></canvas>
+<div class="glow g1"></div><div class="glow g2"></div>
+<div id="progress"></div>
+<div id="viewport"><div id="stage">
+
+<!-- 1 COVER -->
+<section class="slide cover center">
+  <div class="kicker" data-a="down">A Talk on AI &amp; College Life</div>
+  <div class="h1" data-a="blur">对 <span class="grad">AI</span> 与 <span class="grad">AI 时代</span><br>大学生活的看法</div>
+  <div class="line"></div>
+  <div class="who" data-a="up" data-d="1.1">汇报人 &nbsp;刘铠宁<span>PB24000095</span></div>
+</section>
+
+<!-- 2 SECTION -->
+<section class="slide section">
+  <div class="num">01</div>
+  <div class="bar" data-a="left"></div>
+  <div class="h1" data-a="up">AI 时代的看法</div>
+  <div class="en" data-a="up">ON THE AGE OF AI</div>
+</section>
+
+<!-- 3 QUESTION -->
+<section class="slide question center">
+  <div class="q"><span class="type">你觉得 AI 未来会取代你吗，</span><br><span class="type grad-type">什么时候？</span><span class="cursor"></span></div>
+</section>
+
+<!-- 4 LLM TIMELINE -->
+<section class="slide">
+  <div class="title-bar"><div class="h2" data-a="left">大语言模型：从一个架构到通用智能</div><div class="idx" data-a="fade">2017 — 2026</div></div>
+  <div class="tl">
+    <div class="axis"><i></i></div>
+    <div class="node up"  style="left:5%;--d:.5s"><span class="dot"></span><div data-a="up"><div class="yr">2017</div><div class="nm">Transformer</div><div class="ds">Attention Is All You Need<br>架构诞生</div></div></div>
+    <div class="node dn"  style="left:18%;--d:.85s"><span class="dot"></span><div data-a="down"><div class="yr">2018</div><div class="nm">GPT-1 · BERT</div><div class="ds">预训练 + 微调<br>成为新范式</div></div></div>
+    <div class="node up"  style="left:31%;--d:1.2s"><span class="dot"></span><div data-a="up"><div class="yr">2020</div><div class="nm">GPT-3</div><div class="ds">1750 亿参数<br>Scaling Law 与上下文学习</div></div></div>
+    <div class="node dn"  style="left:44%;--d:1.55s"><span class="dot"></span><div data-a="down"><div class="yr">2022</div><div class="nm">ChatGPT</div><div class="ds">RLHF 对齐<br>AI 第一次走向大众</div></div></div>
+    <div class="node up"  style="left:57%;--d:1.9s"><span class="dot"></span><div data-a="up"><div class="yr">2023</div><div class="nm">GPT-4 · LLaMA</div><div class="ds">多模态理解<br>开源生态爆发</div></div></div>
+    <div class="node dn"  style="left:70%;--d:2.25s"><span class="dot"></span><div data-a="down"><div class="yr">2024</div><div class="nm">o1 · Sora</div><div class="ds">推理模型<br>视频生成</div></div></div>
+    <div class="node up"  style="left:83%;--d:2.6s"><span class="dot"></span><div data-a="up"><div class="yr">2025</div><div class="nm">R1 · Agents · IMO</div><div class="ds">强化学习推理 · 编程智能体<br>数学奥赛金牌水平</div></div></div>
+    <div class="node dn hot" style="left:95%;--d:2.95s"><span class="dot"></span><div data-a="down"><div class="yr">2026</div><div class="nm">通用 + 专业</div><div class="ds">长程自主智能体<br>进入科研、工程与各行各业</div></div></div>
+  </div>
+</section>
+
+<!-- 5 HYPE CYCLES -->
+<section class="slide hype">
+  <div class="title-bar"><div class="h2" data-a="left">人工智能的三次热潮与两次寒冬</div><div class="idx" data-a="fade">1950 — ?</div></div>
+  <svg viewBox="0 0 1400 560" id="hypeSvg">
+    <defs>
+      <linearGradient id="hg" x1="0" x2="1"><stop offset="0" stop-color="#0d9488"/><stop offset=".6" stop-color="#4f46e5"/><stop offset="1" stop-color="#db2777"/></linearGradient>
+    </defs>
+  </svg>
+  <div class="caption" data-a="up" data-d="3.9">未来究竟是<span class="grad">更大的热潮</span>，还是<span style="color:#2563eb">下一次寒冬</span>？</div>
+</section>
+
+<!-- 6 BUBBLES -->
+<section class="slide">
+  <div class="title-bar"><div class="h2" data-a="left">技术革命，与它们的泡沫</div><div class="idx" data-a="fade">MANIA · BUBBLE · CRASH</div></div>
+  <div class="bubbles">
+    <div class="bub" data-a="up" style="--d:.2s"><svg viewBox="0 0 200 110"><path d="M5 100 C50 98 70 90 95 40 S120 8 130 20 S150 96 195 92"/></svg><div class="yr">1790s</div><div class="nm">英国运河狂热</div><div class="ds">工业革命的第一条“高速公路”，运河股票疯涨后崩盘，运河网却留了下来。</div></div>
+    <div class="bub" data-a="up" style="--d:.45s"><svg viewBox="0 0 200 110"><path d="M5 100 C50 98 75 85 100 30 S125 4 135 16 S155 98 195 94"/></svg><div class="yr">1840s</div><div class="nm">英国铁路狂热</div><div class="ds">1846 年议会批准 272 项铁路法案，1847 年泡沫破裂——但铁路重塑了世界。</div></div>
+    <div class="bub" data-a="up" style="--d:.7s"><svg viewBox="0 0 200 110"><path d="M5 100 C55 96 80 80 105 25 S130 4 138 14 S158 100 195 98"/></svg><div class="yr">1920s</div><div class="nm">电气·汽车·无线电</div><div class="ds">“咆哮的二十年代”，新技术点燃股市，最终迎来 1929 年大崩盘。</div></div>
+    <div class="bub" data-a="up" style="--d:.95s"><svg viewBox="0 0 200 110"><path d="M5 100 C55 97 85 85 110 20 S132 4 140 14 S160 95 195 90"/></svg><div class="yr">2000</div><div class="nm">互联网泡沫</div><div class="ds">纳斯达克两年下跌近 78%。幸存者，成为了今天的科技巨头。</div></div>
+    <div class="bub now" data-a="up" style="--d:1.2s"><span class="q">?</span><svg viewBox="0 0 200 110"><path d="M5 100 C60 98 100 90 135 50 S175 12 195 6"/></svg><div class="yr">2020s</div><div class="nm">AI 革命</div><div class="ds">算力、模型与资本的狂奔。万亿美元押注下一代智能……</div></div>
+  </div>
+  <div class="caption" data-a="blur" data-d="2">这一次，<span class="grad">真的不一样了吗？</span></div>
+</section>
+
+<!-- 7 THREE LINES -->
+<section class="slide">
+  <div class="h2" data-a="blur" style="text-align:center;margin-bottom:64px">人类与动物最重要的区别，是人类的<span class="grad">智慧</span>。</div>
+  <div class="rev">
+    <div class="row" data-a="left"><div class="tag">工业革命</div><div class="txt">让机器代替人的 <b>体力劳动</b></div></div>
+    <div class="row" data-a="left"><div class="tag">信息革命</div><div class="txt">让机器代替人进行繁琐的 <b>信息处理</b></div></div>
+    <div class="row last" data-a="left"><div class="tag">智能革命</div><div class="txt">让 AI 代替人去 <span class="grad">思考</span></div></div>
+  </div>
+  <div class="bigq" data-a="up" data-d="2">以往的所有革命，都没有撼动人类的智慧本身，<br>而这一次，好像真的不一样了……</div>
+</section>
+
+<!-- 8 COLUMNS -->
+<section class="slide">
+  <div class="title-bar"><div class="h2" data-a="left">AI 已经做到的 vs 仍然欠缺的</div></div>
+  <div class="cols">
+    <div class="col done" data-a="left">
+      <h3>已经做到 <em>ACHIEVED</em></h3>
+      <ul>
+        <li>通用知识的记忆、检索与问答，跨语言理解与写作</li>
+        <li>代码生成与形式化推理，数学竞赛达到金牌水平</li>
+        <li>图像、语音、视频的理解与高质量生成</li>
+        <li>调用工具、操作电脑，完成多步骤的智能体任务</li>
+        <li>围棋、蛋白质结构预测等封闭领域超越人类</li>
+      </ul>
+    </div>
+    <div class="col lack" data-a="right">
+      <h3>相比人脑仍然欠缺 <em>MISSING</em></h3>
+      <ul>
+        <li>持续学习、自进化与记忆能力<small>在交互中不断成长，而非一次训练、永久冻结</small></li>
+        <li>第一性原理与抽象理解能力<small>把知识越学越少——抽象、概括与凝练</small></li>
+        <li>对复杂系统的持续感知能力<small>物理世界、一个真实的人、一代航空航天系统</small></li>
+        <li>探索欲与主动性<small>“正确的” vs “前行的”</small></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot" data-a="up" data-d="1.3">以此来看，人类还不至于<span class="grad">什么都不剩</span>。</div>
+</section>
+
+<!-- 9 VERSUS -->
+<section class="slide">
+  <div class="vs">
+    <div class="hd" data-a="fade"><span>AI</span><span></span><span>HUMAN</span></div>
+    <div class="r"><div class="l" data-a="left">硅基智能</div><div class="x" data-a="zoom">vs</div><div class="rt" data-a="right">碳基智能</div></div>
+    <div class="r"><div class="l" data-a="left">数据蒸馏出智能</div><div class="x" data-a="zoom">vs</div><div class="rt" data-a="right">交互涌现出智能</div></div>
+    <div class="r"><div class="l" data-a="left">梯度下降</div><div class="x" data-a="zoom">vs</div><div class="rt" data-a="right">进化算法</div></div>
+    <div class="r"><div class="l" data-a="left">编码能力</div><div class="x" data-a="zoom">vs</div><div class="rt" data-a="right">理解能力</div></div>
+  </div>
+</section>
+
+<!-- 10 SECTION -->
+<section class="slide section">
+  <div class="num">02</div>
+  <div class="bar" data-a="left"></div>
+  <div class="h1" data-a="up">我的判断</div>
+  <div class="en" data-a="up">MY JUDGMENTS</div>
+</section>
+
+<!-- 11 JUDGE 1 -->
+<section class="slide judge">
+  <div class="no" data-a="fade">JUDGMENT · 01</div>
+  <blockquote class="quote" data-a="up">“现在的 AI 的发展速度被严重高估了。AI 走进真实物理世界、取代人类各个领域专家的过程将会持续几十年。对真实的、系统的、长尾的、感知和判断力密集的行业与方向产生足够深刻的理解和认知，这件事情未来几十年都不会被 AI 取代，反而有可能因为其他行业都被 AI 取代，从而升值。”</blockquote>
+</section>
+
+<!-- 12 JUDGE 2 -->
+<section class="slide judge">
+  <div class="no" data-a="fade">JUDGMENT · 02</div>
+  <blockquote class="quote" data-a="up" style="font-size:29px">“这一波靠着互联网开源数据兴起的、基于文字编码的自回归生成式人工智能，在快速占领通用知识和通用操作，以及高度形式化、可验证的数学与代码场景后，我的判断是会进入一段时间的冷静期。未来十年会稍微降速，但最终会逐渐取代人类所有专业领域，人类将只剩下主动性和探索。<b>现在的世界高估了未来 AI 5 年的发展，低估了未来 100 年的发展。</b>潮水褪去后，真正在裸泳的，反而可能是我们这些被现在的 AI 发展趋势吓到后，抛弃自己原有的系统化领域、一心扎进 AI 前沿，然后发现 AI 前沿最先取代的就是 AI 前沿本身，于是里外不是人的 AI 研究者们。”</blockquote>
+</section>
+
+<!-- 13 JUDGE 3 -->
+<section class="slide judge">
+  <div class="no" data-a="fade">JUDGMENT · 03</div>
+  <div class="lead" data-a="blur" style="font-size:46px;margin-bottom:30px">但 AI 的思想，一定值得每一个人去体会。</div>
+  <div class="law">
+    <div class="card" data-a="left"><div class="fma">F = ma</div><small>极致简单、优雅的符号化规律</small></div>
+    <div class="arrow" data-a="zoom">+</div>
+    <div class="card" data-a="right"><svg id="nn" viewBox="0 0 340 120"></svg><small>模糊、隐式、信号密集的规律</small></div>
+  </div>
+  <p class="p" data-a="up" style="font-size:25px">即使 AI 不会取代人的工作，AI 的方法也一定会重塑各个领域的研究范式。数据驱动的机器学习模型，对<b>模糊的、隐式的、信号密集的</b>规律系统拥有强大的编码表示能力——它头一次让我们发现：<span class="hl">一个规律，不一定要写成牛顿第二定律那样的符号形式，才配称作规律。</span>真实世界中大量难以用语言符号清晰表达、却同样深刻反映世界演化的规律，同样值得被关注，且可能被表示。用这个认识重新看一遍人类的各个学科，你会发现许多传统领域新的理解方式与研究机会。</p>
+</section>
+
+<!-- 14 SECTION -->
+<section class="slide section">
+  <div class="num">03</div>
+  <div class="bar" data-a="left"></div>
+  <div class="h1" data-a="up">AI 时代的大学生活</div>
+  <div class="en" data-a="up">MY COLLEGE LIFE</div>
+</section>
+
+<!-- 15 ENERGY -->
+<section class="slide">
+  <div class="title-bar"><div class="h2" data-a="left">我的精力分配</div><div class="idx" data-a="fade">WHERE MY ENERGY GOES</div></div>
+  <div class="energy">
+    <div class="lb" data-a="fade">课业</div><div class="track"><div class="fill" style="--w:25%;--d:.4s;background:#94a3b8"></div></div><div class="pc" data-count="10">0%</div>
+    <div class="ach" data-a="right" style="--c:#94a3b8">GPA 稳定前 15%</div>
+
+    <div class="lb" data-a="fade">竞赛与创业</div><div class="track"><div class="fill" style="--w:75%;--d:.6s;background:var(--a1)"></div></div><div class="pc" data-count="30">0%</div>
+    <div class="ach" data-a="right" style="--c:var(--a1)">107 智能体竞赛 <b>特等奖</b>（正在筹备创业）<br>RoboGame 2026 <b>冠军</b></div>
+
+    <div class="lb" data-a="fade">科研与科学探索</div><div class="track"><div class="fill" style="--w:100%;--d:.8s;background:var(--a2)"></div></div><div class="pc" data-count="40">0%</div>
+    <div class="ach" data-a="right" style="--c:var(--a2)">LDS 记忆人工智能研究<small>独立负责课题</small></div>
+
+    <div class="lb" data-a="fade">生活与人生探索</div><div class="track"><div class="fill" style="--w:50%;--d:1s;background:var(--a3)"></div></div><div class="pc" data-count="20">0%</div>
+    <div class="ach" data-a="right" style="--c:var(--a3)">蜗壳进阶联盟成员</div>
+  </div>
+  <div class="warn" data-a="zoom" data-d="2.2">不要轻易学习！</div>
+</section>
+
+<!-- 16 AGENT -->
+<section class="slide">
+  <div class="title-bar"><div class="h2" data-a="left">107 智能体竞赛 <span class="badge">特等奖</span></div><div class="idx" data-a="fade">MEMOCAT · 记忆猫</div></div>
+  <div class="gallery">
+    <figure data-a="zoom"><img src="img/agent3.jpg" alt="智能体赛道本科生组特等奖颁奖"><figcaption>智能体赛道本科生组 · 特等奖</figcaption></figure>
+    <figure data-a="right"><img src="img/agent2.jpg" alt="MemoCat 时客队路演"><figcaption>MemoCat：懂课堂、懂组会，也懂你的智能语音纪要设备</figcaption></figure>
+    <figure data-a="right"><img src="img/agent1.jpg" alt="团队合影"><figcaption>团队合影</figcaption></figure>
+  </div>
+</section>
+
+<!-- 17 ROBOGAME -->
+<section class="slide">
+  <div class="title-bar"><div class="h2" data-a="left">RoboGame 2026 <span class="badge">冠军</span></div><div class="idx" data-a="fade">UNIFOREST · 构筑巅峰</div></div>
+  <div class="gallery">
+    <figure data-a="zoom"><img src="img/robo1.jpg" alt="RoboGame 2026 冠军颁奖"><figcaption>RoboGame 2026 · 冠军</figcaption></figure>
+    <figure data-a="right"><img src="img/robo2.jpg" alt="决赛现场"><figcaption>决赛现场 · Uniforest 队</figcaption></figure>
+    <figure data-a="right"><img src="img/robo3.jpg" alt="比赛机器人"><figcaption>我们的机器人</figcaption></figure>
+  </div>
+</section>
+
+<!-- 18 SECTION -->
+<section class="slide section">
+  <div class="num">04</div>
+  <div class="bar" data-a="left"></div>
+  <div class="h1" data-a="up">我的建议</div>
+  <div class="en" data-a="up">ADVICE</div>
+</section>
+
+<!-- 19 STOP -->
+<section class="slide">
+  <div class="stop" data-a="blur">先<span class="grad">停下</span>一切事情。</div>
+  <p class="p" data-a="up" style="font-size:30px">盘点一下你所有的精力都花在哪里，仔细分析它们是否真的有价值——还是只是因为周围的人都在做，或者一股<b>隐形的社会共识与身边人的期望</b>在约束你这样做。</p>
+  <p class="p" data-a="up" style="font-size:30px;margin-top:22px">花上<span class="hl">连续的几个小时</span>去自己思考（或和 Claude、和优秀的同学们讨论）：你具体该如何做，才能最大化地利用——</p>
+  <div class="chips">
+    <div class="chip" data-a="up"><b>学校给你的资源</b><span>平台、老师、同学与机会</span></div>
+    <div class="chip" data-a="up"><b>AI 带给你的杠杆</b><span>一个人就是一支队伍</span></div>
+    <div class="chip" data-a="up"><b>你的与众不同</b><span>区别于他人，也区别于 AI</span></div>
+  </div>
+</section>
+
+<!-- 20 GO -->
+<section class="slide">
+  <div class="title-bar"><div class="h2" data-a="left">走出去，<span class="grad">去连接，去深耕</span></div></div>
+  <div class="list">
+    <div class="it" data-a="left"><div class="n">01</div><div class="t">去交更多的朋友，融入更多更有价值的群体。</div></div>
+    <div class="it" data-a="left"><div class="n">02</div><div class="t">去约优秀的同学、老师、创业者、投资人聊天。</div></div>
+    <div class="it" data-a="left"><div class="n">03</div><div class="t">去探索人生的更多可能性，去世界的另一端，看与我们完全不同的人们如何生活、如何适应这个时代。</div></div>
+    <div class="it" data-a="left"><div class="n">04</div><div class="t">用 AI 探索更多有趣好玩的事情——游戏开发、微电影制作、机器人制作、艺术创作。</div></div>
+    <div class="it" data-a="left"><div class="n">05</div><div class="t">用深刻的洞察力与持续的理解能力深耕一个专业领域，把一件你<b>大概率不会被当前 AI 与别人替代</b>的事业做到极致。</div></div>
+  </div>
+  <div class="ember" data-a="up" data-d="1.4">务必不要完全丧失掉自己的野心与梦想，确保它随时能够被重新引燃。</div>
+</section>
+
+<!-- 21 THREE SENTENCES -->
+<section class="slide">
+  <div class="three">
+    <div class="s" data-a="up"><div class="a">当特定能力变得不再重要，</div><div class="b2">重要的变成 <span class="grad">驾驭能力的能力</span>。</div></div>
+    <div class="s" data-a="up" style="--d:1s"><div class="a">当信息与执行变得不再值钱，</div><div class="b2">值钱的是决定哪些信息有价值、哪些方向需要执行的 <span class="grad">判断力与洞察力</span>。</div></div>
+    <div class="s" data-a="up" style="--d:2s"><div class="a">当技术不再有壁垒，</div><div class="b2">壁垒变成了资本与资源，人脉与群体共识力，洞察与眼界，<br>以及渴望改变世界的、<span class="grad">纯粹而又坚定的愿力</span>本身。</div></div>
+  </div>
+</section>
+
+<!-- 22 ESSAY -->
+<section class="slide center">
+  <div class="essay" data-a="blur"><span class="q1">“</span>欣欣向荣的一片混乱中，<span class="grad">焦虑与迷茫</span>理应是所有人的常态，没有人有资格认为自己对一切都有准备。<br><span style="color:var(--mute);font-size:36px;font-weight:500">不焦虑的人大多不是因为他们想得有多清楚，而是他们根本就懒于思考，且不愿对自己的人生负责。</span></div>
+</section>
+
+<!-- 23 FINAL -->
+<section class="slide final center">
+  <div class="h1" data-a="blur">愿我们都能在这个伟大的时代中，<br><span class="grad">活出自己最好的样子！</span></div>
+  <div class="qr">
+    <figure data-a="up"><div class="box"><img src="img/wechat.jpg" alt="微信二维码"></div><figcaption>微信</figcaption></figure>
+    <figure data-a="up"><div class="box"><img src="img/qq.jpg" alt="QQ 二维码"></div><figcaption>QQ</figcaption></figure>
+  </div>
+  <div class="thanks" data-a="up">谢谢大家</div>
+  <div class="links" data-a="fade">刘铠宁 · <a href="https://kainingliu.com" target="_blank">kainingliu.com</a> · <a href="https://github.com/KainingLiu" target="_blank">github.com/KainingLiu</a></div>
+</section>
+
+</div></div>
+
+<div id="lightbox"><img alt=""></div>
+<div id="brand"><a href="https://kainingliu.com">KAINING LIU</a></div>
+<div id="hint">← → / 空格 翻页 · F 全屏</div>
+<div id="nav"><button id="prev" title="上一页">‹</button><button id="next" title="下一页">›</button><button id="fs" title="全屏">⛶</button></div>
+<div id="counter"></div>
+
+<script>
+(() => {
+  const stage = document.getElementById('stage');
+  const slides = [...document.querySelectorAll('.slide')];
+  let cur = 0;
+
+  // scale 1600x900 stage to viewport
+  function fit(){ const s = Math.min(innerWidth/1600, innerHeight/900); stage.style.transform = `scale(${s})`; }
+  addEventListener('resize', fit); fit();
+
+  // typewriter: split text into spans
+  let tIdx = 0;
+  document.querySelectorAll('.type').forEach(el => {
+    const grad = el.classList.contains('grad-type');
+    el.innerHTML = [...el.textContent].map(ch => {
+      const d = (0.25 + tIdx++ * 0.085).toFixed(3);
+      return `<span class="${grad?'grad':''}" style="transition-delay:${d}s">${ch === ' ' ? '&nbsp;' : ch}</span>`;
+    }).join('');
+  });
+
+  // auto-stagger entrance delays
+  slides.forEach(s => {
+    let i = 0;
+    s.querySelectorAll('[data-a]').forEach(el => {
+      const node = el.closest('.node');
+      if (node) el.style.setProperty('--d', node.style.getPropertyValue('--d'));
+      else if (el.dataset.d) el.style.setProperty('--d', el.dataset.d + 's');
+      else if (!el.style.getPropertyValue('--d')) el.style.setProperty('--d', (0.15 + i * 0.16).toFixed(2) + 's');
+      i++;
+    });
+  });
+
+  // hype cycle chart
+  (function buildHype(){
+    const svg = document.getElementById('hypeSvg'), NS = 'http://www.w3.org/2000/svg';
+    const X = y => 60 + (y - 1950) * 14.5, Y = v => 500 - v * 4.4;
+    const pts = [[1950,8],[1956,30],[1962,62],[1968,70],[1974,22],[1978,14],[1982,42],[1986,64],[1989,30],[1993,12],[1999,24],[2006,30],[2012,48],[2016,66],[2020,74],[2023,92],[2026,100]].map(([y,v])=>[X(y),Y(v)]);
+    const mk = (tag, attrs, parent=svg) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent.appendChild(e); return e; };
+    // winters
+    [[1974,1980,'第一次寒冬'],[1987,1993,'第二次寒冬']].forEach(([a,b,t],i) => {
+      const r = mk('rect',{x:X(a),y:20,width:X(b)-X(a),height:490,rx:10,class:'winter'}); r.style.transitionDelay = (1+i*.9)+'s';
+      const tx = mk('text',{x:(X(a)+X(b))/2,y:52,'text-anchor':'middle','font-size':18,fill:'#2563eb',class:'lbl'}); tx.textContent = '❄ ' + t; tx.style.transitionDelay = (1.2+i*.9)+'s';
+    });
+    // axis
+    mk('line',{x1:40,y1:505,x2:1380,y2:505,stroke:'rgba(15,20,40,.15)'});
+    // smooth path (Catmull-Rom → Bezier)
+    let d = `M${pts[0][0]},${pts[0][1]}`;
+    for (let i = 0; i < pts.length - 1; i++) {
+      const p0 = pts[i-1] || pts[i], p1 = pts[i], p2 = pts[i+1], p3 = pts[i+2] || p2;
+      d += ` C${p1[0]+(p2[0]-p0[0])/6},${p1[1]+(p2[1]-p0[1])/6} ${p2[0]-(p3[0]-p1[0])/6},${p2[1]-(p3[1]-p1[1])/6} ${p2[0]},${p2[1]}`;
+    }
+    const path = mk('path',{d, class:'curve draw'});
+    path.style.setProperty('--len', path.getTotalLength ? Math.ceil(path.getTotalLength()) + 10 : 3000);
+    // fork
+    const [ex, ey] = pts[pts.length-1];
+    mk('path',{d:`M${ex},${ey} Q${ex+60},${ey-40} ${X(2035)},${Y(118)}`, class:'fork', stroke:'#db2777'});
+    mk('path',{d:`M${ex},${ey} Q${ex+50},${ey+40} ${X(2035)},${Y(28)}`, class:'fork', stroke:'#2563eb'});
+    const up = mk('text',{x:X(2035)-6,y:Y(118)-14,'text-anchor':'end','font-size':20,fill:'#db2777',class:'lbl'}); up.textContent='更大的热潮？'; up.style.transitionDelay='4s';
+    const dn = mk('text',{x:X(2035)-6,y:Y(28)+34,'text-anchor':'end','font-size':20,fill:'#2563eb',class:'lbl'}); dn.textContent='下一次寒冬？'; dn.style.transitionDelay='4.2s';
+    // events
+    const ev = [[1956,30,'1956 达特茅斯会议',-1,.6],[1966,68,'符号主义 · 感知机',-1,1],[1986,64,'专家系统 · 反向传播',-1,1.8],[2012,48,'2012 AlexNet 深度学习',1,2.5],[2016,66,'2016 AlphaGo',-1,2.8],[2022.5,90,'2022 ChatGPT',-1,3.2]];
+    ev.forEach(([y,v,t,side,dl]) => {
+      const x = X(y), yy = Y(v);
+      const g = mk('g',{class:'lbl'}); g.style.transitionDelay = dl+'s';
+      mk('circle',{cx:x,cy:yy,r:6,fill:'#fff',stroke:'#1f2433','stroke-width':2},g);
+      const tx = mk('text',{x, y: side<0 ? yy-20 : yy+36,'text-anchor':'middle','font-size':17},g); tx.textContent = t;
+    });
+    // year ticks
+    [1950,1960,1970,1980,1990,2000,2010,2020,2030].forEach(y => { const t = mk('text',{x:X(y),y:528,'text-anchor':'middle','font-size':14,fill:'#5b6275'}); t.textContent = y; });
+  })();
+
+  // little neural-net drawing for judgment 3
+  (function nn(){
+    const svg = document.getElementById('nn'), NS='http://www.w3.org/2000/svg';
+    const layers = [3,5,5,2], xs = [30,130,230,310], nodes = [];
+    layers.forEach((n,li) => { const col=[]; for (let i=0;i<n;i++) col.push([xs[li], 60 + (i-(n-1)/2)*22]); nodes.push(col); });
+    for (let l=0;l<nodes.length-1;l++) nodes[l].forEach(a => nodes[l+1].forEach(b => { const e=document.createElementNS(NS,'line'); e.setAttribute('x1',a[0]);e.setAttribute('y1',a[1]);e.setAttribute('x2',b[0]);e.setAttribute('y2',b[1]); svg.appendChild(e); }));
+    nodes.flat().forEach(([x,y]) => { const c=document.createElementNS(NS,'circle'); c.setAttribute('cx',x);c.setAttribute('cy',y);c.setAttribute('r',5); svg.appendChild(c); });
+  })();
+
+  // count-up numbers
+  function countUp(slide){
+    slide.querySelectorAll('[data-count]').forEach((el,i) => {
+      const target = +el.dataset.count, t0 = performance.now() + 400 + i*200, dur = 1600;
+      const step = now => { const k = Math.min(1, Math.max(0,(now-t0)/dur)); el.textContent = Math.round(target*(1-Math.pow(1-k,3))) + '%'; if (k<1) requestAnimationFrame(step); };
+      el.textContent = '0%'; requestAnimationFrame(step);
+    });
+  }
+
+  const g1 = document.querySelector('.g1'), g2 = document.querySelector('.g2');
+  function go(n){
+    n = Math.max(0, Math.min(slides.length-1, n));
+    slides[cur].classList.remove('active');
+    cur = n;
+    // force restart of animations
+    void slides[cur].offsetWidth;
+    slides[cur].classList.add('active');
+    countUp(slides[cur]);
+    document.getElementById('progress').style.width = ((cur+1)/slides.length*100) + '%';
+    document.getElementById('counter').textContent = String(cur+1).padStart(2,'0') + ' / ' + String(slides.length).padStart(2,'0');
+    g1.style.transform = `translate(${Math.sin(cur*1.3)*14}vmax, ${Math.cos(cur*0.9)*10}vmax)`;
+    g2.style.transform = `translate(${Math.cos(cur*1.1)*12}vmax, ${Math.sin(cur*0.7)*10}vmax)`;
+    history.replaceState(null, '', '#' + (cur+1));
+    if (cur > 0) document.getElementById('hint').style.opacity = 0;
+  }
+  const next = () => go(cur+1), prev = () => go(cur-1);
+
+  addEventListener('keydown', e => {
+    if (lb.classList.contains('on')) { if (e.key === 'Escape' || e.key === ' ') lb.classList.remove('on'); return; }
+    if (['ArrowRight','ArrowDown','PageDown',' ','Enter'].includes(e.key)) { e.preventDefault(); next(); }
+    else if (['ArrowLeft','ArrowUp','PageUp','Backspace'].includes(e.key)) { e.preventDefault(); prev(); }
+    else if (e.key === 'Home') go(0);
+    else if (e.key === 'End') go(slides.length-1);
+    else if (e.key === 'f' || e.key === 'F') toggleFs();
+  });
+  let wheelLock = 0;
+  addEventListener('wheel', e => { const now = Date.now(); if (now - wheelLock < 900 || Math.abs(e.deltaY) < 20) return; wheelLock = now; e.deltaY > 0 ? next() : prev(); }, {passive:true});
+  let tx0 = null;
+  addEventListener('touchstart', e => tx0 = e.touches[0].clientX, {passive:true});
+  addEventListener('touchend', e => { if (tx0 === null) return; const dx = e.changedTouches[0].clientX - tx0; if (Math.abs(dx) > 50) dx < 0 ? next() : prev(); tx0 = null; });
+
+  const lb = document.getElementById('lightbox');
+  document.addEventListener('click', e => {
+    if (e.target.closest('#lightbox')) { lb.classList.remove('on'); return; }
+    const fig = e.target.closest('.gallery figure');
+    if (fig) { lb.querySelector('img').src = fig.querySelector('img').src; lb.classList.add('on'); return; }
+    if (e.target.closest('a,button,#nav')) return;
+    next();
+  });
+  document.getElementById('prev').onclick = e => { e.stopPropagation(); prev(); };
+  document.getElementById('next').onclick = e => { e.stopPropagation(); next(); };
+  document.getElementById('fs').onclick = e => { e.stopPropagation(); toggleFs(); };
+  function toggleFs(){ document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen(); }
+
+  // background: drifting particle network
+  const cv = document.getElementById('bg'), cx = cv.getContext('2d');
+  let W, H, P = [];
+  function resize(){ W = cv.width = innerWidth * devicePixelRatio; H = cv.height = innerHeight * devicePixelRatio; cv.style.width = innerWidth+'px'; cv.style.height = innerHeight+'px';
+    const n = Math.round(innerWidth*innerHeight/16000); P = Array.from({length:n}, () => ({x:Math.random()*W, y:Math.random()*H, vx:(Math.random()-.5)*.25*devicePixelRatio, vy:(Math.random()-.5)*.25*devicePixelRatio, r:(Math.random()*1.4+.4)*devicePixelRatio})); }
+  addEventListener('resize', resize); resize();
+  const R = 130 * devicePixelRatio;
+  (function tick(){
+    cx.clearRect(0,0,W,H);
+    for (const p of P) { p.x += p.vx; p.y += p.vy; if (p.x<0||p.x>W) p.vx*=-1; if (p.y<0||p.y>H) p.vy*=-1; }
+    for (let i=0;i<P.length;i++) for (let j=i+1;j<P.length;j++) {
+      const a=P[i], b=P[j], dx=a.x-b.x, dy=a.y-b.y, d=dx*dx+dy*dy;
+      if (d < R*R) { cx.strokeStyle = `rgba(79,70,229,${(1-Math.sqrt(d)/R)*.16})`; cx.lineWidth = devicePixelRatio*.6; cx.beginPath(); cx.moveTo(a.x,a.y); cx.lineTo(b.x,b.y); cx.stroke(); }
+    }
+    cx.fillStyle = 'rgba(79,70,229,.3)';
+    for (const p of P) { cx.beginPath(); cx.arc(p.x,p.y,p.r,0,6.283); cx.fill(); }
+    requestAnimationFrame(tick);
+  })();
+
+  addEventListener('hashchange', () => { const n = parseInt(location.hash.slice(1)) - 1; if (!isNaN(n) && n !== cur) go(n); });
+  const start = parseInt(location.hash.slice(1)) - 1;
+  slides[0].classList.add('active');
+  go(isNaN(start) ? 0 : start);
+})();
+</script>
+</body>
+</html>
