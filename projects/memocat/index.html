@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-title-zh="MemoCat 记忆猫 · 刘铠宁" data-title-en="MemoCat · Kaining Liu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MemoCat 记忆猫 · 刘铠宁</title>
+<meta name="description" content="MemoCat 记忆猫：常驻桌面的语音智能体，自动把课堂、组会和讨论整理成可检索、可溯源的知识，获“一〇七杯”算力与智能体开发大赛特等奖。MemoCat is a local-first desktop voice agent that turns lectures and meetings into searchable, source-traceable notes; Grand Prize of the 107 Cup AI Agent Competition.">
+<meta name="author" content="Kaining Liu">
+<meta name="theme-color" content="#1f4fb4">
+<link rel="canonical" href="https://kainingliu.com/projects/memocat/">
+<link rel="alternate" hreflang="zh-CN" href="https://kainingliu.com/projects/memocat/?lang=zh">
+<link rel="alternate" hreflang="en" href="https://kainingliu.com/projects/memocat/?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://kainingliu.com/projects/memocat/">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MemoCat 记忆猫 · Kaining Liu">
+<meta property="og:description" content="A local-first desktop voice agent that turns lectures and meetings into searchable, source-traceable notes. Grand Prize, 107 Cup AI Agent Competition.">
+<meta property="og:url" content="https://kainingliu.com/projects/memocat/">
+<meta property="og:image" content="https://kainingliu.com/projects/memocat/img/pitch.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script>
+  // Pick the language before first paint: ?lang= (remembered) > saved choice > browser language.
+  (function () {
+    var l;
+    try { l = new URLSearchParams(location.search).get('lang'); } catch (e) {}
+    if (l === 'en' || l === 'zh') { try { localStorage.setItem('lang', l); } catch (e) {} }
+    else { try { l = localStorage.getItem('lang'); } catch (e) {} }
+    if (l !== 'en' && l !== 'zh') { l = /^zh/i.test(navigator.language || '') ? 'zh' : 'en'; }
+    document.documentElement.lang = l === 'en' ? 'en' : 'zh-CN';
+  })();
+</script>
+<link rel="stylesheet" href="../../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main"><span lang="zh-CN">跳到正文</span><span lang="en">Skip to content</span></a>
+
+<header class="nav">
+  <nav class="wrap nav-inner" aria-label="Main">
+    <a class="brand" href="../../"><span lang="zh-CN">刘铠宁</span><span lang="en">Kaining Liu</span></a>
+    <ul class="nav-links">
+      <li><a href="../../#about"><span lang="zh-CN">关于</span><span lang="en">About</span></a></li>
+      <li><a href="../../#news"><span lang="zh-CN">动态</span><span lang="en">News</span></a></li>
+      <li><a href="../../#publications"><span lang="zh-CN">论文</span><span lang="en">Publications</span></a></li>
+      <li><a href="../../#research"><span lang="zh-CN">科研</span><span lang="en">Research</span></a></li>
+      <li><a class="active" href="../../#projects"><span lang="zh-CN">项目</span><span lang="en">Projects</span></a></li>
+      <li><a href="../../#honors"><span lang="zh-CN">荣誉</span><span lang="en">Honors</span></a></li>
+      <li><a href="../../#education"><span lang="zh-CN">教育</span><span lang="en">Education</span></a></li>
+      <li><a href="#contact"><span lang="zh-CN">联系</span><span lang="en">Contact</span></a></li>
+    </ul>
+    <button class="lang-btn" id="lang-toggle" type="button" title="中文 / English">
+      <span lang="zh-CN">中<span class="sep">/</span><span class="faint">EN</span></span>
+      <span lang="en"><span class="faint">中</span><span class="sep">/</span>EN</span>
+    </button>
+  </nav>
+</header>
+
+<main id="main" class="wrap">
+
+  <ol class="crumbs" aria-label="Breadcrumb">
+    <li><a href="../../"><span lang="zh-CN">主页</span><span lang="en">Home</span></a></li>
+    <li><a href="../../#projects"><span lang="zh-CN">项目</span><span lang="en">Projects</span></a></li>
+    <li aria-current="page"><span lang="zh-CN">MemoCat 记忆猫</span><span lang="en">MemoCat</span></li>
+  </ol>
+
+  <header class="p-hero">
+    <div class="p-tags">
+      <span class="tag award"><span lang="zh-CN">“一〇七杯”特等奖</span><span lang="en">107 Cup Grand Prize</span></span>
+      <span class="tag"><span lang="zh-CN">AI 智能体</span><span lang="en">AI agent</span></span>
+      <span class="tag research"><span lang="zh-CN">团队项目</span><span lang="en">Team project</span></span>
+    </div>
+    <h1 lang="zh-CN">MemoCat 记忆猫<small>懂课堂、懂组会，也懂你</small></h1>
+    <h1 lang="en">MemoCat<small>Gets your lectures, your meetings, and you</small></h1>
+    <p class="lede" lang="zh-CN">一只常驻电脑桌面的布偶猫。它在后台持续听写、分辨说话人、判断你正处在什么场景，再按你定义的方式把对话整理成结构化报告，存进可检索、可溯源的本地记忆库；你也可以随时开口和它聊天，让它帮你回忆、提醒和办事。</p>
+    <p class="lede" lang="en">A ragdoll cat that lives on your desktop. In the background it transcribes what is said, tells speakers apart, works out what kind of conversation you are in, and writes it up as a structured report in the format you define, stored in a searchable, source-traceable local memory. You can also just talk to it, and it will recall things, remind you and get small jobs done.</p>
+    <dl class="facts">
+      <div><dt><span lang="zh-CN">时间</span><span lang="en">YEAR</span></dt><dd>2026</dd></div>
+      <div><dt><span lang="zh-CN">荣誉</span><span lang="en">AWARD</span></dt><dd><span lang="zh-CN">“一〇七杯”智能体赛道本科生组特等奖</span><span lang="en">107 Cup Grand Prize, Agent Track (Undergraduate)</span></dd></div>
+      <div><dt><span lang="zh-CN">团队</span><span lang="en">TEAM</span></dt><dd><span lang="zh-CN">时客队 · 4 人</span><span lang="en">Team Shike · 4 members</span></dd></div>
+      <div><dt><span lang="zh-CN">技术</span><span lang="en">STACK</span></dt><dd>Rust · Tauri 2 · React 19</dd></div>
+    </dl>
+    <div class="links">
+      <a class="chip" href="https://github.com/KainingLiu/memocatdoc" target="_blank" rel="noopener"><span lang="zh-CN">项目文档</span><span lang="en">Project docs</span> ↗</a>
+    </div>
+  </header>
+
+  <figure class="shot bare cover">
+    <a href="img/dashboard.webp"><img src="img/dashboard.webp" width="1800" height="1197" alt="MemoCat workspace with a live transcript and generated reports"></a>
+    <figcaption>
+      <span lang="zh-CN">工作台：中间是实时转写时间线，右侧是自动生成的整理报告（课堂笔记、会议纪要等）。</span>
+      <span lang="en">The workspace: a live transcript timeline in the middle and auto-generated reports (lecture notes, meeting minutes, …) on the right.</span>
+    </figcaption>
+  </figure>
+
+  <!-- ===================== Why ===================== -->
+  <section id="why">
+    <h2><span lang="zh-CN">为什么做 MemoCat</span><span lang="en">Why MemoCat</span></h2>
+    <div class="prose" lang="zh-CN">
+      <p>人在说话时产生的信息最密集：一次授课、一场组会、一轮头脑风暴，最有价值的内容大多在口头交流中产生，也流失得最彻底。手写跟不上语速，记录又和思考争夺同一份注意力；即使录音和逐字稿留了下来，也很少有人会重听、重读，它们最终堆进一个再也不会打开的文件夹，我们把它叫作“记录墓地”。</p>
+      <p>存储解决了“留下”，却没有解决“用上”。真正缺的一步，是把口头表达自动整理成可以直接使用的知识。MemoCat 想把“整理”这件一直靠人工完成的事交给 AI，让使用者只需要把话说好、把问题想清楚。</p>
+      <p class="callout"><b>核心想法：</b>整理规则应该由用户按场景定义，而不是由产品预设。数学课需要定理与推导，组会需要每个人的进展和下周计划，产品讨论需要决策点和待办。</p>
+    </div>
+    <div class="prose" lang="en">
+      <p>Speech is where people produce information most densely. A lecture, a group meeting or a brainstorm is where the most valuable ideas come up, and also where they are lost most completely. Handwriting cannot keep up with speech, and taking notes competes with thinking for the same attention. Even when recordings and transcripts survive, almost nobody listens to or reads them again; they pile up in a folder that is never reopened, which we call the “record graveyard”.</p>
+      <p>Storage solved keeping things, not using them. The missing step is turning speech into knowledge you can actually use. MemoCat hands that step, organizing, which has always been manual work, over to AI, so people only need to speak well and think clearly.</p>
+      <p class="callout"><b>Key idea:</b> the rules for organizing notes should be defined by users for each scene, not preset by the product. A math lecture needs theorems and derivations, a group meeting needs everyone's progress and next week's plan, and a product discussion needs decisions and action items.</p>
+    </div>
+  </section>
+
+  <!-- ===================== How it is used ===================== -->
+  <section id="usage">
+    <h2><span lang="zh-CN">怎么用</span><span lang="en">How it is used</span></h2>
+    <div class="split">
+      <div>
+        <div class="prose" lang="zh-CN">
+          <p>MemoCat 的唯一入口是桌面角落的一只布偶猫（也可以换成别的形象）。窗口透明、置顶、不抢焦点，可以拖到屏幕任何位置；鼠标悬停时出现工具条：记录、对话、听写、设置。</p>
+          <p>上课或开会前点一下开始记录，之后就可以忘掉它：转写、场景判断和整理都在后台自动完成。需要回顾时再打开工作台，按时间线或场景浏览报告，全文检索说过的任何一句话，并跳回原始对话甚至原始录音。</p>
+        </div>
+        <div class="prose" lang="en">
+          <p>The only entry point is a ragdoll cat in the corner of your desktop (other skins are available). Its window is transparent, always on top and never steals focus, and you can drag it anywhere. Hovering shows a toolbar: record, talk, dictate, settings.</p>
+          <p>Click once before a lecture or meeting and forget about it: transcription, scene detection and organizing all happen in the background. When you want to look back, open the workspace to browse reports by time or scene, search everything that was said, and jump back to the original conversation or even the original audio.</p>
+        </div>
+      </div>
+      <figure class="shot bare">
+        <img src="img/pet-chat.webp" width="720" height="993" loading="lazy" alt="The MemoCat desktop pet with its toolbar and chat window">
+        <figcaption><span lang="zh-CN">桌宠与对话窗口</span><span lang="en">The desktop pet and its chat window</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===================== Features ===================== -->
+  <section id="features">
+    <h2><span lang="zh-CN">核心能力</span><span lang="en">What it does</span></h2>
+    <div class="feature-grid">
+      <div class="feature">
+        <div class="num">01</div>
+        <h3><span lang="zh-CN">无感记录</span><span lang="en">Ambient recording</span></h3>
+        <p lang="zh-CN">后台持续采集与转写，声纹识别区分说话人，文字、时间戳与说话人统一存入同一条时间线。</p>
+        <p lang="en">Continuous capture and transcription in the background. Voiceprints tell speakers apart, and text, timestamps and speakers share one timeline.</p>
+      </div>
+      <div class="feature">
+        <div class="num">02</div>
+        <h3><span lang="zh-CN">按场景整理</span><span lang="en">Scene-aware notes</span></h3>
+        <p lang="zh-CN">自动判断当前是课堂、会议、组会还是问诊，场景结束后调用对应插件生成结构化报告；插件可以由用户自己定义。</p>
+        <p lang="en">Detects whether you are in a lecture, meeting, group meeting or consultation, and runs the matching plugin to write a structured report when it ends. Users can write their own plugins.</p>
+      </div>
+      <div class="feature">
+        <div class="num">03</div>
+        <h3><span lang="zh-CN">可溯源的长期记忆</span><span lang="en">Traceable memory</span></h3>
+        <p lang="zh-CN">原始对话与整理报告双路召回，每个回答都标注出处，可一键跳回原句和录音；可选接入云端长期记忆。</p>
+        <p lang="en">Recalls from both raw transcripts and reports. Every answer cites its source and links back to the exact sentence and audio. Cloud memory is optional.</p>
+      </div>
+      <div class="feature">
+        <div class="num">04</div>
+        <h3><span lang="zh-CN">实时语音对话</span><span lang="en">Real-time voice agent</span></h3>
+        <p lang="zh-CN">全双工语音对话，随时可以打断；能回忆过去的内容、设置提醒，并把复杂任务交给后台智能体，聊天和干活互不耽误。</p>
+        <p lang="en">Full-duplex voice chat you can interrupt at any time. It recalls past conversations, sets reminders and hands bigger jobs to a background agent, so chatting and working never block each other.</p>
+      </div>
+      <div class="feature">
+        <div class="num">05</div>
+        <h3><span lang="zh-CN">语音输入法</span><span lang="en">Voice typing</span></h3>
+        <p lang="zh-CN">按下快捷键说话，转写结果直接插入当前应用的光标处，失败时自动降级为粘贴或复制。</p>
+        <p lang="en">Press a hotkey and speak. The text lands at the cursor of whatever app you are in, falling back to paste or copy when needed.</p>
+      </div>
+      <div class="feature">
+        <div class="num">06</div>
+        <h3><span lang="zh-CN">待办与提醒</span><span lang="en">To-dos &amp; reminders</span></h3>
+        <p lang="zh-CN">从对话和会议中自动提取待办事项（负责人、截止时间），确认后进入提醒日历并按时提醒。</p>
+        <p lang="en">Pulls action items (owner, due date) out of conversations and meetings; once confirmed they go on a reminder calendar and fire on time.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Architecture ===================== -->
+  <section id="design">
+    <h2><span lang="zh-CN">系统设计</span><span lang="en">How it is built</span></h2>
+    <div class="prose" lang="zh-CN">
+      <p>MemoCat 的核心是一条把语音变成结构化知识的流水线。系统是<b>本地优先</b>的：原始音频、声纹、对话记录、整理报告和智能体状态都保存在用户自己的电脑上，只有需要模型处理的文本和音频片段才会发往云端。</p>
+    </div>
+    <div class="prose" lang="en">
+      <p>At its core MemoCat is a pipeline that turns speech into structured knowledge. It is <b>local-first</b>: raw audio, voiceprints, transcripts, reports and agent state all stay on the user's own computer, and only the text and audio snippets a model has to process are sent to the cloud.</p>
+    </div>
+    <ol class="steps">
+      <li>
+        <div>
+          <h3><span lang="zh-CN">语音采集</span><span lang="en">Capture</span></h3>
+          <p lang="zh-CN">WebRTC VAD 以 30 ms 为一帧检测语音：停顿 1.2 秒即封块送转写，连续讲话 12 秒强制切分，短于 0.5 秒的片段丢弃；原始音频按内容哈希存储，方便回听与溯源。</p>
+          <p lang="en">WebRTC VAD on 30 ms frames: a 1.2 s pause seals a chunk for transcription, continuous speech is cut at 12 s, and chunks under 0.5 s are dropped. Raw audio is stored by content hash for playback and tracing.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h3><span lang="zh-CN">转写与说话人识别</span><span lang="en">Transcription &amp; speakers</span></h3>
+          <p lang="zh-CN">云端 ASR（Qwen3-ASR-Flash 等）输出带时间戳的文本；本地用 ONNX Runtime 运行 CAM++ 提取 256 维声纹，以 0.90 / 0.85 两档阈值匹配正式声纹与临时声纹。</p>
+          <p lang="en">Cloud ASR (Qwen3-ASR-Flash and others) returns timestamped text, while CAM++ runs locally on ONNX Runtime to extract 256-d voiceprints, matched against confirmed and provisional speakers at 0.90 / 0.85 thresholds.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h3><span lang="zh-CN">场景判断</span><span lang="en">Scene detection</span></h3>
+          <p lang="zh-CN">每积累 10 句或每隔 45 秒，用大模型做一次轻量判断，配合时间确认状态机识别场景的开始与结束，决定触发哪个整理插件。</p>
+          <p lang="en">Every 10 sentences or 45 seconds, a lightweight LLM call plus a time-confirmation state machine decides when a scene starts and ends, and which plugin should run.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h3><span lang="zh-CN">结构化整理</span><span lang="en">Structured notes</span></h3>
+          <p lang="zh-CN">插件用声明式清单定义提示词、输出 Schema 与规则，并先经过编译器校验；生成的报告必须通过 Schema 校验和溯源校验，失败时把错误信息回传给模型定向修复。</p>
+          <p lang="en">Plugins declare their prompts, output schema and rules in a manifest that a compiler checks first. Every report must pass schema and source-tracing checks; failures are sent back to the model for a targeted fix.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h3><span lang="zh-CN">记忆与检索</span><span lang="en">Memory &amp; retrieval</span></h3>
+          <p lang="zh-CN">报告与原始对话存入 SQLite（FTS5 全文索引），通过句子编号精确关联；检索时双路召回、带出处作答，也可以接入 MemOS / OpenMem 做语义召回。</p>
+          <p lang="en">Reports and transcripts go into SQLite with FTS5 full-text search, linked by sentence IDs. Retrieval draws on both and always answers with sources; MemOS / OpenMem can be plugged in for semantic recall.</p>
+        </div>
+      </li>
+    </ol>
+
+    <div class="prose" lang="zh-CN">
+      <p>实时对话基于 Qwen-Audio Realtime 的 WebSocket 全双工接口，注册了 6 个工具：记忆召回、记忆写入、提醒、待办列表、待办更新和后台任务委派。复杂任务交给后台的 Hermes 智能体执行，它通过 MCP 只读访问记忆库，任何写操作都要用户在桌宠气泡上批准。整理插件还能“自进化”：系统根据反馈生成改进提案，用历史对话回放对比新旧版本，审核后生效，并支持一键回滚。</p>
+    </div>
+    <div class="prose" lang="en">
+      <p>Voice chat runs on the full-duplex Qwen-Audio Realtime WebSocket API with six tools: recall memory, save memory, set a reminder, list to-dos, update to-dos and delegate a background task. Complex jobs go to a background Hermes agent that reads the memory store through read-only MCP tools; any write needs the user's approval in a bubble above the pet. Plugins can also improve themselves: the system drafts changes from feedback, replays past conversations to compare old and new versions, and applies a change only after review, with one-click rollback.</p>
+    </div>
+    <figure class="shot diagram">
+      <a href="img/architecture.webp"><img src="img/architecture.webp" width="1536" height="1024" loading="lazy" alt="Architecture diagram of the real-time dialogue runtime, Hermes delegation and the reminder scheduler"></a>
+      <figcaption>
+        <span lang="zh-CN">实时对话与后台委托架构（点击查看大图）：对话状态机在空闲、说话、聆听、思考、工作之间切换；复杂任务委托给后台 Hermes 执行，待办由调度服务按时投递。</span>
+        <span lang="en">Real-time dialogue and delegation (click to enlarge): a state machine moves between idle, speaking, listening, thinking and working; complex jobs are delegated to a background Hermes agent, and a scheduler delivers reminders on time.</span>
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- ===================== Stack ===================== -->
+  <section id="stack">
+    <h2><span lang="zh-CN">技术栈</span><span lang="en">Tech stack</span></h2>
+    <div class="table-wrap">
+      <table class="spec">
+        <tr>
+          <th><span lang="zh-CN">后端</span><span lang="en">Backend</span></th>
+          <td><span lang="zh-CN">Rust 工作区（25 个 crate）：</span><span lang="en">Rust workspace of 25 crates: </span><code>tokio</code> <code>cpal</code> <code>webrtc-vad</code> <code>rusqlite</code> <code>ort</code></td>
+        </tr>
+        <tr>
+          <th><span lang="zh-CN">桌面壳</span><span lang="en">Desktop shell</span></th>
+          <td><span lang="zh-CN">Tauri 2：透明、无边框、置顶、不抢焦点的桌宠窗口</span><span lang="en">Tauri 2: a transparent, frameless, always-on-top pet window that never steals focus</span></td>
+        </tr>
+        <tr>
+          <th><span lang="zh-CN">前端</span><span lang="en">Frontend</span></th>
+          <td>React 19 · TypeScript · Vite</td>
+        </tr>
+        <tr>
+          <th><span lang="zh-CN">存储</span><span lang="en">Storage</span></th>
+          <td><span lang="zh-CN">7 个本地 SQLite 库（对话时间线、记忆库、声纹库、提醒、审批、智能体会话、应用状态）；音频按内容哈希存储</span><span lang="en">Seven local SQLite databases (timeline, memory, voiceprints, reminders, approvals, agent sessions, app state); audio stored by content hash</span></td>
+        </tr>
+        <tr>
+          <th><span lang="zh-CN">模型</span><span lang="en">Models</span></th>
+          <td><span lang="zh-CN">Qwen3-ASR-Flash（转写）· Qwen-Audio Realtime（实时对话）· DeepSeek（场景判断、整理、检索问答）· CAM++（本地声纹）</span><span lang="en">Qwen3-ASR-Flash (transcription) · Qwen-Audio Realtime (voice chat) · DeepSeek (scene detection, notes, Q&amp;A) · CAM++ (local voiceprints)</span></td>
+        </tr>
+        <tr>
+          <th><span lang="zh-CN">智能体</span><span lang="en">Agents</span></th>
+          <td><span lang="zh-CN">Hermes 后台智能体（ACP 协议）· MCP 只读记忆工具 · 写操作审批</span><span lang="en">Hermes background agent (ACP) · read-only MCP memory tools · approval for every write</span></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- ===================== Difference ===================== -->
+  <section id="different">
+    <h2><span lang="zh-CN">有什么不同</span><span lang="en">What makes it different</span></h2>
+    <ul class="checks">
+      <li lang="zh-CN"><b>整理规则可定制</b>常见的语音纪要产品用同一套模板处理所有场景；MemoCat 让每个场景、每个人都可以有自己的整理插件。</li>
+      <li lang="en"><b>Customizable organizing</b>Typical voice-notes apps apply one template to every scene; in MemoCat every scene, and every person, can have its own plugin.</li>
+      <li lang="zh-CN"><b>无感的入口</b>用一只桌宠代替臃肿的前端，记录、对话和听写都在同一个入口完成，不必来回切换软件。</li>
+      <li lang="en"><b>An ambient entry point</b>A desktop pet replaces a heavy front end; recording, chatting and dictation all happen in one place, with no app switching.</li>
+      <li lang="zh-CN"><b>每个回答都有出处</b>回答必须能回落到原始对话和录音，方便核对，不让模型凭空发挥。</li>
+      <li lang="en"><b>Every answer has a source</b>Answers must trace back to the original conversation and audio, so they can be checked rather than taken on trust.</li>
+      <li lang="zh-CN"><b>本地优先</b>原始数据留在本机，云端只处理必要的片段；密钥与普通配置分开保管，不进入日志。</li>
+      <li lang="en"><b>Local-first</b>Raw data stays on your machine and the cloud sees only what it must; API keys are stored apart from settings and never logged.</li>
+    </ul>
+  </section>
+
+  <!-- ===================== Competition ===================== -->
+  <section id="competition">
+    <h2><span lang="zh-CN">比赛与团队</span><span lang="en">Competition &amp; team</span></h2>
+    <div class="prose" lang="zh-CN">
+      <p>MemoCat 由时客队（靳朝辉、邹淑彤、栾天煜、刘铠宁）完成，在 2026 年 9 月的“一〇七杯”算力与智能体开发大赛中获得<b>智能体赛道本科生组特等奖</b>。团队目前正在筹备创业，继续把它做成真正的产品。</p>
+    </div>
+    <div class="prose" lang="en">
+      <p>MemoCat was built by Team Shike (Zhaohui Jin, Shutong Zou, Tianyu Luan and Kaining Liu) and won the <b>Grand Prize in the Agent Track (Undergraduate Group)</b> of the “107 Cup” Computing Power &amp; AI Agent Development Competition in September 2026. The team is now preparing to turn it into a real product as a startup.</p>
+    </div>
+    <div class="gallery">
+      <figure class="shot">
+        <img src="img/pitch.jpg" width="1200" height="900" loading="lazy" alt="Presenting MemoCat on stage">
+        <figcaption><span lang="zh-CN">比赛答辩现场</span><span lang="en">Presenting MemoCat at the competition</span></figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="img/award.jpg" width="1200" height="900" loading="lazy" alt="Award ceremony for the Agent Track Grand Prize">
+        <figcaption><span lang="zh-CN">颁奖现场：智能体赛道本科生组特等奖</span><span lang="en">At the award ceremony: Grand Prize, Agent Track (Undergraduate)</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===================== More ===================== -->
+  <section id="more">
+    <h2><span lang="zh-CN">更多项目</span><span lang="en">More projects</span></h2>
+    <div class="more">
+      <a href="../uniforest/">
+        <img src="../../assets/img/uniforest.jpg" width="960" height="640" loading="lazy" alt="">
+        <div><b><span lang="zh-CN">Uniforest 机器人</span><span lang="en">Uniforest Robot</span></b><span lang="zh-CN">RoboGame 2026 冠军</span><span lang="en">RoboGame 2026 Champion</span></div>
+      </a>
+      <a href="../tuantuan/">
+        <img src="../../assets/img/tuantuan.jpg" width="720" height="660" loading="lazy" alt="">
+        <div><b><span lang="zh-CN">团团 桌面机器人</span><span lang="en">Tuantuan Desktop Robot</span></b><span lang="zh-CN">开发中 · 三维模型可在线查看</span><span lang="en">In progress · interactive 3D model</span></div>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap foot">
+    <div>
+      <h2><span lang="zh-CN">联系方式</span><span lang="en">Contact</span></h2>
+      <p><span lang="zh-CN">邮箱：</span><span lang="en">Email: </span><a href="mailto:unraveller@mail.ustc.edu.cn">unraveller@mail.ustc.edu.cn</a></p>
+      <p>GitHub: <a href="https://github.com/KainingLiu" target="_blank" rel="noopener">github.com/KainingLiu</a></p>
+      <p><a href="../../"><span lang="zh-CN">← 返回主页</span><span lang="en">← Back to homepage</span></a></p>
+    </div>
+    <p class="small">
+      <span lang="zh-CN">© 2026 刘铠宁 · 最后更新于 2026 年 10 月</span>
+      <span lang="en">© 2026 Kaining Liu · Last updated October 2026</span>
+    </p>
+  </div>
+</footer>
+
+<script src="../../assets/js/site.js"></script>
+</body>
+</html>

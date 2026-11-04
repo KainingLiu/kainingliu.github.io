@@ -1,1103 +1,503 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-title-zh="刘铠宁 Kaining Liu · 个人主页" data-title-en="Kaining Liu (刘铠宁) · Homepage">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>刘铠宁 | USTC</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --bg-primary: #0d1117;
-      --bg-secondary: #161b22;
-      --bg-tertiary: #21262d;
-      --bg-hover: #30363d;
-      --border: #30363d;
-      --border-muted: #21262d;
-      --text-primary: #e6edf3;
-      --text-secondary: #8b949e;
-      --text-tertiary: #6e7681;
-      --accent: #58a6ff;
-      --accent-muted: #1f6feb;
-      --accent-subtle: #0d419d;
-      --green: #3fb950;
-      --orange: #d29922;
-      --purple: #bc8cff;
-      --pink: #db61a2;
-      --radius: 6px;
-      --radius-lg: 12px;
-      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: var(--font-sans);
-      background: var(--bg-primary);
-      color: var(--text-primary);
-      line-height: 1.7;
-      min-height: 100vh;
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-      transition: color 0.2s, text-decoration-color 0.2s;
-    }
-
-    a:hover {
-      text-decoration: underline;
-      text-decoration-color: var(--accent);
-    }
-
-    ::selection {
-      background: var(--accent-muted);
-      color: #fff;
-    }
-
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: var(--bg-primary);
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: var(--bg-tertiary);
-      border-radius: 4px;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: var(--border);
-    }
-
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* ── Header / Nav ── */
-    header {
-      background: var(--bg-secondary);
-      border-bottom: 1px solid var(--border-muted);
-      padding: 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(12px);
-    }
-
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 60px;
-    }
-
-    .header-left {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .github-icon {
-      width: 32px;
-      height: 32px;
-      opacity: 0.9;
-    }
-
-    .header-links {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .header-links a {
-      color: var(--text-secondary);
-      font-size: 14px;
-      font-weight: 500;
-      padding: 8px 12px;
-      border-radius: var(--radius);
-      transition: color 0.2s, background 0.2s;
-      text-decoration: none;
-    }
-
-    .header-links a:hover {
-      color: var(--text-primary);
-      background: var(--bg-tertiary);
-      text-decoration: none;
-    }
-
-    .header-right {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .header-right svg {
-      color: var(--text-secondary);
-      cursor: pointer;
-      padding: 6px;
-      border-radius: var(--radius);
-      transition: color 0.2s, background 0.2s;
-    }
-
-    .header-right svg:hover {
-      color: var(--text-primary);
-      background: var(--bg-tertiary);
-    }
-
-    /* ── Hero ── */
-    .hero {
-      padding: 56px 0 48px;
-    }
-
-    .hero-content {
-      display: flex;
-      gap: 32px;
-      align-items: flex-start;
-    }
-
-    .avatar-wrapper {
-      flex-shrink: 0;
-    }
-
-    .avatar {
-      width: 128px;
-      height: 128px;
-      border-radius: 50%;
-      border: 3px solid var(--border);
-      object-fit: cover;
-      display: block;
-    }
-
-    .avatar-placeholder {
-      width: 128px;
-      height: 128px;
-      border-radius: 50%;
-      border: 3px solid var(--border);
-      background: var(--bg-tertiary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 48px;
-      font-weight: 700;
-      color: var(--accent);
-    }
-
-    .hero-info {
-      flex: 1;
-    }
-
-    .hero-name {
-      font-size: 32px;
-      font-weight: 700;
-      color: var(--text-primary);
-      line-height: 1.2;
-      margin-bottom: 4px;
-    }
-
-    .hero-username {
-      font-size: 20px;
-      color: var(--text-secondary);
-      font-weight: 400;
-      margin-bottom: 16px;
-    }
-
-    .hero-bio {
-      font-size: 16px;
-      color: var(--text-secondary);
-      margin-bottom: 20px;
-      line-height: 1.6;
-    }
-
-    .tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 16px;
-    }
-
-    .tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--text-secondary);
-      background: var(--bg-tertiary);
-      border: 1px solid var(--border-muted);
-      border-radius: 999px;
-      padding: 2px 10px;
-    }
-
-    .tag svg {
-      width: 12px;
-      height: 12px;
-    }
-
-    .tag.tag-accent {
-      background: rgba(56, 139, 253, 0.1);
-      border-color: rgba(56, 139, 253, 0.3);
-      color: var(--accent);
-    }
-
-    .tag.tag-green {
-      background: rgba(63, 185, 80, 0.1);
-      border-color: rgba(63, 185, 80, 0.3);
-      color: var(--green);
-    }
-
-    .tag.tag-purple {
-      background: rgba(188, 140, 255, 0.1);
-      border-color: rgba(188, 140, 255, 0.3);
-      color: var(--purple);
-    }
-
-    .tag.tag-orange {
-      background: rgba(210, 153, 34, 0.1);
-      border-color: rgba(210, 153, 34, 0.3);
-      color: var(--orange);
-    }
-
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    .meta-item {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 14px;
-      color: var(--text-secondary);
-    }
-
-    .meta-item svg {
-      width: 16px;
-      height: 16px;
-      flex-shrink: 0;
-    }
-
-    .meta-item a {
-      color: var(--text-secondary);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .meta-item a:hover {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    /* ── Stats Bar ── */
-    .stats-bar {
-      display: flex;
-      align-items: center;
-      gap: 0;
-      border: 1px solid var(--border-muted);
-      border-radius: var(--radius);
-      overflow: hidden;
-      margin-bottom: 32px;
-      width: fit-content;
-    }
-
-    .stat-item {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 16px;
-      font-size: 14px;
-      color: var(--text-secondary);
-      border-right: 1px solid var(--border-muted);
-      transition: background 0.2s;
-      cursor: default;
-    }
-
-    .stat-item:last-child {
-      border-right: none;
-    }
-
-    .stat-item:hover {
-      background: var(--bg-secondary);
-    }
-
-    .stat-item .num {
-      font-weight: 700;
-      color: var(--text-primary);
-      font-variant-numeric: tabular-nums;
-    }
-
-    .stat-item svg {
-      width: 16px;
-      height: 16px;
-    }
-
-    /* ── Tabs ── */
-    .tabs {
-      display: flex;
-      gap: 0;
-      border-bottom: 1px solid var(--border-muted);
-      margin-bottom: 24px;
-      overflow-x: auto;
-    }
-
-    .tab {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 12px 16px;
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text-secondary);
-      border-bottom: 2px solid transparent;
-      cursor: pointer;
-      transition: color 0.2s, border-color 0.2s;
-      white-space: nowrap;
-      text-decoration: none;
-      background: none;
-      border-top: none;
-      border-left: none;
-      border-right: none;
-      font-family: var(--font-sans);
-    }
-
-    .tab:hover {
-      color: var(--text-primary);
-      text-decoration: none;
-      background: var(--bg-secondary);
-      border-radius: var(--radius) var(--radius) 0 0;
-    }
-
-    .tab.active {
-      color: var(--text-primary);
-      border-bottom-color: var(--orange);
-    }
-
-    .tab svg {
-      width: 16px;
-      height: 16px;
-    }
-
-    /* ── Cards ── */
-    .card {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border-muted);
-      border-radius: var(--radius-lg);
-      padding: 24px;
-      margin-bottom: 16px;
-      transition: border-color 0.2s;
-    }
-
-    .card:hover {
-      border-color: var(--border);
-    }
-
-    .card-header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      margin-bottom: 16px;
-      gap: 12px;
-    }
-
-    .card-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: var(--radius);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .card-icon.blue { background: rgba(56, 139, 253, 0.15); }
-    .card-icon.green { background: rgba(63, 185, 80, 0.15); }
-    .card-icon.purple { background: rgba(188, 140, 255, 0.15); }
-    .card-icon.orange { background: rgba(210, 153, 34, 0.15); }
-    .card-icon.pink { background: rgba(219, 97, 162, 0.15); }
-    .card-icon.teal { background: rgba(82, 204, 178, 0.15); }
-
-    .card-icon svg {
-      width: 22px;
-      height: 22px;
-    }
-
-    .card-title {
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--accent);
-      margin-bottom: 2px;
-    }
-
-    .card-subtitle {
-      font-size: 13px;
-      color: var(--text-tertiary);
-    }
-
-    .card-desc {
-      font-size: 14px;
-      color: var(--text-secondary);
-      line-height: 1.7;
-      margin-bottom: 12px;
-    }
-
-    .card-lang {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 12px;
-      color: var(--text-tertiary);
-    }
-
-    .lang-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--accent);
-    }
-
-    .card-links {
-      display: flex;
-      gap: 12px;
-      margin-top: 12px;
-    }
-
-    .card-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--text-secondary);
-      border: 1px solid var(--border-muted);
-      border-radius: 20px;
-      padding: 3px 10px;
-      transition: color 0.2s, border-color 0.2s, background 0.2s;
-      text-decoration: none;
-    }
-
-    .card-link:hover {
-      color: var(--text-primary);
-      border-color: var(--border);
-      background: var(--bg-tertiary);
-      text-decoration: none;
-    }
-
-    .card-link svg {
-      width: 12px;
-      height: 12px;
-    }
-
-    /* ── Section ── */
-    .section-title {
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .section-title svg {
-      width: 18px;
-      height: 18px;
-      color: var(--text-secondary);
-    }
-
-    /* ── Info Grid ── */
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 12px;
-      margin-bottom: 24px;
-    }
-
-    .info-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 14px;
-      color: var(--text-secondary);
-    }
-
-    .info-item svg {
-      width: 16px;
-      height: 16px;
-      flex-shrink: 0;
-      color: var(--text-tertiary);
-    }
-
-    .info-item a {
-      color: var(--text-secondary);
-      word-break: break-all;
-    }
-
-    /* ── Edu ── */
-    .edu-list {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-
-    .edu-item {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-    }
-
-    .edu-logo {
-      width: 44px;
-      height: 44px;
-      border-radius: var(--radius);
-      background: var(--bg-tertiary);
-      border: 1px solid var(--border-muted);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--accent);
-      flex-shrink: 0;
-    }
-
-    .edu-info {
-      flex: 1;
-    }
-
-    .edu-name {
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--text-primary);
-    }
-
-    .edu-detail {
-      font-size: 13px;
-      color: var(--text-secondary);
-    }
-
-    .edu-period {
-      font-size: 12px;
-      color: var(--text-tertiary);
-      white-space: nowrap;
-    }
-
-    /* ── Skills ── */
-    .skills-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 24px;
-    }
-
-    .skill-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--text-secondary);
-      background: var(--bg-tertiary);
-      border: 1px solid var(--border-muted);
-      border-radius: 20px;
-      padding: 4px 12px;
-      transition: all 0.2s;
-    }
-
-    .skill-chip:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    /* ── Interest ── */
-    .interest-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 24px;
-    }
-
-    .interest-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 14px;
-      color: var(--text-secondary);
-      padding: 10px 14px;
-      background: var(--bg-tertiary);
-      border: 1px solid var(--border-muted);
-      border-radius: var(--radius);
-      transition: border-color 0.2s;
-    }
-
-    .interest-item:hover {
-      border-color: var(--border);
-    }
-
-    .interest-icon {
-      font-size: 18px;
-      line-height: 1;
-    }
-
-    /* ── Competition ── */
-    .comp-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 24px;
-    }
-
-    .comp-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 16px;
-      background: var(--bg-tertiary);
-      border: 1px solid var(--border-muted);
-      border-radius: var(--radius);
-      gap: 12px;
-      transition: border-color 0.2s;
-    }
-
-    .comp-item:hover {
-      border-color: var(--border);
-    }
-
-    .comp-left {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .comp-icon {
-      font-size: 20px;
-    }
-
-    .comp-name {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text-primary);
-    }
-
-    .comp-desc {
-      font-size: 12px;
-      color: var(--text-tertiary);
-    }
-
-    .award-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--green);
-      background: rgba(63, 185, 80, 0.1);
-      border: 1px solid rgba(63, 185, 80, 0.3);
-      border-radius: 20px;
-      padding: 2px 10px;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-
-    /* ── English Score ── */
-    .score-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 24px;
-    }
-
-    .score-card {
-      background: var(--bg-tertiary);
-      border: 1px solid var(--border-muted);
-      border-radius: var(--radius);
-      padding: 16px;
-      text-align: center;
-      transition: border-color 0.2s;
-    }
-
-    .score-card:hover {
-      border-color: var(--border);
-    }
-
-    .score-name {
-      font-size: 12px;
-      color: var(--text-tertiary);
-      font-weight: 500;
-      margin-bottom: 4px;
-    }
-
-    .score-val {
-      font-size: 28px;
-      font-weight: 700;
-      color: var(--text-primary);
-    }
-
-    /* ── Research ── */
-    .research-item {
-      margin-bottom: 20px;
-    }
-
-    .research-header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 10px;
-    }
-
-    .research-title {
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--text-primary);
-    }
-
-    .journal-badge {
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--orange);
-      background: rgba(210, 153, 34, 0.1);
-      border: 1px solid rgba(210, 153, 34, 0.3);
-      border-radius: 20px;
-      padding: 2px 10px;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-
-    .research-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 8px;
-    }
-
-    .research-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--accent);
-      text-decoration: none;
-      border: 1px solid rgba(56, 139, 253, 0.3);
-      border-radius: 20px;
-      padding: 2px 10px;
-      transition: all 0.2s;
-      background: rgba(56, 139, 253, 0.05);
-    }
-
-    .research-link:hover {
-      background: rgba(56, 139, 253, 0.15);
-      text-decoration: none;
-    }
-
-    .research-link svg {
-      width: 12px;
-      height: 12px;
-    }
-
-    .research-desc {
-      font-size: 13px;
-      color: var(--text-secondary);
-      line-height: 1.6;
-      padding-left: 14px;
-      border-left: 2px solid var(--border-muted);
-    }
-
-    /* ── Section divider ── */
-    .divider {
-      height: 1px;
-      background: var(--border-muted);
-      margin: 32px 0;
-    }
-
-    /* ── Footer ── */
-    footer {
-      text-align: center;
-      padding: 32px 0;
-      font-size: 12px;
-      color: var(--text-tertiary);
-      border-top: 1px solid var(--border-muted);
-      margin-top: 48px;
-    }
-
-    /* ── Responsive ── */
-    @media (max-width: 640px) {
-      .hero-content {
-        flex-direction: column;
-        gap: 20px;
-      }
-
-      .hero-name {
-        font-size: 26px;
-      }
-
-      .score-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .header-links {
-        display: none;
-      }
-
-      .tabs {
-        gap: 0;
-      }
-
-      .tab span {
-        display: none;
-      }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>刘铠宁 Kaining Liu · 个人主页</title>
+<meta name="description" content="刘铠宁（Kaining Liu），中国科学技术大学少年班学院信息与计算科学专业本科生，研究大模型记忆与持续学习、记忆原生模型与具身智能。Kaining Liu is an undergraduate at USTC working on memory-native models, LLM personalization and embodied intelligence.">
+<meta name="author" content="Kaining Liu">
+<meta name="keywords" content="Kaining Liu, 刘铠宁, USTC, 中国科学技术大学, 少年班学院, memory-native models, 记忆原生模型, LLM memory, personalization, AlpsBench, SIGIR 2026, embodied intelligence, RoboGame">
+<meta name="theme-color" content="#1f4fb4">
+<link rel="canonical" href="https://kainingliu.com/">
+<link rel="alternate" hreflang="zh-CN" href="https://kainingliu.com/?lang=zh">
+<link rel="alternate" hreflang="en" href="https://kainingliu.com/?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://kainingliu.com/">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Kaining Liu 刘铠宁">
+<meta property="og:description" content="Undergraduate at USTC · Memory-native models, LLM personalization & embodied intelligence.">
+<meta property="og:url" content="https://kainingliu.com/">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Kaining Liu",
+  "alternateName": "刘铠宁",
+  "url": "https://kainingliu.com/",
+  "email": "mailto:unraveller@mail.ustc.edu.cn",
+  "affiliation": {
+    "@type": "CollegeOrUniversity",
+    "name": "University of Science and Technology of China",
+    "url": "https://www.ustc.edu.cn/"
+  },
+  "knowsAbout": ["Memory-native models", "LLM personalization", "Long-term memory", "Continual learning", "Embodied intelligence"],
+  "sameAs": ["https://github.com/KainingLiu"]
+}
+</script>
+<script>
+  // Pick the language before first paint: ?lang= (remembered) > saved choice > browser language.
+  (function () {
+    var l;
+    try { l = new URLSearchParams(location.search).get('lang'); } catch (e) {}
+    if (l === 'en' || l === 'zh') { try { localStorage.setItem('lang', l); } catch (e) {} }
+    else { try { l = localStorage.getItem('lang'); } catch (e) {} }
+    if (l !== 'en' && l !== 'zh') { l = /^zh/i.test(navigator.language || '') ? 'zh' : 'en'; }
+    document.documentElement.lang = l === 'en' ? 'en' : 'zh-CN';
+  })();
+</script>
+<link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
+<a class="skip" href="#main"><span lang="zh-CN">跳到正文</span><span lang="en">Skip to content</span></a>
 
-  <!-- ── Header ── -->
-  <header>
-    <div class="container header-inner">
-      <div class="header-left">
-        <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
-        </svg>
-        <nav class="header-links">
-          <a href="#about">关于</a>
-          <a href="#education">教育背景</a>
-          <a href="#research">科研经历</a>
-          <a href="#projects">竞赛项目</a>
-          <a href="#skills">技能</a>
-        </nav>
+<header class="nav">
+  <nav class="wrap nav-inner" aria-label="Main">
+    <a class="brand" href="#about"><span lang="zh-CN">刘铠宁</span><span lang="en">Kaining Liu</span></a>
+    <ul class="nav-links" data-spy>
+      <li><a href="#about"><span lang="zh-CN">关于</span><span lang="en">About</span></a></li>
+      <li><a href="#news"><span lang="zh-CN">动态</span><span lang="en">News</span></a></li>
+      <li><a href="#publications"><span lang="zh-CN">论文</span><span lang="en">Publications</span></a></li>
+      <li><a href="#research"><span lang="zh-CN">科研</span><span lang="en">Research</span></a></li>
+      <li><a href="#projects"><span lang="zh-CN">项目</span><span lang="en">Projects</span></a></li>
+      <li><a href="#honors"><span lang="zh-CN">荣誉</span><span lang="en">Honors</span></a></li>
+      <li><a href="#education"><span lang="zh-CN">教育</span><span lang="en">Education</span></a></li>
+      <li><a href="#contact"><span lang="zh-CN">联系</span><span lang="en">Contact</span></a></li>
+    </ul>
+    <button class="lang-btn" id="lang-toggle" type="button" title="中文 / English">
+      <span lang="zh-CN">中<span class="sep">/</span><span class="faint">EN</span></span>
+      <span lang="en"><span class="faint">中</span><span class="sep">/</span>EN</span>
+    </button>
+  </nav>
+</header>
+
+<main id="main" class="wrap">
+
+  <!-- ===================== About ===================== -->
+  <section id="about" class="hero">
+    <div class="hero-grid">
+      <img class="avatar" src="assets/img/avatar.jpg" width="168" height="168" alt="刘铠宁 Kaining Liu">
+      <div>
+        <h1 lang="zh-CN">刘铠宁<small>Kaining Liu</small></h1>
+        <h1 lang="en">Kaining Liu<small>刘铠宁</small></h1>
+        <p class="tagline" lang="zh-CN">中国科学技术大学 少年班学院 · 信息与计算科学 · 本科生</p>
+        <p class="tagline" lang="en">Undergraduate in Information &amp; Computational Science · School of the Gifted Young, USTC</p>
+
+        <div class="bio" lang="zh-CN">
+          <p>我是<a href="https://www.ustc.edu.cn/" target="_blank" rel="noopener">中国科学技术大学</a>少年班学院 2024 级本科生，主修信息与计算科学，并就读于人形机器人交叉学科英才班。</p>
+          <p>自 2025 年 9 月起，我在中国科大数据科学实验室（LDS）从事科研工作，参与了大模型个性化记忆基准 <a href="#publications">AlpsBench</a>（SIGIR 2026）与华为小艺个性化记忆智能体项目，目前独立负责<b>记忆原生模型</b>方向的课题。我关心的问题是：如何让智能体像人一样，在交互中持续记忆、持续学习。</p>
+          <p>课余我和队友一起做机器人和智能体：<a href="projects/uniforest/">Uniforest 队</a>获得 RoboGame 2026 冠军，智能语音纪要设备 <a href="projects/memocat/">MemoCat 记忆猫</a>获得“一〇七杯”算力与智能体开发大赛特等奖。</p>
+        </div>
+        <div class="bio" lang="en">
+          <p>I am an undergraduate (Class of 2024) at the School of the Gifted Young, <a href="https://en.ustc.edu.cn/" target="_blank" rel="noopener">University of Science and Technology of China (USTC)</a>, majoring in Information and Computational Science and enrolled in the Interdisciplinary Honors Program in Humanoid Robotics.</p>
+          <p>Since September 2025 I have been doing research at the Lab for Data Science (LDS), USTC. I contributed to <a href="#publications">AlpsBench</a> (SIGIR 2026), a benchmark for LLM personalization and memory, and to a personalized memory agent for Huawei XiaoYi. I now lead an independent project on <b>memory-native models</b>. The question I care about: how can intelligent agents keep remembering and keep learning through interaction, as people do?</p>
+          <p>Outside the lab I build robots and agents with my teammates: <a href="projects/uniforest/">Team Uniforest</a> won RoboGame 2026, and our voice-notes device <a href="projects/memocat/">MemoCat</a> won the Grand Prize of the “107 Cup” Computing Power &amp; AI Agent Development Competition.</p>
+        </div>
+
+        <div class="actions">
+          <a class="btn primary" href="mailto:unraveller@mail.ustc.edu.cn">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1.75 2.5h12.5c.97 0 1.75.78 1.75 1.75v7.5c0 .97-.78 1.75-1.75 1.75H1.75C.78 13.5 0 12.72 0 11.75v-7.5C0 3.28.78 2.5 1.75 2.5Zm-.25 2.06v7.19c0 .14.11.25.25.25h12.5c.14 0 .25-.11.25-.25V4.56L8.43 8.4a.75.75 0 0 1-.86 0L1.5 4.56ZM13.9 4H2.1L8 7.83 13.9 4Z"/></svg>
+            unraveller@mail.ustc.edu.cn
+          </a>
+          <a class="btn" href="https://github.com/KainingLiu" target="_blank" rel="noopener">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+            GitHub
+          </a>
+        </div>
+
+        <div class="highlights">
+          <a class="hl" href="#publications"><i></i><span lang="zh-CN">SIGIR 2026 论文</span><span lang="en">SIGIR 2026 paper</span></a>
+          <a class="hl gold" href="#honors"><i></i><span lang="zh-CN">RoboGame 2026 冠军</span><span lang="en">RoboGame 2026 Champion</span></a>
+          <a class="hl gold" href="#honors"><i></i><span lang="zh-CN">“一〇七杯”智能体大赛特等奖</span><span lang="en">“107 Cup” Agent Contest Grand Prize</span></a>
+          <a class="hl green" href="#research"><i></i><span lang="zh-CN">进行中：记忆原生模型</span><span lang="en">Now: memory-native models</span></a>
+        </div>
       </div>
     </div>
-  </header>
 
-  <!-- ── Hero ── -->
-  <section class="hero">
-    <div class="container">
-      <div class="hero-content">
-        <div class="avatar-wrapper">
-          <div class="avatar-placeholder">刘</div>
-        </div>
-        <div class="hero-info">
-          <h1 class="hero-name">刘铠宁</h1>
-          <p class="hero-username">liukaining</p>
-          <p class="hero-bio">
-            中国科学技术大学 · 少年班学院 · 数学与应用数学（概率统计方向）<br>
-            + 人形机器人交叉学科英才班 · 本科在读 · 大二
-          </p>
-          <div class="tag-row">
-            <span class="tag tag-green">
-              <svg viewBox="0 0 16 16" fill="currentColor"><path d="M7.75 0a.75.75 0 01.75.75V3h.5v1.25L12 1.5 8.5 4.25V5.5h.25a.75.75 0 010 1.5h-1a.75.75 0 01-.75-.75V4.5H6.5v2.25L3.5 3.75V3h.5V.75A.75.75 0 014.25 0h3.5z"/></svg>
-              学生
-            </span>
-            <span class="tag tag-purple">
-              <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-              GitHub
-            </span>
-            <span class="tag tag-orange">
-              <svg viewBox="0 0 16 16" fill="currentColor"><path d="M0 1.75A.75.75 0 01.75 1h14.5a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75H.75A.75.75 0 010 14.25V1.75zm.75 3.5h15a.25.25 0 00.25-.25V5a.25.25 0 00-.25-.25H.75a.25.25 0 00-.25.25v1.5a.25.25 0 00.25.25zm.75 8h15v.5H.75v-.5z"/></svg>
-              USTC
-            </span>
-          </div>
-          <div class="hero-meta">
-            <span class="meta-item">
-              <svg viewBox="0 0 16 16" fill="currentColor"><path d="M0 1.75A.75.75 0 01.75 1h14.5a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75H.75A.75.75 0 010 14.25V1.75zm.75 3.5h15a.25.25 0 00.25-.25V5a.25.25 0 00-.25-.25H.75a.25.25 0 00-.25.25v1.5a.25.25 0 00.25.25zm.75 8h15v.5H.75v-.5z"/></svg>
-              中国科学技术大学 · 合肥
-            </span>
-            <span class="meta-item">
-              <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1.5 4.75a.25.25 0 01.25-.25h12.5a.25.25 0 01.25.25v6.5a.25.25 0 01-.25.25h-12.5a.25.25 0 01-.25-.25v-6.5zm0 1.5h12.5v5.5h-12.5v-5.5zM3.5 1a1 1 0 00-1 1v1a1 1 0 001 1h9a1 1 0 001-1V2a1 1 0 00-1-1h-9z"/></svg>
-              少年班学院
-            </span>
-            <span class="meta-item">
-              <a href="mailto:unraveller@mail.ustc.edu.cn">
-                <svg viewBox="0 0 16 16" fill="currentColor"><path d="M2.25 2.25a.75.75 0 000 1.5h11.5a.75.75 0 000-1.5H2.25zM1.5 5.25a.75.75 0 01.75-.75h11.5a.75.75 0 010 1.5H2.25A.75.75 0 011.5 5.25zm0 1.5h11.5v6.5H1.5v-6.5z"/></svg>
-                unraveller@mail.ustc.edu.cn
-              </a>
-            </span>
-            <span class="meta-item">
-              <svg viewBox="0 0 16 16" fill="currentColor"><path d="M3.5 2A1.5 1.5 0 002 3.5v9A1.5 1.5 0 003.5 14h9a1.5 1.5 0 001.5-1.5v-9A1.5 1.5 0 0012.5 2h-9zM3 3.5a.5.5 0 01.5-.5h9a.5.5 0 01.5.5v9a.5.5 0 01-.5.5h-9a.5.5 0 01-.5-.5v-9zM5 5.5A1.5 1.5 0 016.5 7h3A1.5 1.5 0 0111 5.5h-6A1.5 1.5 0 013.5 7h3A1.5 1.5 0 018 5.5z"/></svg>
-              QQ: 3691898967
-            </span>
-          </div>
-        </div>
+    <div class="interests" aria-label="Research interests">
+      <div class="interest">
+        <div class="num">01</div>
+        <h3><span lang="zh-CN">记忆与持续学习</span><span lang="en">Memory &amp; Continual Learning</span></h3>
+        <p lang="zh-CN">记忆原生模型、大模型个性化与长期记忆，让智能体在交互中持续成长，而不是一次训练、永久冻结。</p>
+        <p lang="en">Memory-native models, LLM personalization and long-term memory: agents that keep growing through interaction instead of being trained once and frozen.</p>
+      </div>
+      <div class="interest">
+        <div class="num">02</div>
+        <h3><span lang="zh-CN">智能系统的数学基础</span><span lang="en">Mathematical Foundations</span></h3>
+        <p lang="zh-CN">从数学与统计的视角理解智能系统，关注可解释性、可靠性与泛化。</p>
+        <p lang="en">Understanding intelligent systems through mathematics and statistics, with a focus on interpretability, reliability and generalization.</p>
+      </div>
+      <div class="interest">
+        <div class="num">03</div>
+        <h3><span lang="zh-CN">具身智能</span><span lang="en">Embodied Intelligence</span></h3>
+        <p lang="zh-CN">物理 AI 与世界模型，以及让智能真正走进物理世界的机器人系统。</p>
+        <p lang="en">Physical AI, world models, and robotic systems that bring intelligence into the real, physical world.</p>
       </div>
     </div>
   </section>
 
-  <main>
-    <div class="container">
+  <!-- ===================== News ===================== -->
+  <section id="news">
+    <h2><span lang="zh-CN">最新动态</span><span lang="en">News</span></h2>
+    <ul class="news">
+      <li>
+        <time datetime="2026-10">2026.10</time>
+        <span class="tag award"><span lang="zh-CN">获奖</span><span lang="en">Award</span></span>
+        <span lang="zh-CN">与 <a href="projects/uniforest/">Uniforest 队</a>队友获得中国科大 <b>RoboGame 2026 机器人比赛冠军</b>！</span>
+        <span lang="en">Won the <b>Championship of RoboGame 2026</b> at USTC with my teammates of <a href="projects/uniforest/">Team Uniforest</a>!</span>
+      </li>
+      <li>
+        <time datetime="2026-10">2026.10</time>
+        <span class="tag talk"><span lang="zh-CN">报告</span><span lang="en">Talk</span></span>
+        <span lang="zh-CN">分享报告<a href="ai-talk/">《对 AI 与 AI 时代大学生活的看法》</a>，幻灯片已上线。</span>
+        <span lang="en">Gave a talk (in Chinese) on <a href="ai-talk/">AI and college life in the age of AI</a>; the slides are online.</span>
+      </li>
+      <li>
+        <time datetime="2026-09">2026.09</time>
+        <span class="tag award"><span lang="zh-CN">获奖</span><span lang="en">Award</span></span>
+        <span lang="zh-CN"><a href="projects/memocat/">MemoCat 记忆猫</a>获得<b>“一〇七杯”算力与智能体开发大赛智能体赛道本科生组特等奖</b>。</span>
+        <span lang="en"><a href="projects/memocat/">MemoCat</a> won the <b>Grand Prize</b> (Undergraduate Group, Agent Track) of the “107 Cup” Computing Power &amp; AI Agent Development Competition.</span>
+      </li>
+      <li>
+        <time datetime="2026-04">2026.04</time>
+        <span class="tag"><span lang="zh-CN">论文</span><span lang="en">Paper</span></span>
+        <span lang="zh-CN"><a href="#publications">AlpsBench</a> 被 <b>SIGIR 2026</b> 接收！</span>
+        <span lang="en"><a href="#publications">AlpsBench</a> was accepted to <b>SIGIR 2026</b>!</span>
+      </li>
+      <li>
+        <time datetime="2026-03">2026.03</time>
+        <span class="tag"><span lang="zh-CN">论文</span><span lang="en">Paper</span></span>
+        <span lang="zh-CN">AlpsBench 预印本发布于 <a href="https://arxiv.org/abs/2603.26680" target="_blank" rel="noopener">arXiv</a>。</span>
+        <span lang="en">The AlpsBench preprint is out on <a href="https://arxiv.org/abs/2603.26680" target="_blank" rel="noopener">arXiv</a>.</span>
+      </li>
+      <li>
+        <time datetime="2026-02">2026.02</time>
+        <span class="tag research"><span lang="zh-CN">科研</span><span lang="en">Research</span></span>
+        <span lang="zh-CN">开始参与华为小艺个性化记忆智能体项目。</span>
+        <span lang="en">Started working on a personalized memory agent for Huawei XiaoYi.</span>
+      </li>
+      <li>
+        <time datetime="2025-09">2025.09</time>
+        <span class="tag research"><span lang="zh-CN">科研</span><span lang="en">Research</span></span>
+        <span lang="zh-CN">加入中国科大数据科学实验室（LDS），开始科研工作。</span>
+        <span lang="en">Joined the Lab for Data Science (LDS) at USTC.</span>
+      </li>
+    </ul>
+  </section>
 
-      <!-- ── About ── -->
-      <section id="about">
-      </section>
+  <!-- ===================== Publications ===================== -->
+  <section id="publications">
+    <h2><span lang="zh-CN">论文发表</span><span lang="en">Publications</span></h2>
+    <article class="pub">
+      <svg class="teaser" viewBox="0 0 240 156" role="img" aria-label="AlpsBench: memory extraction, updating, retrieval and utilization">
+        <rect class="t-bg" width="240" height="156" rx="10"/>
+        <text class="t-title" x="120" y="27" text-anchor="middle">AlpsBench</text>
+        <text class="t-sub" x="120" y="43" text-anchor="middle">2,500 real dialogues · human-verified memory</text>
+        <rect class="t-box" x="16" y="56" width="96" height="36" rx="8"/>
+        <rect class="t-box" x="128" y="56" width="96" height="36" rx="8"/>
+        <rect class="t-box" x="16" y="106" width="96" height="36" rx="8"/>
+        <rect class="t-box" x="128" y="106" width="96" height="36" rx="8"/>
+        <text class="t-num" x="26" y="71">01</text><text class="t-lbl" x="26" y="85">Extraction</text>
+        <text class="t-num" x="138" y="71">02</text><text class="t-lbl" x="138" y="85">Updating</text>
+        <text class="t-num" x="26" y="121">03</text><text class="t-lbl" x="26" y="135">Retrieval</text>
+        <text class="t-num" x="138" y="121">04</text><text class="t-lbl" x="138" y="135">Utilization</text>
+        <path class="t-arrow" d="M113 74h12m-4-3 4 3-4 3"/>
+        <path class="t-arrow" d="M176 93v10m-3-4 3 4 3-4"/>
+        <path class="t-arrow" d="M127 124h-12m4-3-4 3 4 3"/>
+      </svg>
+      <div>
+        <span class="venue-badge">SIGIR 2026</span>
+        <h3><a href="https://doi.org/10.1145/3805712.3808634" target="_blank" rel="noopener">AlpsBench: An LLM Personalization Benchmark for Real-Dialogue Memorization and Preference Alignment</a></h3>
+        <p class="authors">Jianfei Xiao, Xiang Yu, Chengbing Wang, Wuqiang Zheng, Xinyu Lin, <b>Kaining Liu</b>, Hongxun Ding, Yang Zhang, Wenjie Wang, Fuli Feng, Xiangnan He</p>
+        <p class="venue">Proceedings of the 49th International ACM SIGIR Conference on Research and Development in Information Retrieval (SIGIR 2026), Melbourne, Australia</p>
+        <p class="pub-desc" lang="zh-CN">基于 WildChat 真实对话构建了 2,500 条长期对话序列及人工核验的结构化记忆，覆盖记忆抽取、更新、检索与利用四项任务，系统评测大模型与记忆智能体的个性化能力。</p>
+        <p class="pub-desc" lang="en">A benchmark of 2,500 long-term real-dialogue sequences from WildChat with human-verified structured memories, evaluating LLMs and memory agents on four tasks: memory extraction, updating, retrieval and utilization.</p>
+        <div class="links">
+          <a class="chip" href="https://doi.org/10.1145/3805712.3808634" target="_blank" rel="noopener"><span lang="zh-CN">论文</span><span lang="en">Paper</span></a>
+          <a class="chip" href="https://arxiv.org/abs/2603.26680" target="_blank" rel="noopener">arXiv</a>
+          <a class="chip" href="https://github.com/jianfeix/Alps_Bench" target="_blank" rel="noopener"><span lang="zh-CN">代码</span><span lang="en">Code</span></a>
+          <a class="chip" href="https://jianfeix.github.io/Alps_Bench/" target="_blank" rel="noopener"><span lang="zh-CN">排行榜</span><span lang="en">Leaderboard</span></a>
+          <button class="chip" type="button" data-bib="bib-alpsbench" aria-expanded="false" aria-controls="bib-alpsbench">BibTeX</button>
+        </div>
+        <div class="bib" id="bib-alpsbench" hidden>
+          <button class="chip copy" type="button"><span lang="zh-CN">复制</span><span lang="en">Copy</span></button>
+<pre>@inproceedings{xiao2026alpsbench,
+  title     = {AlpsBench: An LLM Personalization Benchmark for
+               Real-Dialogue Memorization and Preference Alignment},
+  author    = {Xiao, Jianfei and Yu, Xiang and Wang, Chengbing and
+               Zheng, Wuqiang and Lin, Xinyu and Liu, Kaining and
+               Ding, Hongxun and Zhang, Yang and Wang, Wenjie and
+               Feng, Fuli and He, Xiangnan},
+  booktitle = {Proceedings of the 49th International ACM SIGIR Conference
+               on Research and Development in Information Retrieval},
+  year      = {2026},
+  doi       = {10.1145/3805712.3808634}
+}</pre>
+        </div>
+      </div>
+    </article>
+  </section>
 
-      <!-- ── Education ── -->
-      <section id="education">
-        <h2 class="section-title">
-          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8.457 2.044a.25.25 0 01.347.064L13.5 6.5l.25.25-.25.25-1.5-1.5v6.75a.25.25 0 01-.25.25h-2a.25.25 0 01-.25-.25v-1h-1v1a.75.75 0 01-.75.75H2.75a.75.75 0 01-.75-.75V9h1v1A.25.25 0 013 10.5v-5a.25.25 0 01.25-.25h2.5a.75.75 0 01.75.75v6.75L6 10.5h6.696l1.904-3.791a.25.25 0 01.063-.347z"/></svg>
-          教育背景
-        </h2>
-        <div class="edu-list">
-          <div class="edu-item">
-            <div class="edu-logo">USTC</div>
-            <div class="edu-info">
-              <div class="edu-name">中国科学技术大学</div>
-              <div class="edu-detail">少年班学院 · 数学-概率统计方向 + 人形机器人交叉学科英才班</div>
-              <div class="edu-detail">本科在读 · 大二</div>
-            </div>
-            <div class="edu-period">2024 – 至今</div>
-          </div>
-          <div class="edu-item">
-            <div class="edu-logo">NK</div>
-            <div class="edu-info">
-              <div class="edu-name">天津市南开中学</div>
-              <div class="edu-detail">高中</div>
-            </div>
-            <div class="edu-period">2022 – 2024</div>
+  <!-- ===================== Research experience ===================== -->
+  <section id="research">
+    <h2><span lang="zh-CN">科研经历</span><span lang="en">Research Experience</span></h2>
+    <ol class="timeline">
+      <li class="now">
+        <div class="row">
+          <h3><span lang="zh-CN">记忆原生模型</span><span lang="en">Memory-Native Models</span></h3>
+          <span class="date"><span lang="zh-CN">2026 – 至今</span><span lang="en">2026 – Present</span></span>
+        </div>
+        <p class="org"><span class="role"><span lang="zh-CN">独立负责课题</span><span lang="en">Independent project (lead)</span></span> · <span lang="zh-CN">中国科大数据科学实验室（LDS）</span><span lang="en">Lab for Data Science (LDS), USTC</span></p>
+        <p class="desc" lang="zh-CN">探索让语言模型原生具备长期记忆与持续学习能力的方法。（进行中）</p>
+        <p class="desc" lang="en">Exploring how long-term memory and continual learning can become native capabilities of language models. (Ongoing)</p>
+      </li>
+      <li>
+        <div class="row">
+          <h3><span lang="zh-CN">华为小艺个性化记忆智能体</span><span lang="en">Personalized Memory Agent for Huawei XiaoYi</span></h3>
+          <span class="date">2026.02 – 2026.05</span>
+        </div>
+        <p class="org"><span class="role"><span lang="zh-CN">科研实习生</span><span lang="en">Research Intern</span></span> · <span lang="zh-CN">LDS · 华为小艺 AI 助手项目</span><span lang="en">LDS · Huawei XiaoYi AI Assistant</span></p>
+        <ul class="bullets" lang="zh-CN">
+          <li>参与为华为小艺 AI 助手开发个性化大模型记忆系统；</li>
+          <li>设计并实现记忆抽取智能体流水线；</li>
+          <li>对记忆抽取与检索行为进行实验评估与分析；</li>
+          <li>撰写技术报告与实验文档。</li>
+        </ul>
+        <ul class="bullets" lang="en">
+          <li>Helped develop a personalized LLM memory system for the Huawei XiaoYi AI assistant.</li>
+          <li>Designed and implemented a memory extraction agent pipeline.</li>
+          <li>Evaluated and analyzed memory extraction and retrieval behavior.</li>
+          <li>Wrote technical reports and experiment documentation.</li>
+        </ul>
+      </li>
+      <li>
+        <div class="row">
+          <h3>AlpsBench <span class="faint" style="font-weight:500">· SIGIR 2026</span></h3>
+          <span class="date">2025.09 – 2026.02</span>
+        </div>
+        <p class="org"><span class="role"><span lang="zh-CN">科研实习生</span><span lang="en">Research Intern</span></span> · <span lang="zh-CN">中国科大数据科学实验室（LDS）</span><span lang="en">Lab for Data Science (LDS), USTC</span></p>
+        <ul class="bullets" lang="zh-CN">
+          <li>参与基准的任务设计与数据整理；</li>
+          <li>参与记忆智能体在记忆与偏好对齐任务上的实验设计与评测；</li>
+          <li>进行结果分析，并参与论文写作。</li>
+        </ul>
+        <ul class="bullets" lang="en">
+          <li>Contributed to task design and data curation.</li>
+          <li>Designed and ran evaluations of agent memory systems on memorization and preference-alignment tasks.</li>
+          <li>Analyzed results and contributed to writing the paper.</li>
+        </ul>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ===================== Projects ===================== -->
+  <section id="projects">
+    <h2><span lang="zh-CN">项目与作品</span><span lang="en">Projects</span></h2>
+    <div class="projects">
+
+      <article class="card">
+        <a class="media contain" href="projects/memocat/" tabindex="-1" aria-hidden="true">
+          <img src="assets/img/memocat.png" width="720" height="408" loading="lazy" alt="">
+          <span class="ribbon"><span lang="zh-CN">“一〇七杯”特等奖</span><span lang="en">107 Cup Grand Prize</span></span>
+        </a>
+        <div class="body">
+          <h3><a href="projects/memocat/"><span lang="zh-CN">MemoCat 记忆猫</span><span lang="en">MemoCat</span></a><span class="faint" lang="zh-CN">智能语音纪要设备</span><span class="faint" lang="en">voice-notes companion</span></h3>
+          <p lang="zh-CN">懂课堂、懂组会，也懂你。以桌面宠物的形态常驻，持续语音转写并识别说话人，自动判断场景、通过可定制插件整理纪要；本地优先的长期记忆可追溯来源，并提供实时语音对话智能体。团队正在筹备创业。</p>
+          <p lang="en">Understands your lectures, your group meetings, and you. Living on the desktop as a pet, it transcribes speech continuously with speaker identification, detects the scene and organizes notes through customizable plugins, keeps a local-first long-term memory with source tracing, and offers a real-time voice agent. The team is preparing to start a company.</p>
+          <div class="stack"><span>Rust</span><span>Tauri 2</span><span>React 19</span><span>LLM Agents</span></div>
+          <div class="links">
+            <a class="chip primary" href="projects/memocat/"><span lang="zh-CN">详细介绍</span><span lang="en">Read more</span> <span aria-hidden="true">→</span></a>
+            <a class="chip" href="https://github.com/KainingLiu/memocatdoc" target="_blank" rel="noopener"><span lang="zh-CN">项目文档</span><span lang="en">Docs</span></a>
           </div>
         </div>
-      </section>
+      </article>
 
-      <div class="divider"></div>
-
-      <!-- ── Research ── -->
-      <section id="research">
-        <h2 class="section-title">
-          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M7.75 0a.75.75 0 01.75.75V3h.5v1.25L12 1.5 8.5 4.25V5.5h.25a.75.75 0 010 1.5h-1a.75.75 0 01-.75-.75V4.5H6.5v2.25L3.5 3.75V3h.5V.75A.75.75 0 014.25 0h3.5z"/></svg>
-          科研经历
-        </h2>
-
-        <div class="research-item">
-          <div class="research-header">
-            <div>
-              <div class="research-title">AlpsBench: An LLM Personalization Benchmark for Real-Dialogue Memorization and Preference Alignment</div>
-            </div>
-            <span class="journal-badge">SIGIR 2026 在审</span>
-          </div>
-          <div class="research-links">
-            <a class="research-link" href="https://arxiv.org/abs/2603.26680" target="_blank">
-              <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8.75 1.75a.75.75 0 00-1.5 0V5H4.56l.22-.22a.75.75 0 00-1.06-1.06l-2 2a.75.75 0 000 1.06l2 2a.75.75 0 001.06-1.06l-.22-.22h2.69v3.5a.75.75 0 001.5 0V1.75z"/><path d="M2.5 9.25h10.75a.75.75 0 010 1.5H2.5a.75.75 0 010-1.5z"/></svg>
-              arXiv
-            </a>
-            <a class="research-link" href="https://github.com/jianfeix/Alps_Bench" target="_blank">
-              <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-              GitHub
-            </a>
+      <article class="card">
+        <a class="media" href="projects/uniforest/" tabindex="-1" aria-hidden="true">
+          <img src="assets/img/uniforest.jpg" width="960" height="640" loading="lazy" alt="">
+          <span class="ribbon"><span lang="zh-CN">RoboGame 2026 冠军</span><span lang="en">RoboGame 2026 Champion</span></span>
+        </a>
+        <div class="body">
+          <h3><a href="projects/uniforest/"><span lang="zh-CN">Uniforest 机器人</span><span lang="en">Uniforest Robot</span></a><span class="faint">RoboGame 2026</span></h3>
+          <p lang="zh-CN">Uniforest 队的冠军机器人。树莓派 5 上位机负责视觉识别（OpenCV / YOLO）、策略调度与底盘位置外环；RoboMaster A 板（STM32F427）下位机负责四轮速度环、机械动作与 IMU，二者通过自定义协议通信，并具备失联保护。</p>
+          <p lang="en">Team Uniforest's championship robot. A Raspberry Pi 5 host runs vision (OpenCV / YOLO), strategy and the chassis position loop; an STM32F427 RoboMaster A board runs the wheel-speed loops, mechanisms and IMU. The two talk over a custom protocol with link-loss protection.</p>
+          <div class="stack"><span>Raspberry Pi 5</span><span>STM32</span><span>OpenCV</span><span>YOLO</span></div>
+          <div class="links">
+            <a class="chip primary" href="projects/uniforest/"><span lang="zh-CN">详细介绍</span><span lang="en">Read more</span> <span aria-hidden="true">→</span></a>
+            <a class="chip" href="https://github.com/KainingLiu/uniforest" target="_blank" rel="noopener">GitHub</a>
           </div>
         </div>
+      </article>
 
-        <div class="research-item">
-          <div class="research-header">
-            <div>
-              <div class="research-title">当前研究方向</div>
-            </div>
-            <span class="tag tag-purple" style="font-size:11px; padding: 2px 10px;">进行中</span>
+      <article class="card">
+        <a class="media" href="projects/tuantuan/" tabindex="-1" aria-hidden="true">
+          <img src="assets/img/tuantuan.jpg" width="720" height="660" loading="lazy" alt="">
+          <span class="ribbon wip"><span lang="zh-CN">开发中</span><span lang="en">In progress</span></span>
+        </a>
+        <div class="body">
+          <h3><a href="projects/tuantuan/"><span lang="zh-CN">团团 桌面机器人</span><span lang="en">Tuantuan Desktop Robot</span></a></h3>
+          <p lang="zh-CN">正在开发中的桌面陪伴机器人原型，可以在线查看可交互的三维模型预览。</p>
+          <p lang="en">A desktop companion robot prototype in development, with an interactive 3D model preview online.</p>
+          <div class="links">
+            <a class="chip primary" href="projects/tuantuan/"><span lang="zh-CN">详细介绍</span><span lang="en">Read more</span> <span aria-hidden="true">→</span></a>
+            <a class="chip" href="https://kainingliu.com/tuantuan-preview/" target="_blank" rel="noopener"><span lang="zh-CN">三维预览</span><span lang="en">3D preview</span></a>
           </div>
         </div>
-      </section>
+      </article>
 
-      <div class="divider"></div>
-
-      <!-- ── Projects / Competitions ── -->
-      <section id="projects">
-        <h2 class="section-title">
-          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M0 1.75A.75.75 0 01.75 1h14.5a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75H.75A.75.75 0 010 14.25V1.75zm.75 3.5h15a.25.25 0 00.25-.25V5a.25.25 0 00-.25-.25H.75a.25.25 0 00-.25.25v1.5a.25.25 0 00.25.25zm.75 8h15v.5H.75v-.5z"/></svg>
-          竞赛与项目
-        </h2>
-
-        <div class="comp-list">
-          <div class="comp-item">
-            <div class="comp-left">
-              <span class="comp-icon">🤖</span>
-              <div>
-                <div class="comp-name">USTC RoboGame 机器人比赛</div>
-                <div class="comp-desc">大一下至大二上 · 负责机械结构设计与实现</div>
-              </div>
-            </div>
-            <span class="award-badge">
-              <svg width="10" height="10" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 100 16A8 8 0 008 0zM5.5 9.5L8 12l2.5-2.5L9 8l-2-2-1.5 1.5z"/></svg>
-              一等奖
-            </span>
-          </div>
-          <div class="comp-item">
-            <div class="comp-left">
-              <span class="comp-icon">🦷</span>
-              <div>
-                <div class="comp-name">AI 患者画像分析工具</div>
-                <div class="comp-desc">正在为牙科诊所开发 · AI 应用方向</div>
-              </div>
-            </div>
-            <span class="tag tag-orange" style="font-size:11px; padding: 2px 10px;">进行中</span>
-          </div>
+      <article class="card">
+        <div class="media illus" aria-hidden="true">
+          <svg viewBox="0 0 120 80">
+            <rect class="i-box" x="6" y="6" width="108" height="68" rx="8"/>
+            <path class="i-fill" d="M16 60 34 44l14 8 18-20 16 10 22-18v36H16Z"/>
+            <path class="i-line" d="M16 60 34 44l14 8 18-20 16 10 22-18"/>
+            <path class="i-line" d="M16 18h28M16 26h18"/>
+          </svg>
         </div>
-      </section>
-
-      <div class="divider"></div>
-
-      <!-- ── Research Interests ── -->
-      <section id="interests">
-        <h2 class="section-title">
-          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"/></svg>
-          研究兴趣
-        </h2>
-        <div class="interest-list">
-          <div class="interest-item">
-            <span class="interest-icon">🧠</span>
-            <span>AI 泛化 / 类脑人工智能</span>
-          </div>
-          <div class="interest-item">
-            <span class="interest-icon">📊</span>
-            <span>统计学与数学方法研究 AI 可解释性 / 可信性</span>
-          </div>
-          <div class="interest-item">
-            <span class="interest-icon">🦾</span>
-            <span>具身智能 — 世界模型</span>
-          </div>
+        <div class="body">
+          <h3><span lang="zh-CN">AI 辅助患者画像工具</span><span lang="en">AI-Assisted Patient Profiling</span></h3>
+          <p lang="zh-CN">为一家口腔诊所构建的 AI 辅助分析系统，基于医患对话历史生成患者画像与治疗方案参考。</p>
+          <p lang="en">An AI-assisted analytics dashboard for a dental clinic that turns doctor–patient conversation history into patient insights and treatment profiles.</p>
+          <div class="stack"><span>LLM</span><span>Data Analytics</span></div>
         </div>
-      </section>
-
-      <div class="divider"></div>
-
-      <!-- ── Skills ── -->
-      <section id="skills">
-        <h2 class="section-title">
-          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M7.75 0a.75.75 0 01.75.75V3h.5v1.25L12 1.5 8.5 4.25V5.5h.25a.75.75 0 010 1.5h-1a.75.75 0 01-.75-.75V4.5H6.5v2.25L3.5 3.75V3h.5V.75A.75.75 0 014.25 0h3.5z"/></svg>
-          技能
-        </h2>
-        <div class="skills-grid">
-          <span class="skill-chip">🧮 扎实的数学基础</span>
-          <span class="skill-chip">🐧 Linux 环境</span>
-          <span class="skill-chip">💻 PyTorch</span>
-          <span class="skill-chip">📝 LaTeX / Markdown</span>
-          <span class="skill-chip">🌐 Vibe Coding</span>
-          <span class="skill-chip">🤖 AI 应用开发</span>
-          <span class="skill-chip">⚙️ 机械结构设计</span>
-        </div>
-      </section>
+      </article>
 
     </div>
-  </main>
+  </section>
 
-  <footer>
-    <div class="container">
-      <p>&copy; 2026 刘铠宁 · 中国科学技术大学</p>
-      <p style="margin-top: 4px;">Built with care · 合肥</p>
+  <!-- ===================== Honors ===================== -->
+  <section id="honors">
+    <h2><span lang="zh-CN">荣誉奖项</span><span lang="en">Honors &amp; Awards</span></h2>
+    <ul class="honors">
+      <li>
+        <span class="date">2026.10</span>
+        <span class="what">
+          <span lang="zh-CN">RoboGame 2026 机器人比赛<span class="prize">冠军</span></span>
+          <span lang="en">RoboGame 2026 Robotics Competition, <span class="prize">Champion</span></span>
+          <span class="note" lang="zh-CN">中国科学技术大学 · <a href="projects/uniforest/">Uniforest 队</a>（刘铠宁、栾天煜、张文昊、尹浩莹、舒屹杨）</span>
+          <span class="note" lang="en">USTC · <a href="projects/uniforest/">Team Uniforest</a> (Kaining Liu, Tianyu Luan, Wenhao Zhang, Haoying Yin, Yiyang Shu)</span>
+        </span>
+      </li>
+      <li>
+        <span class="date">2026.09</span>
+        <span class="what">
+          <span lang="zh-CN">“一〇七杯”算力与智能体开发大赛 智能体赛道本科生组<span class="prize">特等奖</span></span>
+          <span lang="en">“107 Cup” Computing Power &amp; AI Agent Development Competition, Agent Track (Undergraduate), <span class="prize">Grand Prize</span></span>
+          <span class="note" lang="zh-CN">作品 <a href="projects/memocat/">MemoCat 记忆猫</a> · 时客队（靳朝辉、邹淑彤、栾天煜、刘铠宁）</span>
+          <span class="note" lang="en">Project <a href="projects/memocat/">MemoCat</a> · Team Shike (Zhaohui Jin, Shutong Zou, Tianyu Luan, Kaining Liu)</span>
+        </span>
+      </li>
+      <li>
+        <span class="date">2025</span>
+        <span class="what">
+          <span lang="zh-CN">RoboGame 2025 机器人比赛<span class="prize">一等奖</span></span>
+          <span lang="en">RoboGame 2025 Robotics Competition, <span class="prize">First Prize</span></span>
+          <span class="note" lang="zh-CN">负责机械结构设计制作与电机控制固件、嵌入式开发</span>
+          <span class="note" lang="en">Designed and built the mechanical structure; developed motor-control firmware and embedded systems</span>
+        </span>
+      </li>
+      <li>
+        <span class="date">2024</span>
+        <span class="what">
+          <span lang="zh-CN">CPUT 竞赛（中国科大）<span class="prize">一等奖</span></span>
+          <span lang="en">CPUT Competition (USTC), <span class="prize">First Prize</span></span>
+        </span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ===================== Education ===================== -->
+  <section id="education">
+    <h2><span lang="zh-CN">教育经历</span><span lang="en">Education</span></h2>
+    <div class="edu">
+      <div class="edu-item">
+        <div class="row">
+          <h3><span lang="zh-CN">中国科学技术大学</span><span lang="en">University of Science and Technology of China (USTC)</span></h3>
+          <span class="date"><span lang="zh-CN">2024.09 – 2028.06（预计）</span><span lang="en">Sep 2024 – Jun 2028 (expected)</span></span>
+        </div>
+        <p class="org" lang="zh-CN"><span class="role">理学学士 · 信息与计算科学</span> · 少年班学院 · 安徽合肥</p>
+        <p class="org" lang="en"><span class="role">B.S. in Information and Computational Science</span> · School of the Gifted Young · Hefei, China</p>
+        <p class="org" lang="zh-CN">人形机器人交叉学科英才班</p>
+        <p class="org" lang="en">Interdisciplinary Honors Program in Humanoid Robotics</p>
+        <p class="label"><span lang="zh-CN">主要课程</span><span lang="en">SELECTED COURSES</span></p>
+        <div class="courses" lang="zh-CN">
+          <span>数学分析 B1–B3</span><span>线性代数 B1–B2</span><span>概率论</span><span>近世代数</span><span>实变函数</span><span>复变函数</span><span>常微分方程</span><span>偏微分方程</span><span>人工智能的数学原理与算法</span><span>计算机程序设计</span><span>机器人设计与实践</span>
+        </div>
+        <div class="courses" lang="en">
+          <span>Mathematical Analysis B1–B3</span><span>Linear Algebra B1–B2</span><span>Probability Theory</span><span>Modern Algebra</span><span>Real Analysis</span><span>Complex Variables</span><span>Ordinary Differential Equations</span><span>Partial Differential Equations</span><span>Mathematical Principles and Algorithms of AI</span><span>Computer Programming</span><span>Design and Practice of Robot</span>
+        </div>
+      </div>
+      <div class="edu-item">
+        <div class="row">
+          <h3><span lang="zh-CN">天津市南开中学</span><span lang="en">Tianjin Nankai High School</span></h3>
+          <span class="date">2022 – 2024</span>
+        </div>
+        <p class="org" lang="zh-CN">天津</p>
+        <p class="org" lang="en">Tianjin, China</p>
+      </div>
     </div>
-  </footer>
+  </section>
 
+  <!-- ===================== Talks ===================== -->
+  <section id="talks">
+    <h2><span lang="zh-CN">报告分享</span><span lang="en">Talks</span></h2>
+    <ul class="simple">
+      <li>
+        <span class="date">2026.10</span>
+        <span>
+          <span lang="zh-CN"><a href="ai-talk/">对 AI 与 AI 时代大学生活的看法</a> <span class="faint">· 幻灯片</span></span>
+          <span lang="en"><a href="ai-talk/">On AI and College Life in the Age of AI</a> <span class="faint">· slides, in Chinese</span></span>
+        </span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ===================== Skills ===================== -->
+  <section id="skills">
+    <h2><span lang="zh-CN">技能</span><span lang="en">Skills</span></h2>
+    <div class="skills">
+      <div class="skill">
+        <h3><span lang="zh-CN">编程与工具</span><span lang="en">Programming &amp; Tools</span></h3>
+        <p>Python · PyTorch · C · Linux · Git · LaTeX · Markdown</p>
+      </div>
+      <div class="skill">
+        <h3><span lang="zh-CN">科研</span><span lang="en">Research</span></h3>
+        <p lang="zh-CN">在服务器上开展模型实验与评测；撰写技术报告与论文。</p>
+        <p lang="en">Running model experiments and evaluations on servers; writing technical reports and papers.</p>
+      </div>
+      <div class="skill">
+        <h3><span lang="zh-CN">AI 协作开发</span><span lang="en">AI-Assisted Development</span></h3>
+        <p lang="zh-CN">熟练使用 Claude Code、Cursor、Codex 等工具；为科研与学习设计智能体技能和工作流。</p>
+        <p lang="en">Fluent with Claude Code, Cursor and Codex; designing agent skills and workflows for research and study.</p>
+      </div>
+      <div class="skill">
+        <h3><span lang="zh-CN">机器人与硬件</span><span lang="en">Robotics &amp; Hardware</span></h3>
+        <p lang="zh-CN">机械结构设计与制作；STM32 嵌入式开发与电机控制；OpenCV 视觉。</p>
+        <p lang="en">Mechanical design and fabrication; STM32 embedded development and motor control; OpenCV vision.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap foot">
+    <div>
+      <h2><span lang="zh-CN">联系方式</span><span lang="en">Contact</span></h2>
+      <p><span lang="zh-CN">邮箱：</span><span lang="en">Email: </span><a href="mailto:unraveller@mail.ustc.edu.cn">unraveller@mail.ustc.edu.cn</a></p>
+      <p>GitHub: <a href="https://github.com/KainingLiu" target="_blank" rel="noopener">github.com/KainingLiu</a></p>
+      <p lang="zh-CN" class="muted">欢迎就记忆、持续学习、智能体与机器人相关的话题交流合作。</p>
+      <p lang="en" class="muted">Happy to chat about memory, continual learning, agents and robots.</p>
+    </div>
+    <p class="small">
+      <span lang="zh-CN">© 2026 刘铠宁 · 最后更新于 2026 年 10 月</span>
+      <span lang="en">© 2026 Kaining Liu · Last updated October 2026</span>
+    </p>
+  </div>
+</footer>
+
+<script src="assets/js/site.js"></script>
 </body>
 </html>

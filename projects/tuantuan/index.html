@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-title-zh="团团 桌面机器人 · 刘铠宁" data-title-en="Tuantuan Desktop Robot · Kaining Liu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>团团 桌面机器人 · 刘铠宁</title>
+<meta name="description" content="团团：直径约 15 厘米的桌面陪伴机器人，用屏幕画出眼睛。整机由参数和 Python 脚本生成并自动检查，三维模型可在浏览器中旋转、透视和拆解查看。Tuantuan is a palm-sized desktop companion robot designed in code, with an interactive 3D model.">
+<meta name="author" content="Kaining Liu">
+<meta name="theme-color" content="#1f4fb4">
+<link rel="canonical" href="https://kainingliu.com/projects/tuantuan/">
+<link rel="alternate" hreflang="zh-CN" href="https://kainingliu.com/projects/tuantuan/?lang=zh">
+<link rel="alternate" hreflang="en" href="https://kainingliu.com/projects/tuantuan/?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://kainingliu.com/projects/tuantuan/">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tuantuan Desktop Robot · Kaining Liu">
+<meta property="og:description" content="A palm-sized desktop companion robot designed in code. Explore the interactive 3D model in your browser.">
+<meta property="og:url" content="https://kainingliu.com/projects/tuantuan/">
+<meta property="og:image" content="https://kainingliu.com/projects/tuantuan/img/render.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script>
+  // Pick the language before first paint: ?lang= (remembered) > saved choice > browser language.
+  (function () {
+    var l;
+    try { l = new URLSearchParams(location.search).get('lang'); } catch (e) {}
+    if (l === 'en' || l === 'zh') { try { localStorage.setItem('lang', l); } catch (e) {} }
+    else { try { l = localStorage.getItem('lang'); } catch (e) {} }
+    if (l !== 'en' && l !== 'zh') { l = /^zh/i.test(navigator.language || '') ? 'zh' : 'en'; }
+    document.documentElement.lang = l === 'en' ? 'en' : 'zh-CN';
+  })();
+</script>
+<link rel="stylesheet" href="../../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main"><span lang="zh-CN">跳到正文</span><span lang="en">Skip to content</span></a>
+
+<header class="nav">
+  <nav class="wrap nav-inner" aria-label="Main">
+    <a class="brand" href="../../"><span lang="zh-CN">刘铠宁</span><span lang="en">Kaining Liu</span></a>
+    <ul class="nav-links">
+      <li><a href="../../#about"><span lang="zh-CN">关于</span><span lang="en">About</span></a></li>
+      <li><a href="../../#news"><span lang="zh-CN">动态</span><span lang="en">News</span></a></li>
+      <li><a href="../../#publications"><span lang="zh-CN">论文</span><span lang="en">Publications</span></a></li>
+      <li><a href="../../#research"><span lang="zh-CN">科研</span><span lang="en">Research</span></a></li>
+      <li><a class="active" href="../../#projects"><span lang="zh-CN">项目</span><span lang="en">Projects</span></a></li>
+      <li><a href="../../#honors"><span lang="zh-CN">荣誉</span><span lang="en">Honors</span></a></li>
+      <li><a href="../../#education"><span lang="zh-CN">教育</span><span lang="en">Education</span></a></li>
+      <li><a href="#contact"><span lang="zh-CN">联系</span><span lang="en">Contact</span></a></li>
+    </ul>
+    <button class="lang-btn" id="lang-toggle" type="button" title="中文 / English">
+      <span lang="zh-CN">中<span class="sep">/</span><span class="faint">EN</span></span>
+      <span lang="en"><span class="faint">中</span><span class="sep">/</span>EN</span>
+    </button>
+  </nav>
+</header>
+
+<main id="main" class="wrap">
+
+  <ol class="crumbs" aria-label="Breadcrumb">
+    <li><a href="../../"><span lang="zh-CN">主页</span><span lang="en">Home</span></a></li>
+    <li><a href="../../#projects"><span lang="zh-CN">项目</span><span lang="en">Projects</span></a></li>
+    <li aria-current="page"><span lang="zh-CN">团团 桌面机器人</span><span lang="en">Tuantuan Desktop Robot</span></li>
+  </ol>
+
+  <header class="p-hero">
+    <div class="p-tags">
+      <span class="tag research"><span lang="zh-CN">开发中</span><span lang="en">In progress</span></span>
+      <span class="tag"><span lang="zh-CN">机器人</span><span lang="en">Robotics</span></span>
+      <span class="tag"><span lang="zh-CN">硬件设计</span><span lang="en">Hardware design</span></span>
+    </div>
+    <h1 lang="zh-CN">团团<small>桌面陪伴机器人</small></h1>
+    <h1 lang="en">Tuantuan<small>A desktop companion robot</small></h1>
+    <p class="lede" lang="zh-CN">一个直径约 15 厘米、圆滚滚的桌面陪伴机器人，用屏幕画出会动的眼睛。目前处在整机装配设计阶段：整台机器由参数文件和 Python 脚本生成，并自动检查零件干涉和摄像头视线；三维模型可以直接在浏览器里旋转、透视和拆解查看。</p>
+    <p class="lede" lang="en">A round desktop companion robot about 15 cm across, with lively eyes drawn on a screen. It is currently at the assembly-design stage: the whole robot is generated from a parameter file and Python scripts, with automatic checks for part interference and camera sight lines, and its 3D model can be rotated, seen through and exploded right in your browser.</p>
+    <dl class="facts">
+      <div><dt><span lang="zh-CN">尺寸</span><span lang="en">SIZE</span></dt><dd>150 × 150 × 116 mm</dd></div>
+      <div><dt><span lang="zh-CN">零件</span><span lang="en">PARTS</span></dt><dd><span lang="zh-CN">83 个（含 14 个 3D 打印件）</span><span lang="en">83, including 14 printed parts</span></dd></div>
+      <div><dt><span lang="zh-CN">状态</span><span lang="en">STATUS</span></dt><dd><span lang="zh-CN">装配设计完成 · 待试装</span><span lang="en">Assembly designed · awaiting test fit</span></dd></div>
+      <div><dt><span lang="zh-CN">版本</span><span lang="en">VERSION</span></dt><dd>v1.0.0 · 2026.10</dd></div>
+    </dl>
+    <div class="links">
+      <a class="chip" href="https://kainingliu.com/tuantuan-preview/" target="_blank" rel="noopener"><span lang="zh-CN">在新标签页打开三维预览</span><span lang="en">Open the 3D preview in a new tab</span> ↗</a>
+    </div>
+  </header>
+
+  <!-- ===================== 3D model ===================== -->
+  <section id="model">
+    <h2><span lang="zh-CN">三维模型</span><span lang="en">3D model</span></h2>
+    <div class="embed">
+      <img src="img/render.jpg" width="1100" height="1008" alt="A render of Tuantuan: a white dome-shaped robot with eyes on a screen">
+      <button class="btn primary load" type="button" data-embed="https://kainingliu.com/tuantuan-preview/" data-embed-title="Tuantuan 3D model">
+        <span lang="zh-CN">加载交互式三维模型（约 43 MB）</span><span lang="en">Load the interactive 3D model (~43 MB)</span>
+      </button>
+    </div>
+    <p class="embed-note">
+      <span lang="zh-CN">模型较大，点击后才会加载。加载后可拖动旋转、滚轮或双指缩放，并在外观、内部和拆解视图之间切换。</span>
+      <span lang="en">The model is large, so it loads only when you click. Drag to rotate, scroll or pinch to zoom, and switch between the exterior, interior and exploded views.</span>
+    </p>
+  </section>
+
+  <!-- ===================== Design method ===================== -->
+  <section id="method">
+    <h2><span lang="zh-CN">用代码做结构设计</span><span lang="en">Designing in code</span></h2>
+    <div class="prose" lang="zh-CN">
+      <p>团团的结构主要用代码来描述：外形尺寸、零件位置和装配关系写在一份参数文件里，Python 脚本据此生成全部零件、组装成整机，再导出网页上看到的预览模型。改一个参数就能重新生成整台机器，并立刻重新跑一遍检查。</p>
+      <p>每个源文件和外购件模型都记录了哈希值，网页上的每一版预览都能追溯到生成它的那一版源码和参数。</p>
+    </div>
+    <div class="prose" lang="en">
+      <p>Tuantuan's structure is described mainly in code. Overall dimensions, part positions and how parts fit together live in a parameter file, and Python scripts use it to generate every part, assemble the robot and export the preview model you see on this page. Change one parameter and the whole robot is regenerated and re-checked.</p>
+      <p>Every source file and vendor model is recorded with a hash, so each preview on the web can be traced back to the exact sources and parameters that produced it.</p>
+    </div>
+  </section>
+
+  <!-- ===================== Checks ===================== -->
+  <section id="checks">
+    <h2><span lang="zh-CN">自动检查</span><span lang="en">Automatic checks</span></h2>
+    <p class="muted"><span lang="zh-CN">每次生成后自动运行，当前版本的结果：</span><span lang="en">These run after every build; results for the current version:</span></p>
+    <ul class="checks">
+      <li lang="zh-CN"><b>零件无干涉</b>整机零件之间没有相互穿透，按装配顺序安装时也不会发生碰撞。</li>
+      <li lang="en"><b>No interference</b>No parts overlap in the assembled robot, and nothing collides along the assembly path.</li>
+      <li lang="zh-CN"><b>打印件可用</b>14 个 3D 打印件的网格检查全部通过。</li>
+      <li lang="en"><b>Printable parts</b>All 14 3D-printed parts pass the mesh checks.</li>
+      <li lang="zh-CN"><b>摄像头视线通畅</b>从摄像头出发的视线检测中，没有一条被挡住。</li>
+      <li lang="en"><b>Clear camera view</b>None of the sight lines traced from the camera are blocked.</li>
+      <li lang="zh-CN"><b>笑眼区域无遮挡</b>屏幕上画眼睛的区域在正面完全可见。</li>
+      <li lang="en"><b>Eyes fully visible</b>The part of the screen where the eyes are drawn is fully visible from the front.</li>
+    </ul>
+  </section>
+
+  <!-- ===================== Hardware ===================== -->
+  <section id="hardware">
+    <h2><span lang="zh-CN">主要硬件</span><span lang="en">Main hardware</span></h2>
+    <ul class="bullets">
+      <li>M5Stack CoreS3-Lite</li>
+      <li>Radxa ZERO 3W</li>
+      <li>Waveshare RP2040-Zero</li>
+      <li><span lang="zh-CN">Pololu 电机、轮子与传感器</span><span lang="en">Pololu motors, wheels and sensors</span></li>
+      <li>PiSugar 3 Plus</li>
+      <li>Adafruit HUSB238 USB-C Breakout</li>
+    </ul>
+    <p class="muted">
+      <span lang="zh-CN">装配中使用的是厂商公开的机械参考模型，部分做了简化；尺寸还需要对照实物复核。</span>
+      <span lang="en">The assembly uses vendors' published mechanical reference models, some simplified; dimensions still need to be checked against the real parts.</span>
+    </p>
+  </section>
+
+  <!-- ===================== Status ===================== -->
+  <section id="status">
+    <h2><span lang="zh-CN">进展</span><span lang="en">Status</span></h2>
+    <div class="prose" lang="zh-CN">
+      <p>当前版本为 v1.0.0（2026 年 10 月 8 日），完成了整机装配设计和上面的自动检查。下一步是打印零件、实物试装，验证装配和功能；装配说明和固件完成后，会整理发布完整的 V1 套件。</p>
+    </div>
+    <div class="prose" lang="en">
+      <p>The current version is v1.0.0 (October 8, 2026), with the full assembly designed and passing the checks above. Next comes printing the parts and test-fitting a real prototype to validate the fit and function; once the assembly guide and firmware are done, the complete V1 kit will be released.</p>
+    </div>
+  </section>
+
+  <!-- ===================== More ===================== -->
+  <section id="more">
+    <h2><span lang="zh-CN">更多项目</span><span lang="en">More projects</span></h2>
+    <div class="more">
+      <a href="../memocat/">
+        <img src="../../assets/img/memocat.png" width="720" height="408" loading="lazy" alt="">
+        <div><b><span lang="zh-CN">MemoCat 记忆猫</span><span lang="en">MemoCat</span></b><span lang="zh-CN">“一〇七杯”智能体赛道特等奖</span><span lang="en">107 Cup Grand Prize, Agent Track</span></div>
+      </a>
+      <a href="../uniforest/">
+        <img src="../../assets/img/uniforest.jpg" width="960" height="640" loading="lazy" alt="">
+        <div><b><span lang="zh-CN">Uniforest 机器人</span><span lang="en">Uniforest Robot</span></b><span lang="zh-CN">RoboGame 2026 冠军</span><span lang="en">RoboGame 2026 Champion</span></div>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap foot">
+    <div>
+      <h2><span lang="zh-CN">联系方式</span><span lang="en">Contact</span></h2>
+      <p><span lang="zh-CN">邮箱：</span><span lang="en">Email: </span><a href="mailto:unraveller@mail.ustc.edu.cn">unraveller@mail.ustc.edu.cn</a></p>
+      <p>GitHub: <a href="https://github.com/KainingLiu" target="_blank" rel="noopener">github.com/KainingLiu</a></p>
+      <p><a href="../../"><span lang="zh-CN">← 返回主页</span><span lang="en">← Back to homepage</span></a></p>
+    </div>
+    <p class="small">
+      <span lang="zh-CN">© 2026 刘铠宁 · 最后更新于 2026 年 10 月</span>
+      <span lang="en">© 2026 Kaining Liu · Last updated October 2026</span>
+    </p>
+  </div>
+</footer>
+
+<script src="../../assets/js/site.js"></script>
+</body>
+</html>
