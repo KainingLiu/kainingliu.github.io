@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-title-zh="研究 · 刘铠宁" data-title-en="Research · Kaining Liu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>研究 · 刘铠宁</title>
+<meta name="description" content="刘铠宁的研究兴趣、科研经历与论文。Research interests, experience and publications of Kaining Liu (USTC).">
+<meta name="author" content="Kaining Liu">
+<meta name="theme-color" content="#ffffff">
+<link rel="canonical" href="https://kainingliu.com/research/">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<script>
+  (function () {
+    var l;
+    try { l = new URLSearchParams(location.search).get('lang'); } catch (e) {}
+    if (l === 'en' || l === 'zh') { try { localStorage.setItem('lang', l); } catch (e) {} }
+    else { try { l = localStorage.getItem('lang'); } catch (e) {} }
+    if (l !== 'en' && l !== 'zh') { l = /^zh/i.test(navigator.language || '') ? 'zh' : 'en'; }
+    document.documentElement.lang = l === 'en' ? 'en' : 'zh-CN';
+  })();
+</script>
+<link rel="stylesheet" href="/assets/css/site.css">
+</head>
+<body class="home">
+<a class="skip" href="#main"><span lang="zh-CN">跳到正文</span><span lang="en">Skip to content</span></a>
+
+<header class="nav">
+  <nav class="wrap nav-inner" aria-label="Main">
+    <a class="brand" href="/"><span lang="zh-CN">刘铠宁</span><span lang="en">Kaining Liu</span></a>
+    <ul class="nav-links">
+      <li><a href="/"><span lang="zh-CN">简介</span><span lang="en">About</span></a></li>
+      <li><a href="/education/"><span lang="zh-CN">教育</span><span lang="en">Education</span></a></li>
+      <li><a class="active" href="/research/" aria-current="page"><span lang="zh-CN">研究</span><span lang="en">Research</span></a></li>
+      <li><a href="/projects/"><span lang="zh-CN">项目</span><span lang="en">Projects</span></a></li>
+    </ul>
+    <button class="lang-btn" id="lang-toggle" type="button" title="中文 / English">
+      <span lang="zh-CN">EN</span>
+      <span lang="en">中文</span>
+    </button>
+  </nav>
+</header>
+
+<main id="main" class="wrap">
+
+  <header class="page-head">
+    <h1><span lang="zh-CN">研究</span><span lang="en">Research</span></h1>
+    <p class="lead" lang="zh-CN">我在中国科大数据科学实验室（LDS）从事人工智能记忆与持续学习的研究，导师为王文杰教授。</p>
+    <p class="lead" lang="en">I work on memory and continual learning for AI at the Lab for Data Science (LDS), USTC, advised by Prof. Wenjie Wang.</p>
+  </header>
+
+  <!-- ===================== Interests ===================== -->
+  <section id="interests">
+    <h2><span lang="zh-CN">研究兴趣</span><span lang="en">Interests</span></h2>
+    <dl class="kv wide">
+      <dt><span lang="zh-CN">记忆与持续学习</span><span lang="en">Memory &amp; continual learning</span></dt>
+      <dd><span lang="zh-CN">让模型原生地积累记忆、在交互中持续学习，而不是一次训练、永久冻结。</span><span lang="en">Models that natively accumulate memory and keep learning through interaction, instead of being trained once and frozen.</span></dd>
+      <dt><span lang="zh-CN">自进化与主动学习</span><span lang="en">Self-evolution &amp; active learning</span></dt>
+      <dd><span lang="zh-CN">智能体如何主动理解、主动探索，并在使用中改进自身。</span><span lang="en">How agents can actively understand and explore, and improve themselves as they are used.</span></dd>
+      <dt><span lang="zh-CN">稀疏计算与类脑智能</span><span lang="en">Sparse computation &amp; brain-inspired intelligence</span></dt>
+      <dd><span lang="zh-CN">借鉴人脑稀疏、高效的计算方式构建智能系统。</span><span lang="en">Building intelligent systems that borrow the sparse, efficient computation of the brain.</span></dd>
+      <dt><span lang="zh-CN">世界模型</span><span lang="en">World models</span></dt>
+      <dd><span lang="zh-CN">对真实世界、具身场景与多感官信息的连贯理解。</span><span lang="en">Coherent understanding of the real world, embodied settings and multi-sensory information.</span></dd>
+    </dl>
+  </section>
+
+  <!-- ===================== Experience ===================== -->
+  <section id="experience">
+    <h2><span lang="zh-CN">科研经历</span><span lang="en">Research Experience</span></h2>
+
+    <div class="entry" id="latenttrace">
+      <div class="row">
+        <h3>LatentTrace</h3>
+        <span class="date"><span lang="zh-CN">2026.08 – 至今</span><span lang="en">2026.08 – Present</span></span>
+      </div>
+      <p class="org"><span lang="zh-CN">独立负责课题 · 中国科大数据科学实验室（LDS）· 导师：王文杰</span><span lang="en">Independent project · Lab for Data Science (LDS), USTC · Advisor: Prof. Wenjie Wang</span></p>
+      <ul class="bullets" lang="zh-CN">
+        <li>目标：让语言模型以参数内的向量记忆替代文本上下文，获得原生的长期记忆与持续学习能力；</li>
+        <li>方法：在大模型中引入“存储”与“召回”两种动作，逐层把隐状态写入记忆并按需调回；存什么、何时取由模型自己学会，不引入外部检索器或独立的记忆网络；</li>
+        <li>独立负责问题提出、模型设计、训练方案与评测，工作进行中，尚未公开。</li>
+      </ul>
+      <ul class="bullets" lang="en">
+        <li>Goal: let language models replace textual context with vector memory held in their own parameters, giving them native long-term memory and continual learning.</li>
+        <li>Method: add “store” and “recall” actions to an LLM that write hidden states into memory layer by layer and bring them back on demand; the model learns what to store and when to recall, with no external retriever or separate memory network.</li>
+        <li>I lead the problem formulation, model design, training recipe and evaluation. Work in progress, not yet public.</li>
+      </ul>
+    </div>
+
+    <div class="entry" id="zgca">
+      <div class="row">
+        <h3><span lang="zh-CN">自进化智能体的理论研究</span><span lang="en">Theory of Self-Evolving Agents</span></h3>
+        <span class="date"><span lang="zh-CN">2026 暑期</span><span lang="en">Summer 2026</span></span>
+      </div>
+      <p class="org"><span lang="zh-CN">访问学生 · 北京中关村学院 · 合作老师：陈祥</span><span lang="en">Visiting student · Zhongguancun Academy, Beijing · Host: Xiang Chen</span></p>
+      <ul class="bullets" lang="zh-CN">
+        <li>从理论上比较自进化智能体与冻结策略智能体在元学习与自适应能力上的差异。</li>
+      </ul>
+      <ul class="bullets" lang="en">
+        <li>Studied, from a theoretical angle, how self-evolving agents and frozen-policy agents differ in their capacity for meta-learning and adaptation.</li>
+      </ul>
+    </div>
+
+    <div class="entry" id="xiaoyi">
+      <div class="row">
+        <h3><span lang="zh-CN">华为小艺个性化记忆智能体</span><span lang="en">Personalized Memory Agent for Huawei XiaoYi</span></h3>
+        <span class="date">2026.02 – 2026.05</span>
+      </div>
+      <p class="org"><span lang="zh-CN">科研实习生 · LDS × 华为小艺 AI 助手项目</span><span lang="en">Research Intern · LDS × Huawei XiaoYi AI Assistant</span></p>
+      <ul class="bullets" lang="zh-CN">
+        <li>参与为华为小艺 AI 助手开发个性化大模型记忆系统；</li>
+        <li>设计并实现记忆抽取智能体流水线；</li>
+        <li>对记忆抽取与检索行为进行实验评估与分析；</li>
+        <li>撰写技术报告与实验文档。</li>
+      </ul>
+      <ul class="bullets" lang="en">
+        <li>Helped develop a personalized LLM memory system for the Huawei XiaoYi AI assistant.</li>
+        <li>Designed and implemented a memory-extraction agent pipeline.</li>
+        <li>Evaluated and analyzed memory extraction and retrieval behavior.</li>
+        <li>Wrote technical reports and experiment documentation.</li>
+      </ul>
+    </div>
+
+    <div class="entry" id="alpsbench">
+      <div class="row">
+        <h3>AlpsBench</h3>
+        <span class="date">2025.09 – 2026.02</span>
+      </div>
+      <p class="org"><span lang="zh-CN">科研实习生 · 中国科大数据科学实验室（LDS）</span><span lang="en">Research Intern · Lab for Data Science (LDS), USTC</span></p>
+      <ul class="bullets" lang="zh-CN">
+        <li>参与基准的任务设计与数据整理；</li>
+        <li>参与记忆智能体在记忆与偏好对齐任务上的实验设计与评测；</li>
+        <li>进行结果分析并参与论文写作，论文发表于 SIGIR 2026。</li>
+      </ul>
+      <ul class="bullets" lang="en">
+        <li>Contributed to task design and data curation.</li>
+        <li>Designed and ran evaluations of agent memory systems on memorization and preference-alignment tasks.</li>
+        <li>Analyzed results and contributed to the paper, published at SIGIR 2026.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===================== Publications ===================== -->
+  <section id="publications">
+    <h2><span lang="zh-CN">论文</span><span lang="en">Publications</span></h2>
+    <div class="entry pub">
+      <p class="pub-title"><a href="https://doi.org/10.1145/3805712.3808634" target="_blank" rel="noopener">AlpsBench: An LLM Personalization Benchmark for Real-Dialogue Memorization and Preference Alignment</a></p>
+      <p class="authors">Jianfei Xiao, Xiang Yu, Chengbing Wang, Wuqiang Zheng, Xinyu Lin, <b>Kaining Liu</b>, Hongxun Ding, Yang Zhang, Wenjie Wang, Fuli Feng, Xiangnan He</p>
+      <p class="venue"><b>SIGIR 2026</b> · The 49th International ACM SIGIR Conference on Research and Development in Information Retrieval, Melbourne</p>
+      <p class="desc" lang="zh-CN">基于 WildChat 真实对话构建 2,500 条长期对话序列及人工核验的结构化记忆，覆盖记忆抽取、更新、检索与利用四项任务，系统评测大模型与记忆智能体的个性化能力。</p>
+      <p class="desc" lang="en">A benchmark of 2,500 long-term real-dialogue sequences from WildChat with human-verified structured memories, evaluating LLMs and memory agents on four tasks: memory extraction, updating, retrieval and utilization.</p>
+      <p class="links">
+        <a href="https://doi.org/10.1145/3805712.3808634" target="_blank" rel="noopener"><span lang="zh-CN">论文</span><span lang="en">Paper</span></a>
+        <a href="https://arxiv.org/abs/2603.26680" target="_blank" rel="noopener">arXiv</a>
+        <a href="https://github.com/jianfeix/Alps_Bench" target="_blank" rel="noopener"><span lang="zh-CN">代码</span><span lang="en">Code</span></a>
+        <a href="https://jianfeix.github.io/Alps_Bench/" target="_blank" rel="noopener"><span lang="zh-CN">排行榜</span><span lang="en">Leaderboard</span></a>
+        <button type="button" data-bib="bib-alpsbench" aria-expanded="false" aria-controls="bib-alpsbench">BibTeX</button>
+      </p>
+      <div class="bib" id="bib-alpsbench" hidden>
+        <button class="copy" type="button"><span lang="zh-CN">复制</span><span lang="en">Copy</span></button>
+<pre>@inproceedings{xiao2026alpsbench,
+  title     = {AlpsBench: An LLM Personalization Benchmark for
+               Real-Dialogue Memorization and Preference Alignment},
+  author    = {Xiao, Jianfei and Yu, Xiang and Wang, Chengbing and
+               Zheng, Wuqiang and Lin, Xinyu and Liu, Kaining and
+               Ding, Hongxun and Zhang, Yang and Wang, Wenjie and
+               Feng, Fuli and He, Xiangnan},
+  booktitle = {Proceedings of the 49th International ACM SIGIR Conference
+               on Research and Development in Information Retrieval},
+  year      = {2026},
+  doi       = {10.1145/3805712.3808634}
+}</pre>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap foot">
+    <p>
+      <span lang="zh-CN">© 2026 刘铠宁 · 最后更新于 2026 年 11 月</span>
+      <span lang="en">© 2026 Kaining Liu · Last updated November 2026</span>
+    </p>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js"></script>
+</body>
+</html>

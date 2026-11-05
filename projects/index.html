@@ -1,13 +1,118 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN" data-title-zh="项目 · 刘铠宁" data-title-en="Projects · Kaining Liu">
 <head>
 <meta charset="utf-8">
-<title>Projects · Kaining Liu</title>
-<meta name="robots" content="noindex">
-<link rel="canonical" href="https://kainingliu.com/#projects">
-<meta http-equiv="refresh" content="0; url=../#projects">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>项目 · 刘铠宁</title>
+<meta name="description" content="刘铠宁参与的智能体与机器人项目：MemoCat 记忆猫、Uniforest 机器人、团团桌面机器人。Agent and robotics projects by Kaining Liu.">
+<meta name="author" content="Kaining Liu">
+<meta name="theme-color" content="#ffffff">
+<link rel="canonical" href="https://kainingliu.com/projects/">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<script>
+  (function () {
+    var l;
+    try { l = new URLSearchParams(location.search).get('lang'); } catch (e) {}
+    if (l === 'en' || l === 'zh') { try { localStorage.setItem('lang', l); } catch (e) {} }
+    else { try { l = localStorage.getItem('lang'); } catch (e) {} }
+    if (l !== 'en' && l !== 'zh') { l = /^zh/i.test(navigator.language || '') ? 'zh' : 'en'; }
+    document.documentElement.lang = l === 'en' ? 'en' : 'zh-CN';
+  })();
+</script>
+<link rel="stylesheet" href="/assets/css/site.css">
 </head>
-<body>
-<p><a href="../#projects">项目 / Projects</a></p>
+<body class="home">
+<a class="skip" href="#main"><span lang="zh-CN">跳到正文</span><span lang="en">Skip to content</span></a>
+
+<header class="nav">
+  <nav class="wrap nav-inner" aria-label="Main">
+    <a class="brand" href="/"><span lang="zh-CN">刘铠宁</span><span lang="en">Kaining Liu</span></a>
+    <ul class="nav-links">
+      <li><a href="/"><span lang="zh-CN">简介</span><span lang="en">About</span></a></li>
+      <li><a href="/education/"><span lang="zh-CN">教育</span><span lang="en">Education</span></a></li>
+      <li><a href="/research/"><span lang="zh-CN">研究</span><span lang="en">Research</span></a></li>
+      <li><a class="active" href="/projects/" aria-current="page"><span lang="zh-CN">项目</span><span lang="en">Projects</span></a></li>
+    </ul>
+    <button class="lang-btn" id="lang-toggle" type="button" title="中文 / English">
+      <span lang="zh-CN">EN</span>
+      <span lang="en">中文</span>
+    </button>
+  </nav>
+</header>
+
+<main id="main" class="wrap">
+
+  <header class="page-head">
+    <h1><span lang="zh-CN">项目</span><span lang="en">Projects</span></h1>
+    <p class="lead" lang="zh-CN">和同学们一起做的智能体与机器人项目。点击标题查看详细介绍。</p>
+    <p class="lead" lang="en">Agents and robots built with fellow students. Click a title for the full write-up.</p>
+  </header>
+
+  <section>
+    <article class="project" id="memocat">
+      <a class="thumb contain" href="/projects/memocat/" tabindex="-1" aria-hidden="true"><img src="/assets/img/memocat.png" width="720" height="408" loading="lazy" alt=""></a>
+      <div>
+        <div class="row">
+          <h3><a href="/projects/memocat/"><span lang="zh-CN">MemoCat 记忆猫</span><span lang="en">MemoCat</span></a></h3>
+          <span class="date">2026</span>
+        </div>
+        <p lang="zh-CN">常驻桌面的布偶猫语音智能体：在后台持续转写、区分说话人、判断场景，按用户定义的方式把课堂、组会和讨论整理成结构化报告，存入可检索、可溯源的本地记忆库；也可以随时开口和它对话。</p>
+        <p lang="en">A ragdoll-cat voice agent that lives on the desktop. It transcribes in the background, tells speakers apart, recognizes the scene, and turns lectures, meetings and discussions into structured reports in the format the user defines, stored in a searchable, source-traceable local memory. You can also just talk to it.</p>
+        <p class="meta" lang="zh-CN">“一〇七杯”算力与智能体开发大赛 智能体赛道本科生组特等奖 · 时客队 4 人 · Rust / Tauri 2 / React 19</p>
+        <p class="meta" lang="en">Grand Prize, “107 Cup” AI Agent Competition (Agent Track, Undergraduate) · Team Shike, 4 members · Rust / Tauri 2 / React 19</p>
+        <p class="links">
+          <a href="/projects/memocat/"><span lang="zh-CN">详细介绍</span><span lang="en">Details</span></a>
+          <a href="https://github.com/KainingLiu/memocatdoc" target="_blank" rel="noopener"><span lang="zh-CN">项目文档</span><span lang="en">Docs</span></a>
+        </p>
+      </div>
+    </article>
+
+    <article class="project" id="uniforest">
+      <a class="thumb" href="/projects/uniforest/" tabindex="-1" aria-hidden="true"><img src="/assets/img/uniforest.jpg" width="960" height="640" loading="lazy" alt=""></a>
+      <div>
+        <div class="row">
+          <h3><a href="/projects/uniforest/"><span lang="zh-CN">Uniforest 机器人</span><span lang="en">Uniforest Robot</span></a></h3>
+          <span class="date">2026</span>
+        </div>
+        <p lang="zh-CN">自主搬运与搭建机器人。树莓派 5 上位机负责视觉识别、策略调度与底盘外环，STM32F427 下位机负责底盘、执行机构与 IMU，两者通过自定义协议通信。</p>
+        <p lang="en">An autonomous pick-carry-and-build robot. A Raspberry Pi 5 runs vision, strategy and the outer chassis loop; an STM32F427 board drives the chassis, mechanisms and IMU, talking to the Pi over a custom protocol.</p>
+        <p class="meta" lang="zh-CN">RoboGame 2026 冠军 · Uniforest 队 5 人 · Raspberry Pi 5 / STM32F427 / OpenCV</p>
+        <p class="meta" lang="en">Champion, RoboGame 2026 · Team Uniforest, 5 members · Raspberry Pi 5 / STM32F427 / OpenCV</p>
+        <p class="links">
+          <a href="/projects/uniforest/"><span lang="zh-CN">详细介绍</span><span lang="en">Details</span></a>
+          <a href="https://github.com/KainingLiu/uniforest" target="_blank" rel="noopener">GitHub</a>
+        </p>
+      </div>
+    </article>
+
+    <article class="project" id="tuantuan">
+      <a class="thumb" href="/projects/tuantuan/" tabindex="-1" aria-hidden="true"><img src="/assets/img/tuantuan.jpg" width="720" height="660" loading="lazy" alt=""></a>
+      <div>
+        <div class="row">
+          <h3><a href="/projects/tuantuan/"><span lang="zh-CN">团团 桌面机器人</span><span lang="en">Tuantuan Desktop Robot</span></a></h3>
+          <span class="date"><span lang="zh-CN">开发中</span><span lang="en">In progress</span></span>
+        </div>
+        <p lang="zh-CN">桌面陪伴机器人。整机 150 × 150 × 116 mm，共 83 个零件（含 14 个 3D 打印件），装配设计已完成，等待试装。</p>
+        <p lang="en">A desktop companion robot, 150 × 150 × 116 mm with 83 parts (14 of them 3D-printed). The assembly is designed and awaiting a test fit.</p>
+        <p class="links">
+          <a href="/projects/tuantuan/"><span lang="zh-CN">详细介绍</span><span lang="en">Details</span></a>
+          <a href="/tuantuan-preview/" target="_blank" rel="noopener"><span lang="zh-CN">三维预览</span><span lang="en">3D preview</span></a>
+        </p>
+      </div>
+    </article>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap foot">
+    <p>
+      <span lang="zh-CN">© 2026 刘铠宁 · 最后更新于 2026 年 11 月</span>
+      <span lang="en">© 2026 Kaining Liu · Last updated November 2026</span>
+    </p>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js"></script>
 </body>
 </html>

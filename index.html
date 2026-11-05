@@ -4,18 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>刘铠宁 Kaining Liu</title>
-<meta name="description" content="刘铠宁（Kaining Liu），中国科学技术大学少年班学院信息与计算科学专业本科生，研究大模型记忆与持续学习、记忆原生模型与具身智能。Kaining Liu is an undergraduate at USTC working on memory-native models, LLM personalization and embodied intelligence.">
+<meta name="description" content="刘铠宁（Kaining Liu），中国科学技术大学少年班学院信息与计算科学专业本科生，在中国科大数据科学实验室研究人工智能的记忆与持续学习。Kaining Liu is an undergraduate at USTC working on memory and continual learning for AI.">
 <meta name="author" content="Kaining Liu">
-<meta name="keywords" content="Kaining Liu, 刘铠宁, USTC, 中国科学技术大学, 少年班学院, memory-native models, 记忆原生模型, LLM memory, personalization, AlpsBench, SIGIR 2026, embodied intelligence, RoboGame">
+<meta name="keywords" content="Kaining Liu, 刘铠宁, USTC, 中国科学技术大学, 少年班学院, LatentTrace, memory, continual learning, 记忆, 持续学习, AlpsBench, SIGIR 2026, RoboGame">
 <meta name="theme-color" content="#ffffff">
 <link rel="canonical" href="https://kainingliu.com/">
 <link rel="alternate" hreflang="zh-CN" href="https://kainingliu.com/?lang=zh">
 <link rel="alternate" hreflang="en" href="https://kainingliu.com/?lang=en">
 <link rel="alternate" hreflang="x-default" href="https://kainingliu.com/">
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="profile">
 <meta property="og:title" content="Kaining Liu 刘铠宁">
-<meta property="og:description" content="Undergraduate at USTC · Memory-native models, LLM personalization & embodied intelligence.">
+<meta property="og:description" content="Undergraduate at USTC · Memory and continual learning for AI.">
 <meta property="og:url" content="https://kainingliu.com/">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:locale:alternate" content="en_US">
@@ -33,7 +33,7 @@
     "name": "University of Science and Technology of China",
     "url": "https://www.ustc.edu.cn/"
   },
-  "knowsAbout": ["Memory-native models", "LLM personalization", "Long-term memory", "Continual learning", "Embodied intelligence"],
+  "knowsAbout": ["Memory and continual learning", "Self-evolving agents", "Brain-inspired intelligence", "World models"],
   "sameAs": ["https://github.com/KainingLiu"]
 }
 </script>
@@ -48,21 +48,19 @@
     document.documentElement.lang = l === 'en' ? 'en' : 'zh-CN';
   })();
 </script>
-<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="/assets/css/site.css">
 </head>
 <body class="home">
 <a class="skip" href="#main"><span lang="zh-CN">跳到正文</span><span lang="en">Skip to content</span></a>
 
 <header class="nav">
   <nav class="wrap nav-inner" aria-label="Main">
-    <a class="brand" href="#about"><span lang="zh-CN">刘铠宁</span><span lang="en">Kaining Liu</span></a>
-    <ul class="nav-links" data-spy>
-      <li><a href="#about"><span lang="zh-CN">简介</span><span lang="en">About</span></a></li>
-      <li><a href="#education"><span lang="zh-CN">教育</span><span lang="en">Education</span></a></li>
-      <li><a href="#research"><span lang="zh-CN">科研</span><span lang="en">Research</span></a></li>
-      <li><a href="#publications"><span lang="zh-CN">论文</span><span lang="en">Publications</span></a></li>
-      <li><a href="#projects"><span lang="zh-CN">项目</span><span lang="en">Projects</span></a></li>
-      <li><a href="#honors"><span lang="zh-CN">荣誉</span><span lang="en">Honors</span></a></li>
+    <a class="brand" href="/"><span lang="zh-CN">刘铠宁</span><span lang="en">Kaining Liu</span></a>
+    <ul class="nav-links">
+      <li><a class="active" href="/" aria-current="page"><span lang="zh-CN">简介</span><span lang="en">About</span></a></li>
+      <li><a href="/education/"><span lang="zh-CN">教育</span><span lang="en">Education</span></a></li>
+      <li><a href="/research/"><span lang="zh-CN">研究</span><span lang="en">Research</span></a></li>
+      <li><a href="/projects/"><span lang="zh-CN">项目</span><span lang="en">Projects</span></a></li>
     </ul>
     <button class="lang-btn" id="lang-toggle" type="button" title="中文 / English">
       <span lang="zh-CN">EN</span>
@@ -86,51 +84,32 @@
         <a href="https://github.com/KainingLiu" target="_blank" rel="noopener">GitHub</a>
       </p>
     </div>
-    <img class="avatar" src="assets/img/avatar.jpg" width="120" height="120" alt="刘铠宁 Kaining Liu">
+    <img class="avatar" src="/assets/img/avatar.jpg" width="120" height="120" alt="刘铠宁 Kaining Liu">
 
     <div class="bio" lang="zh-CN">
-      <p>我是<a href="https://www.ustc.edu.cn/" target="_blank" rel="noopener">中国科学技术大学</a>少年班学院 2024 级本科生，主修信息与计算科学，就读于人形机器人交叉学科英才班。自 2025 年 9 月起在中国科大数据科学实验室（LDS）从事科研，导师为王文杰教授。</p>
-      <p>我关心的问题是：如何让智能体像人一样，在交互中持续记忆、持续学习。目前独立负责<b>记忆原生模型</b>方向的课题。<span class="todo">〔待补充：一两句话介绍研究兴趣〕</span></p>
-      <p>课余和队友一起做机器人与智能体。</p>
+      <p>我是<a href="https://www.ustc.edu.cn/" target="_blank" rel="noopener">中国科学技术大学</a>少年班学院 2024 级本科生，主修信息与计算科学。目前在中国科大数据科学实验室（LDS）从事人工智能记忆与持续学习的研究。</p>
+      <p>我关心的问题是：以人脑为启发，搭建新一代更强大、更可靠、更有趣的智能系统。具体关注的方法有：构建原生的持续学习与记忆能力；主动理解与主动探索的元认知能力与第一性原理的思维能力；对真实世界、具身场景、复杂系统、多感官多维度信息的连贯理解能力。</p>
+      <p>我的主要精力花在：做人工智能相关的科学研究；与同学们一起做有趣的智能体和机器人项目；探索与思考数学科学问题；参与和组织讲座、讨论、黑客松等活动。</p>
     </div>
     <div class="bio" lang="en">
-      <p>I am an undergraduate (Class of 2024) at the School of the Gifted Young, <a href="https://en.ustc.edu.cn/" target="_blank" rel="noopener">University of Science and Technology of China (USTC)</a>, majoring in Information and Computational Science in the Interdisciplinary Honors Program in Humanoid Robotics. Since September 2025 I have been doing research at the Lab for Data Science (LDS), USTC, advised by Prof. Wenjie Wang.</p>
-      <p>The question I care about: how can intelligent agents keep remembering and keep learning through interaction, as people do? I currently lead an independent project on <b>memory-native models</b>. <span class="todo">[TODO: a sentence or two on research interests]</span></p>
-      <p>Outside the lab I build robots and agents with my teammates.</p>
+      <p>I am an undergraduate (Class of 2024) at the School of the Gifted Young, <a href="https://en.ustc.edu.cn/" target="_blank" rel="noopener">University of Science and Technology of China (USTC)</a>, majoring in Information and Computational Science. I currently work on memory and continual learning for AI at the Lab for Data Science (LDS), USTC.</p>
+      <p>The question I care about is how to build a new generation of intelligent systems, inspired by the human brain, that are more capable, more reliable and more interesting. The directions I focus on: native continual learning and memory; metacognition for active understanding and exploration, together with first-principles thinking; and coherent understanding of the real world, embodied settings, complex systems, and multi-sensory, multi-dimensional information.</p>
+      <p>Most of my time goes into AI research; building fun agents and robots with fellow students; exploring and thinking about problems in mathematics and science; and attending and organizing talks, discussions and hackathons.</p>
     </div>
 
     <p class="interests">
       <span class="label"><span lang="zh-CN">研究兴趣</span><span lang="en">Interests</span></span>
-      <span lang="zh-CN">记忆与持续学习 · 大模型个性化 · 智能体理论 · 具身智能</span>
-      <span lang="en">Memory &amp; continual learning · LLM personalization · Theory of agents · Embodied intelligence</span>
+      <span lang="zh-CN">记忆与持续学习 · 自进化与主动学习 · 稀疏计算与类脑智能 · 世界模型</span>
+      <span lang="en">Memory &amp; continual learning · Self-evolution &amp; active learning · Sparse computation &amp; brain-inspired intelligence · World models</span>
     </p>
-  </section>
-
-  <!-- ===================== News ===================== -->
-  <section id="news">
-    <h2><span lang="zh-CN">动态</span><span lang="en">News</span></h2>
-    <ul class="dated">
-      <li><time datetime="2026-10">2026.10</time>
-        <span lang="zh-CN">与 <a href="projects/uniforest/">Uniforest 队</a>获得中国科大 RoboGame 2026 机器人比赛冠军。</span>
-        <span lang="en">Won RoboGame 2026 at USTC with <a href="projects/uniforest/">Team Uniforest</a>.</span></li>
-      <li><time datetime="2026-09">2026.09</time>
-        <span lang="zh-CN"><a href="projects/memocat/">MemoCat 记忆猫</a>获“一〇七杯”算力与智能体开发大赛特等奖。</span>
-        <span lang="en"><a href="projects/memocat/">MemoCat</a> won the Grand Prize of the “107 Cup” AI Agent Development Competition.</span></li>
-      <li><time datetime="2026-08">2026.08</time>
-        <span lang="zh-CN">开始记忆原生模型方向的独立课题。</span>
-        <span lang="en">Started an independent project on memory-native models.</span></li>
-      <li><time datetime="2026-07">2026</time>
-        <span lang="zh-CN">暑期赴北京中关村学院访学，研究智能体理论。</span>
-        <span lang="en">Summer visit to Zhongguancun Academy, Beijing, working on the theory of agents.</span></li>
-      <li><time datetime="2026-04">2026.04</time>
-        <span lang="zh-CN"><a href="#publications">AlpsBench</a> 被 SIGIR 2026 接收。</span>
-        <span lang="en"><a href="#publications">AlpsBench</a> was accepted to SIGIR 2026.</span></li>
-    </ul>
   </section>
 
   <!-- ===================== Education ===================== -->
   <section id="education">
-    <h2><span lang="zh-CN">教育经历</span><span lang="en">Education</span></h2>
+    <div class="sec-head">
+      <h2><span lang="zh-CN">教育经历</span><span lang="en">Education</span></h2>
+      <a href="/education/"><span lang="zh-CN">详细</span><span lang="en">More</span> →</a>
+    </div>
     <div class="entry">
       <div class="row">
         <h3><span lang="zh-CN">中国科学技术大学</span><span lang="en">University of Science and Technology of China</span></h3>
@@ -140,38 +119,34 @@
       <p class="org" lang="en">B.S. in Information and Computational Science · School of the Gifted Young · Honors Program in Humanoid Robotics</p>
       <p class="meta" lang="zh-CN">GPA 3.87 / 4.3 · 加权平均分 89.94 · 专业排名 13 / 84</p>
       <p class="meta" lang="en">GPA 3.87 / 4.3 · Weighted average 89.94 · Rank 13 / 84</p>
-      <p class="meta muted" lang="zh-CN">主要课程：数学分析、线性代数、概率论、近世代数、实变函数、复变函数、常微分方程、偏微分方程、人工智能的数学原理与算法、计算机程序设计、机器人设计与实践</p>
-      <p class="meta muted" lang="en">Selected courses: Mathematical Analysis, Linear Algebra, Probability Theory, Modern Algebra, Real Analysis, Complex Variables, ODEs, PDEs, Mathematical Principles and Algorithms of AI, Computer Programming, Design and Practice of Robots</p>
-    </div>
-    <div class="entry">
-      <div class="row">
-        <h3><span lang="zh-CN">天津市南开中学</span><span lang="en">Tianjin Nankai High School</span></h3>
-        <span class="date">2022 – 2024</span>
-      </div>
     </div>
   </section>
 
   <!-- ===================== Research experience ===================== -->
   <section id="research">
-    <h2><span lang="zh-CN">科研经历</span><span lang="en">Research Experience</span></h2>
-
-    <div class="entry">
-      <div class="row">
-        <h3><span lang="zh-CN">记忆原生模型</span><span lang="en">Memory-Native Models</span></h3>
-        <span class="date"><span lang="zh-CN">2026.08 – 至今</span><span lang="en">2026.08 – Present</span></span>
-      </div>
-      <p class="org"><span lang="zh-CN">独立负责课题 · 中国科大数据科学实验室（LDS）· 导师：王文杰</span><span lang="en">Independent project · Lab for Data Science (LDS), USTC · Advisor: Prof. Wenjie Wang</span></p>
-      <p class="desc" lang="zh-CN">让语言模型以参数内的向量记忆替代文本上下文：由模型自己学会存什么、何时取，不依赖外部检索器。<span class="todo">〔待补充：进展与成果〕</span></p>
-      <p class="desc" lang="en">Letting language models replace textual context with vector memory held in their own parameters, learning by themselves what to store and when to recall it, without an external retriever. <span class="todo">[TODO: progress and results]</span></p>
+    <div class="sec-head">
+      <h2><span lang="zh-CN">科研经历</span><span lang="en">Research Experience</span></h2>
+      <a href="/research/"><span lang="zh-CN">详细</span><span lang="en">More</span> →</a>
     </div>
 
     <div class="entry">
       <div class="row">
-        <h3><span lang="zh-CN">智能体理论</span><span lang="en">Theory of Agents</span></h3>
+        <h3>LatentTrace</h3>
+        <span class="date"><span lang="zh-CN">2026.08 – 至今</span><span lang="en">2026.08 – Present</span></span>
+      </div>
+      <p class="org"><span lang="zh-CN">独立负责课题 · 中国科大数据科学实验室（LDS）· 导师：王文杰</span><span lang="en">Independent project · Lab for Data Science (LDS), USTC · Advisor: Prof. Wenjie Wang</span></p>
+      <p class="desc" lang="zh-CN">让语言模型以参数内的向量记忆替代文本上下文：由模型自己学会存什么、何时取，清空上下文后仍能凭记忆作答。</p>
+      <p class="desc" lang="en">Language models that replace textual context with vector memory of their own, learning what to store and when to recall it, and answering from memory after the context is cleared.</p>
+    </div>
+
+    <div class="entry">
+      <div class="row">
+        <h3><span lang="zh-CN">自进化智能体的理论研究</span><span lang="en">Theory of Self-Evolving Agents</span></h3>
         <span class="date"><span lang="zh-CN">2026 暑期</span><span lang="en">Summer 2026</span></span>
       </div>
-      <p class="org"><span lang="zh-CN">访问学生 · 北京中关村学院</span><span lang="en">Visiting student · Zhongguancun Academy, Beijing</span> <span class="todo"><span lang="zh-CN">〔待补充：起止日期、合作老师〕</span><span lang="en">[TODO: dates, host advisor]</span></span></p>
-      <p class="desc"><span class="todo"><span lang="zh-CN">〔待补充：研究内容〕</span><span lang="en">[TODO: what I worked on]</span></span></p>
+      <p class="org"><span lang="zh-CN">访问学生 · 北京中关村学院 · 合作老师：陈祥</span><span lang="en">Visiting student · Zhongguancun Academy, Beijing · Host: Xiang Chen</span></p>
+      <p class="desc" lang="zh-CN">从理论上比较自进化智能体与冻结策略智能体在元学习与自适应能力上的差异。</p>
+      <p class="desc" lang="en">A theoretical comparison of self-evolving agents and frozen-policy agents in their capacity for meta-learning and adaptation.</p>
     </div>
 
     <div class="entry">
@@ -180,14 +155,8 @@
         <span class="date">2026.02 – 2026.05</span>
       </div>
       <p class="org"><span lang="zh-CN">科研实习生 · LDS × 华为小艺</span><span lang="en">Research Intern · LDS × Huawei XiaoYi</span></p>
-      <ul class="bullets" lang="zh-CN">
-        <li>为华为小艺 AI 助手开发个性化大模型记忆系统，设计并实现记忆抽取智能体流水线；</li>
-        <li>对记忆抽取与检索行为进行实验评估与分析，撰写技术报告。</li>
-      </ul>
-      <ul class="bullets" lang="en">
-        <li>Built a personalized LLM memory system for the Huawei XiaoYi assistant, including a memory-extraction agent pipeline.</li>
-        <li>Evaluated memory extraction and retrieval behavior; wrote technical reports.</li>
-      </ul>
+      <p class="desc" lang="zh-CN">为华为小艺 AI 助手开发个性化大模型记忆系统，负责记忆抽取智能体流水线的设计、实现与评测。</p>
+      <p class="desc" lang="en">Built a personalized LLM memory system for the Huawei XiaoYi assistant; designed, implemented and evaluated its memory-extraction agent pipeline.</p>
     </div>
 
     <div class="entry">
@@ -196,14 +165,8 @@
         <span class="date">2025.09 – 2026.02</span>
       </div>
       <p class="org"><span lang="zh-CN">科研实习生 · 中国科大数据科学实验室（LDS）</span><span lang="en">Research Intern · Lab for Data Science (LDS), USTC</span></p>
-      <ul class="bullets" lang="zh-CN">
-        <li>参与基准的任务设计与数据整理，以及记忆智能体在记忆与偏好对齐任务上的评测；</li>
-        <li>结果分析与论文写作。</li>
-      </ul>
-      <ul class="bullets" lang="en">
-        <li>Task design and data curation; evaluation of agent memory systems on memorization and preference alignment.</li>
-        <li>Result analysis and paper writing.</li>
-      </ul>
+      <p class="desc" lang="zh-CN">参与大模型个性化记忆基准的任务设计、数据整理、记忆智能体评测与论文写作，论文发表于 SIGIR 2026。</p>
+      <p class="desc" lang="en">Task design, data curation, evaluation of agent memory systems, and paper writing for an LLM personalization and memory benchmark, published at SIGIR 2026.</p>
     </div>
   </section>
 
@@ -241,35 +204,35 @@
 
   <!-- ===================== Projects ===================== -->
   <section id="projects">
-    <h2><span lang="zh-CN">项目</span><span lang="en">Projects</span></h2>
+    <div class="sec-head">
+      <h2><span lang="zh-CN">项目</span><span lang="en">Projects</span></h2>
+      <a href="/projects/"><span lang="zh-CN">详细</span><span lang="en">More</span> →</a>
+    </div>
 
     <article class="project">
-      <a class="thumb contain" href="projects/memocat/" tabindex="-1" aria-hidden="true"><img src="assets/img/memocat.png" width="720" height="408" loading="lazy" alt=""></a>
+      <a class="thumb contain" href="/projects/memocat/" tabindex="-1" aria-hidden="true"><img src="/assets/img/memocat.png" width="720" height="408" loading="lazy" alt=""></a>
       <div>
-        <h3><a href="projects/memocat/"><span lang="zh-CN">MemoCat 记忆猫</span><span lang="en">MemoCat</span></a></h3>
+        <h3><a href="/projects/memocat/"><span lang="zh-CN">MemoCat 记忆猫</span><span lang="en">MemoCat</span></a></h3>
         <p lang="zh-CN">桌面宠物形态的智能语音纪要设备：持续转写、区分说话人、按场景整理纪要，并保留可追溯来源的本地长期记忆。“一〇七杯”智能体大赛特等奖。</p>
         <p lang="en">A desktop-pet voice-notes companion: continuous transcription with speaker identification, scene-aware notes, and a local-first long-term memory with source tracing. Grand Prize, “107 Cup” AI Agent Competition.</p>
-        <p class="links"><a href="projects/memocat/"><span lang="zh-CN">详情</span><span lang="en">Details</span></a><a href="https://github.com/KainingLiu/memocatdoc" target="_blank" rel="noopener"><span lang="zh-CN">文档</span><span lang="en">Docs</span></a></p>
       </div>
     </article>
 
     <article class="project">
-      <a class="thumb" href="projects/uniforest/" tabindex="-1" aria-hidden="true"><img src="assets/img/uniforest.jpg" width="960" height="640" loading="lazy" alt=""></a>
+      <a class="thumb" href="/projects/uniforest/" tabindex="-1" aria-hidden="true"><img src="/assets/img/uniforest.jpg" width="960" height="640" loading="lazy" alt=""></a>
       <div>
-        <h3><a href="projects/uniforest/"><span lang="zh-CN">Uniforest 机器人</span><span lang="en">Uniforest Robot</span></a></h3>
+        <h3><a href="/projects/uniforest/"><span lang="zh-CN">Uniforest 机器人</span><span lang="en">Uniforest Robot</span></a></h3>
         <p lang="zh-CN">RoboGame 2026 冠军机器人。树莓派 5 负责视觉识别与策略调度，STM32 下位机负责底盘、机构与 IMU，两者经自定义协议通信。</p>
         <p lang="en">Championship robot of RoboGame 2026. A Raspberry Pi 5 runs vision and strategy; an STM32 board runs the chassis, mechanisms and IMU over a custom protocol.</p>
-        <p class="links"><a href="projects/uniforest/"><span lang="zh-CN">详情</span><span lang="en">Details</span></a><a href="https://github.com/KainingLiu/uniforest" target="_blank" rel="noopener">GitHub</a></p>
       </div>
     </article>
 
     <article class="project">
-      <a class="thumb" href="projects/tuantuan/" tabindex="-1" aria-hidden="true"><img src="assets/img/tuantuan.jpg" width="720" height="660" loading="lazy" alt=""></a>
+      <a class="thumb" href="/projects/tuantuan/" tabindex="-1" aria-hidden="true"><img src="/assets/img/tuantuan.jpg" width="720" height="660" loading="lazy" alt=""></a>
       <div>
-        <h3><a href="projects/tuantuan/"><span lang="zh-CN">团团 桌面机器人</span><span lang="en">Tuantuan Desktop Robot</span></a> <span class="faint"><span lang="zh-CN">开发中</span><span lang="en">in progress</span></span></h3>
+        <h3><a href="/projects/tuantuan/"><span lang="zh-CN">团团 桌面机器人</span><span lang="en">Tuantuan Desktop Robot</span></a> <span class="faint"><span lang="zh-CN">开发中</span><span lang="en">in progress</span></span></h3>
         <p lang="zh-CN">桌面陪伴机器人原型，提供可交互的三维模型预览。</p>
         <p lang="en">A desktop companion robot prototype with an interactive 3D model preview.</p>
-        <p class="links"><a href="projects/tuantuan/"><span lang="zh-CN">详情</span><span lang="en">Details</span></a><a href="https://kainingliu.com/tuantuan-preview/" target="_blank" rel="noopener"><span lang="zh-CN">三维预览</span><span lang="en">3D preview</span></a></p>
       </div>
     </article>
   </section>
@@ -279,11 +242,11 @@
     <h2><span lang="zh-CN">荣誉奖项</span><span lang="en">Honors &amp; Awards</span></h2>
     <ul class="dated">
       <li><time>2026.10</time>
-        <span lang="zh-CN">RoboGame 2026 机器人比赛 冠军 <span class="muted">· <a href="projects/uniforest/">Uniforest 队</a></span></span>
-        <span lang="en">Champion, RoboGame 2026 Robotics Competition, USTC <span class="muted">· <a href="projects/uniforest/">Team Uniforest</a></span></span></li>
+        <span lang="zh-CN">RoboGame 2026 机器人比赛 冠军 <span class="muted">· <a href="/projects/uniforest/">Uniforest 队</a></span></span>
+        <span lang="en">Champion, RoboGame 2026 Robotics Competition, USTC <span class="muted">· <a href="/projects/uniforest/">Team Uniforest</a></span></span></li>
       <li><time>2026.09</time>
-        <span lang="zh-CN">“一〇七杯”算力与智能体开发大赛 智能体赛道本科生组 特等奖 <span class="muted">· <a href="projects/memocat/">MemoCat</a></span></span>
-        <span lang="en">Grand Prize, “107 Cup” Computing Power &amp; AI Agent Development Competition (Agent Track, Undergraduate) <span class="muted">· <a href="projects/memocat/">MemoCat</a></span></span></li>
+        <span lang="zh-CN">“一〇七杯”算力与智能体开发大赛 智能体赛道本科生组 特等奖 <span class="muted">· <a href="/projects/memocat/">MemoCat</a></span></span>
+        <span lang="en">Grand Prize, “107 Cup” Computing Power &amp; AI Agent Development Competition (Agent Track, Undergraduate) <span class="muted">· <a href="/projects/memocat/">MemoCat</a></span></span></li>
       <li><time>2025</time>
         <span lang="zh-CN">RoboGame 2025 机器人比赛 一等奖</span>
         <span lang="en">First Prize, RoboGame 2025 Robotics Competition, USTC</span></li>
@@ -291,17 +254,6 @@
         <span lang="zh-CN">CPUT 竞赛（中国科大）一等奖</span>
         <span lang="en">First Prize, CPUT Competition, USTC</span></li>
     </ul>
-  </section>
-
-  <!-- ===================== Misc ===================== -->
-  <section id="misc">
-    <h2><span lang="zh-CN">其他</span><span lang="en">Miscellaneous</span></h2>
-    <dl class="kv">
-      <dt><span lang="zh-CN">报告</span><span lang="en">Talks</span></dt>
-      <dd><span lang="zh-CN"><a href="ai-talk/">对 AI 与 AI 时代大学生活的看法</a>（2026.10，幻灯片）</span><span lang="en"><a href="ai-talk/">On AI and College Life in the Age of AI</a> (2026.10, slides in Chinese)</span></dd>
-      <dt><span lang="zh-CN">技能</span><span lang="en">Skills</span></dt>
-      <dd>Python, PyTorch, C, Linux, Git, LaTeX <span class="muted">·</span> <span lang="zh-CN">STM32 嵌入式与电机控制、OpenCV、机械设计</span><span lang="en">STM32 embedded &amp; motor control, OpenCV, mechanical design</span></dd>
-    </dl>
   </section>
 
 </main>
@@ -315,6 +267,6 @@
   </div>
 </footer>
 
-<script src="assets/js/site.js"></script>
+<script src="/assets/js/site.js"></script>
 </body>
 </html>
