@@ -164,6 +164,26 @@ h3 { margin: 0; font-size: 16px; font-weight: 600; line-height: 1.5; }
 .page-head .lead { margin: 0; color: var(--muted); }
 .sub { margin: 18px 0 6px; font-size: 15.5px; font-weight: 600; }
 
+/* whole-block links: the title link stretches over the block; inner links stay clickable */
+.card { position: relative; margin-left: -14px; margin-right: -14px; padding: 12px 14px; border-radius: 8px; transition: background .15s; }
+.entry.card { margin-bottom: 10px; }
+.project.card { margin-bottom: 12px; }
+.card:hover { background: var(--bg-soft); }
+.card a.stretch { color: var(--text); }
+.card a.stretch:hover { text-decoration: none; }
+.card:hover a.stretch { color: var(--accent); }
+.card a.stretch::after { content: ""; position: absolute; inset: 0; border-radius: 8px; }
+.card .links a, .card .links button { position: relative; z-index: 1; }
+.card a.stretch:focus-visible::after { outline: 2px solid var(--accent); outline-offset: -2px; }
+.entry .desc .label { font-size: 14px; color: var(--muted); margin-right: 8px; }
+.more-link { margin: 6px 0 0; font-size: 14px; color: var(--faint); }
+.card:hover .more-link { color: var(--accent); }
+.page-head.detail { padding-top: 8px; }
+.page-head.detail h1 small { font-size: 17px; font-weight: 400; color: var(--muted); margin-left: 4px; }
+.page-head.detail .org { margin: 0; }
+.date-line { margin: 2px 0 0; font: 14px/1.75 var(--mono); color: var(--faint); }
+.back { margin: 40px 0 0; font-size: 15px; }
+
 /* ---------- Footer ---------- */
 footer { margin-top: 56px; padding-top: 20px; padding-bottom: 36px; border-top: 1px solid var(--line); font-size: 13.5px; color: var(--faint); }
 footer p { margin: 0; }

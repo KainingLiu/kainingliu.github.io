@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-title-zh="AlpsBench · 刘铠宁" data-title-en="AlpsBench · Kaining Liu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AlpsBench · 刘铠宁</title>
+<meta name="description" content="AlpsBench：基于真实对话的大模型个性化基准，SIGIR 2026。AlpsBench: an LLM personalization benchmark built from real dialogues, SIGIR 2026.">
+<meta name="author" content="Kaining Liu">
+<meta name="theme-color" content="#ffffff">
+<link rel="canonical" href="https://kainingliu.com/research/alpsbench/">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<script>
+  (function () {
+    var l;
+    try { l = new URLSearchParams(location.search).get('lang'); } catch (e) {}
+    if (l === 'en' || l === 'zh') { try { localStorage.setItem('lang', l); } catch (e) {} }
+    else { try { l = localStorage.getItem('lang'); } catch (e) {} }
+    if (l !== 'en' && l !== 'zh') { l = /^zh/i.test(navigator.language || '') ? 'zh' : 'en'; }
+    document.documentElement.lang = l === 'en' ? 'en' : 'zh-CN';
+  })();
+</script>
+<link rel="stylesheet" href="/assets/css/site.css">
+</head>
+<body class="home">
+<a class="skip" href="#main"><span lang="zh-CN">跳到正文</span><span lang="en">Skip to content</span></a>
+
+<header class="nav">
+  <nav class="wrap nav-inner" aria-label="Main">
+    <a class="brand" href="/"><span lang="zh-CN">刘铠宁</span><span lang="en">Kaining Liu</span></a>
+    <ul class="nav-links">
+      <li><a href="/"><span lang="zh-CN">简介</span><span lang="en">About</span></a></li>
+      <li><a href="/education/"><span lang="zh-CN">教育</span><span lang="en">Education</span></a></li>
+      <li><a class="active" href="/research/"><span lang="zh-CN">研究</span><span lang="en">Research</span></a></li>
+      <li><a href="/projects/"><span lang="zh-CN">项目</span><span lang="en">Projects</span></a></li>
+    </ul>
+    <button class="lang-btn" id="lang-toggle" type="button" title="中文 / English">
+      <span lang="zh-CN">EN</span>
+      <span lang="en">中文</span>
+    </button>
+  </nav>
+</header>
+
+<main id="main" class="wrap">
+
+  <ol class="crumbs" aria-label="Breadcrumb">
+    <li><a href="/research/"><span lang="zh-CN">研究</span><span lang="en">Research</span></a></li>
+    <li aria-current="page"><span lang="zh-CN">AlpsBench</span><span lang="en">AlpsBench</span></li>
+  </ol>
+
+  <header class="page-head detail">
+    <h1><span lang="zh-CN">AlpsBench <small>(SIGIR 2026)</small></span><span lang="en">AlpsBench <small>(SIGIR 2026)</small></span></h1>
+    <p class="org"><span lang="zh-CN">科研实习生 · 中国科大数据科学实验室（LDS）</span><span lang="en">Research Intern · Lab for Data Science (LDS), USTC</span></p>
+    <p class="date-line"><span lang="zh-CN">2025.09 – 2026.02</span><span lang="en">2025.09 – 2026.02</span></p>
+  </header>
+
+  <section id="content">
+    <h2><span lang="zh-CN">研究内容</span><span lang="en">Research</span></h2>
+    <p class="desc" lang="zh-CN">大模型正在成为长期陪伴用户的助手，个性化能力越来越重要，但缺少一个可靠的评测标准：已有基准要么不考察个性化信息的管理，要么使用和真实对话差别很大的合成对话。</p>
+    <p class="desc" lang="en">As LLMs become long-term assistants, personalization matters more and more, yet there is no reliable yardstick: existing benchmarks either ignore how personal information is managed or rely on synthetic dialogues that differ from real conversations.</p>
+    <p class="desc" lang="zh-CN">AlpsBench 基于 WildChat 中的真实人机对话，构建了 2,500 条长期交互序列，并为每条序列配上人工核验的结构化记忆，覆盖个性化信息从产生到使用的完整过程，共四项任务：</p>
+    <p class="desc" lang="en">AlpsBench is built from real human–LLM dialogues in WildChat: 2,500 long-term interaction sequences, each paired with human-verified structured memories. It covers the whole life cycle of personal information through four tasks:</p>
+    <ul class="bullets" lang="zh-CN">
+      <li><b>抽取：</b>从对话中识别用户的特征与信息；</li>
+      <li><b>更新：</b>用户信息变化时修正已有记忆；</li>
+      <li><b>检索：</b>找出与当前对话相关的记忆；</li>
+      <li><b>利用：</b>用记忆生成贴合用户偏好的回答。</li>
+    </ul>
+    <ul class="bullets" lang="en">
+      <li><b>Extraction:</b> identify user traits and information in dialogue.</li>
+      <li><b>Updating:</b> revise stored memories when user information changes.</li>
+      <li><b>Retrieval:</b> find the memories relevant to the current conversation.</li>
+      <li><b>Utilization:</b> use memories to produce responses aligned with the user’s preferences.</li>
+    </ul>
+    <p class="desc" lang="zh-CN">在前沿大模型和记忆系统上的评测发现：模型难以可靠地抽取隐含的用户特征；记忆更新即使在最强的模型上也存在明显瓶颈；干扰记忆很多时检索准确率大幅下降；显式记忆机制能提高回忆率，但不一定带来更贴合偏好、更有共情的回答。</p>
+    <p class="desc" lang="en">Evaluations of frontier LLMs and memory systems show that models struggle to extract latent user traits reliably; memory updating hits a ceiling even for the strongest models; retrieval accuracy drops sharply with many distractor memories; and explicit memory improves recall but does not guarantee more preference-aligned or empathetic responses.</p>
+  </section>
+
+  <section id="role">
+    <h2><span lang="zh-CN">我负责的工作</span><span lang="en">My Role</span></h2>
+    <ul class="bullets" lang="zh-CN">
+      <li>参与基准的任务设计与数据整理；</li>
+      <li>参与记忆智能体在记忆与偏好对齐任务上的实验设计与评测；</li>
+      <li>进行结果分析并参与论文写作（第六作者）。</li>
+    </ul>
+    <ul class="bullets" lang="en">
+      <li>Contributed to task design and data curation.</li>
+      <li>Designed and ran evaluations of agent memory systems on memorization and preference-alignment tasks.</li>
+      <li>Analyzed results and contributed to writing the paper (sixth author).</li>
+    </ul>
+  </section>
+
+  <section id="paper">
+    <h2><span lang="zh-CN">论文</span><span lang="en">Paper</span></h2>
+    <div class="entry pub">
+      <p class="pub-title"><a href="https://doi.org/10.1145/3805712.3808634" target="_blank" rel="noopener">AlpsBench: An LLM Personalization Benchmark for Real-Dialogue Memorization and Preference Alignment</a></p>
+      <p class="authors">Jianfei Xiao, Xiang Yu, Chengbing Wang, Wuqiang Zheng, Xinyu Lin, <b>Kaining Liu</b>, Hongxun Ding, Yang Zhang, Wenjie Wang, Fuli Feng, Xiangnan He</p>
+      <p class="venue"><b>SIGIR 2026</b> · The 49th International ACM SIGIR Conference on Research and Development in Information Retrieval, Melbourne</p>
+      <p class="links">
+        <a href="https://doi.org/10.1145/3805712.3808634" target="_blank" rel="noopener"><span lang="zh-CN">论文</span><span lang="en">Paper</span></a>
+        <a href="https://arxiv.org/abs/2603.26680" target="_blank" rel="noopener">arXiv</a>
+        <a href="https://github.com/jianfeix/Alps_Bench" target="_blank" rel="noopener"><span lang="zh-CN">代码</span><span lang="en">Code</span></a>
+        <a href="https://jianfeix.github.io/Alps_Bench/" target="_blank" rel="noopener"><span lang="zh-CN">排行榜</span><span lang="en">Leaderboard</span></a>
+        <button type="button" data-bib="bib-alpsbench" aria-expanded="false" aria-controls="bib-alpsbench">BibTeX</button>
+      </p>
+      <div class="bib" id="bib-alpsbench" hidden>
+        <button class="copy" type="button"><span lang="zh-CN">复制</span><span lang="en">Copy</span></button>
+<pre>@inproceedings{xiao2026alpsbench,
+  title     = {AlpsBench: An LLM Personalization Benchmark for
+               Real-Dialogue Memorization and Preference Alignment},
+  author    = {Xiao, Jianfei and Yu, Xiang and Wang, Chengbing and
+               Zheng, Wuqiang and Lin, Xinyu and Liu, Kaining and
+               Ding, Hongxun and Zhang, Yang and Wang, Wenjie and
+               Feng, Fuli and He, Xiangnan},
+  booktitle = {Proceedings of the 49th International ACM SIGIR Conference
+               on Research and Development in Information Retrieval},
+  year      = {2026},
+  doi       = {10.1145/3805712.3808634}
+}</pre>
+      </div>
+    </div>
+  </section>
+
+  <p class="back"><a href="/research/"><span lang="zh-CN">← 返回研究</span><span lang="en">← Back to Research</span></a></p>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap foot">
+    <p>
+      <span lang="zh-CN">© 2026 刘铠宁 · 最后更新于 2026 年 11 月</span>
+      <span lang="en">© 2026 Kaining Liu · Last updated November 2026</span>
+    </p>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js"></script>
+</body>
+</html>

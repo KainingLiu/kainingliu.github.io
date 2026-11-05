@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-title-zh="LatentTrace · 刘铠宁" data-title-en="LatentTrace · Kaining Liu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LatentTrace · 刘铠宁</title>
+<meta name="description" content="LatentTrace：用参数化向量库作为记忆媒介，探究具有原生记忆能力的 AI 模型。LatentTrace: AI models with native memory, using a parameterized vector store as the memory medium.">
+<meta name="author" content="Kaining Liu">
+<meta name="theme-color" content="#ffffff">
+<link rel="canonical" href="https://kainingliu.com/research/latenttrace/">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<script>
+  (function () {
+    var l;
+    try { l = new URLSearchParams(location.search).get('lang'); } catch (e) {}
+    if (l === 'en' || l === 'zh') { try { localStorage.setItem('lang', l); } catch (e) {} }
+    else { try { l = localStorage.getItem('lang'); } catch (e) {} }
+    if (l !== 'en' && l !== 'zh') { l = /^zh/i.test(navigator.language || '') ? 'zh' : 'en'; }
+    document.documentElement.lang = l === 'en' ? 'en' : 'zh-CN';
+  })();
+</script>
+<link rel="stylesheet" href="/assets/css/site.css">
+</head>
+<body class="home">
+<a class="skip" href="#main"><span lang="zh-CN">跳到正文</span><span lang="en">Skip to content</span></a>
+
+<header class="nav">
+  <nav class="wrap nav-inner" aria-label="Main">
+    <a class="brand" href="/"><span lang="zh-CN">刘铠宁</span><span lang="en">Kaining Liu</span></a>
+    <ul class="nav-links">
+      <li><a href="/"><span lang="zh-CN">简介</span><span lang="en">About</span></a></li>
+      <li><a href="/education/"><span lang="zh-CN">教育</span><span lang="en">Education</span></a></li>
+      <li><a class="active" href="/research/"><span lang="zh-CN">研究</span><span lang="en">Research</span></a></li>
+      <li><a href="/projects/"><span lang="zh-CN">项目</span><span lang="en">Projects</span></a></li>
+    </ul>
+    <button class="lang-btn" id="lang-toggle" type="button" title="中文 / English">
+      <span lang="zh-CN">EN</span>
+      <span lang="en">中文</span>
+    </button>
+  </nav>
+</header>
+
+<main id="main" class="wrap">
+
+  <ol class="crumbs" aria-label="Breadcrumb">
+    <li><a href="/research/"><span lang="zh-CN">研究</span><span lang="en">Research</span></a></li>
+    <li aria-current="page"><span lang="zh-CN">LatentTrace</span><span lang="en">LatentTrace</span></li>
+  </ol>
+
+  <header class="page-head detail">
+    <h1><span lang="zh-CN">LatentTrace</span><span lang="en">LatentTrace</span></h1>
+    <p class="org"><span lang="zh-CN">课题负责人 · 中国科大数据科学实验室（LDS）· 导师：王文杰</span><span lang="en">Project lead · Lab for Data Science (LDS), USTC · Advisor: Prof. Wenjie Wang</span></p>
+    <p class="date-line"><span lang="zh-CN">2026.08 – 至今 · 进行中，尚未公开</span><span lang="en">2026.08 – Present · In progress, not yet public</span></p>
+  </header>
+
+  <section id="content">
+    <h2><span lang="zh-CN">研究内容</span><span lang="en">Research</span></h2>
+    <p class="desc" lang="zh-CN">用参数化向量库作为记忆媒介，探究具有原生记忆能力的 AI 模型。</p>
+    <p class="desc" lang="en">Using a parameterized vector store as the memory medium to explore AI models with native memory.</p>
+    <p class="desc" lang="zh-CN">今天的大模型只有一种记忆：上下文里的文本。对话越长，上下文越长，计算越慢越贵，最终受窗口长度限制。外挂的记忆系统（如检索增强）把“存什么、什么时候取”交给人写的规则或另一个模型，记忆管理并不在模型自身的学习之中。</p>
+    <p class="desc" lang="en">Today’s LLMs have only one kind of memory: the text in their context. The longer the history, the longer the context, the slower and costlier the computation, until it hits the window limit. External memory systems such as retrieval augmentation leave what to store and when to fetch it to hand-written rules or a separate model, so memory management is not part of what the model itself learns.</p>
+    <p class="desc" lang="zh-CN">本课题让模型拥有一块由向量组成、可以持续增长的记忆：</p>
+    <p class="desc" lang="en">This project gives the model a growing memory made of vectors:</p>
+    <ul class="bullets" lang="zh-CN">
+      <li><b>写入的是理解，而不是原文：</b>模型把自己处理信息时的内部表示存入向量库；</li>
+      <li><b>存取由模型自己学会：</b>什么时候存、存什么、什么时候回忆，都是模型在训练中学到的行为，不依赖外部检索器或人工规则；</li>
+      <li><b>清空上下文后仍能作答：</b>原文离开上下文之后，模型可以凭向量记忆继续回答相关问题；</li>
+      <li><b>对原模型改动尽量小：</b>能直接沿用预训练模型和已有的训练、推理流程。</li>
+    </ul>
+    <ul class="bullets" lang="en">
+      <li><b>It stores understanding, not raw text:</b> the model writes its own internal representations into the vector store.</li>
+      <li><b>The model learns to use it:</b> when to store, what to store and when to recall are behaviors learned in training, with no external retriever or hand-written rules.</li>
+      <li><b>It answers after the context is cleared:</b> once the original text has left the context, the model can still answer from its vector memory.</li>
+      <li><b>Minimal changes to the base model:</b> pretrained models and existing training and inference pipelines can be reused.</li>
+    </ul>
+  </section>
+
+  <section id="role">
+    <h2><span lang="zh-CN">我负责的工作</span><span lang="en">My Role</span></h2>
+    <p class="desc" lang="zh-CN">独立进行思路调研、模型架构设计、数据集构造和模型训练。</p>
+    <p class="desc" lang="en">I independently carry out the literature survey, model architecture design, dataset construction and model training.</p>
+  </section>
+
+  <section id="status">
+    <h2><span lang="zh-CN">进展</span><span lang="en">Status</span></h2>
+    <p class="desc" lang="zh-CN">课题正在进行中，结果尚未公开。</p>
+    <p class="desc" lang="en">The project is ongoing; results are not yet public.</p>
+  </section>
+
+  <p class="back"><a href="/research/"><span lang="zh-CN">← 返回研究</span><span lang="en">← Back to Research</span></a></p>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap foot">
+    <p>
+      <span lang="zh-CN">© 2026 刘铠宁 · 最后更新于 2026 年 11 月</span>
+      <span lang="en">© 2026 Kaining Liu · Last updated November 2026</span>
+    </p>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js"></script>
+</body>
+</html>

@@ -67,75 +67,57 @@
   <section id="experience">
     <h2><span lang="zh-CN">科研经历</span><span lang="en">Research Experience</span></h2>
 
-    <div class="entry" id="latenttrace">
+    <article class="entry card" id="latenttrace">
       <div class="row">
-        <h3>LatentTrace</h3>
+        <h3><a class="stretch" href="/research/latenttrace/">LatentTrace</a></h3>
         <span class="date"><span lang="zh-CN">2026.08 – 至今</span><span lang="en">2026.08 – Present</span></span>
       </div>
-      <p class="org"><span lang="zh-CN">独立负责课题 · 中国科大数据科学实验室（LDS）· 导师：王文杰</span><span lang="en">Independent project · Lab for Data Science (LDS), USTC · Advisor: Prof. Wenjie Wang</span></p>
-      <ul class="bullets" lang="zh-CN">
-        <li>目标：让语言模型以参数内的向量记忆替代文本上下文，获得原生的长期记忆与持续学习能力；</li>
-        <li>方法：在大模型中引入“存储”与“召回”两种动作，逐层把隐状态写入记忆并按需调回；存什么、何时取由模型自己学会，不引入外部检索器或独立的记忆网络；</li>
-        <li>独立负责问题提出、模型设计、训练方案与评测，工作进行中，尚未公开。</li>
-      </ul>
-      <ul class="bullets" lang="en">
-        <li>Goal: let language models replace textual context with vector memory held in their own parameters, giving them native long-term memory and continual learning.</li>
-        <li>Method: add “store” and “recall” actions to an LLM that write hidden states into memory layer by layer and bring them back on demand; the model learns what to store and when to recall, with no external retriever or separate memory network.</li>
-        <li>I lead the problem formulation, model design, training recipe and evaluation. Work in progress, not yet public.</li>
-      </ul>
-    </div>
+      <p class="org"><span lang="zh-CN">课题负责人 · 中国科大数据科学实验室（LDS）· 导师：王文杰</span><span lang="en">Project lead · Lab for Data Science (LDS), USTC · Advisor: Prof. Wenjie Wang</span></p>
+      <p class="desc" lang="zh-CN"><span class="label">研究内容</span>用参数化向量库作为记忆媒介，探究具有原生记忆能力的 AI 模型。今天的大模型只能把记忆放在上下文文本里，历史越长越慢越贵；本课题让模型把自己处理信息时的内部表示存入一块可持续增长的向量记忆，什么时候存、存什么、什么时候回忆都由模型在训练中学会，清空上下文后仍能凭记忆作答。</p>
+      <p class="desc" lang="en"><span class="label">Research</span>Using a parameterized vector store as the memory medium to explore AI models with native memory. Today’s LLMs can only keep memory as text in their context, which gets slower and costlier as history grows. This project lets a model write its own internal representations into a growing vector memory, learning in training when to store, what to store and when to recall, so it can still answer after the context is cleared.</p>
+      <p class="desc" lang="zh-CN"><span class="label">我的工作</span>独立进行思路调研、模型架构设计、数据集构造和模型训练。</p>
+      <p class="desc" lang="en"><span class="label">My role</span>Independently carried out the literature survey, model architecture design, dataset construction and model training.</p>
+      <p class="more-link"><span lang="zh-CN">详细 →</span><span lang="en">Details →</span></p>
+    </article>
 
-    <div class="entry" id="zgca">
+    <article class="entry card" id="self-evolving-agents">
       <div class="row">
-        <h3><span lang="zh-CN">自进化智能体的理论研究</span><span lang="en">Theory of Self-Evolving Agents</span></h3>
+        <h3><a class="stretch" href="/research/self-evolving-agents/"><span lang="zh-CN">自进化智能体的理论研究</span><span lang="en">Theory of Self-Evolving Agents</span></a></h3>
         <span class="date"><span lang="zh-CN">2026 暑期</span><span lang="en">Summer 2026</span></span>
       </div>
       <p class="org"><span lang="zh-CN">访问学生 · 北京中关村学院 · 合作老师：陈祥</span><span lang="en">Visiting student · Zhongguancun Academy, Beijing · Host: Xiang Chen</span></p>
-      <ul class="bullets" lang="zh-CN">
-        <li>从理论上比较自进化智能体与冻结策略智能体在元学习与自适应能力上的差异。</li>
-      </ul>
-      <ul class="bullets" lang="en">
-        <li>Studied, from a theoretical angle, how self-evolving agents and frozen-policy agents differ in their capacity for meta-learning and adaptation.</li>
-      </ul>
-    </div>
+      <p class="desc" lang="zh-CN"><span class="label">研究内容</span>从理论上研究自进化智能体与冻结策略智能体在元学习与自适应能力上的差异：部署后参数固定的智能体只能依靠上下文适应新任务，而自进化智能体在使用中持续更新自身，两者在“学会如何学习”上的差别在哪里、有多大。</p>
+      <p class="desc" lang="en"><span class="label">Research</span>A theoretical study of how self-evolving agents and frozen-policy agents differ in meta-learning and adaptation: an agent with fixed parameters can only adapt through its context, while a self-evolving agent keeps updating itself; where, and by how much, do they differ in learning how to learn?</p>
+      <p class="desc" lang="zh-CN"><span class="label">我的工作</span>想法提出、理论推导、实验设计与运行、论文与报告撰写。</p>
+      <p class="desc" lang="en"><span class="label">My role</span>Proposed the idea, did the theoretical derivation, designed and ran the experiments, and wrote the paper and reports.</p>
+      <p class="more-link"><span lang="zh-CN">详细 →</span><span lang="en">Details →</span></p>
+    </article>
 
-    <div class="entry" id="xiaoyi">
+    <article class="entry card" id="xiaoyi">
       <div class="row">
-        <h3><span lang="zh-CN">华为小艺个性化记忆智能体</span><span lang="en">Personalized Memory Agent for Huawei XiaoYi</span></h3>
+        <h3><a class="stretch" href="/research/xiaoyi/"><span lang="zh-CN">华为小艺个性化记忆智能体</span><span lang="en">Personalized Memory Agent for Huawei XiaoYi</span></a></h3>
         <span class="date">2026.02 – 2026.05</span>
       </div>
-      <p class="org"><span lang="zh-CN">科研实习生 · LDS × 华为小艺 AI 助手项目</span><span lang="en">Research Intern · LDS × Huawei XiaoYi AI Assistant</span></p>
-      <ul class="bullets" lang="zh-CN">
-        <li>参与为华为小艺 AI 助手开发个性化大模型记忆系统；</li>
-        <li>设计并实现记忆抽取智能体流水线；</li>
-        <li>对记忆抽取与检索行为进行实验评估与分析；</li>
-        <li>撰写技术报告与实验文档。</li>
-      </ul>
-      <ul class="bullets" lang="en">
-        <li>Helped develop a personalized LLM memory system for the Huawei XiaoYi AI assistant.</li>
-        <li>Designed and implemented a memory-extraction agent pipeline.</li>
-        <li>Evaluated and analyzed memory extraction and retrieval behavior.</li>
-        <li>Wrote technical reports and experiment documentation.</li>
-      </ul>
-    </div>
+      <p class="org"><span lang="zh-CN">科研实习生 · LDS × 华为小艺</span><span lang="en">Research Intern · LDS × Huawei XiaoYi</span></p>
+      <p class="desc" lang="zh-CN"><span class="label">研究内容</span>为华为小艺 AI 助手开发个性化大模型记忆系统：从对话中抽取值得长期记住的用户信息，存入记忆，并在之后的交互中检索使用，让助手的回答更贴合用户本人。</p>
+      <p class="desc" lang="en"><span class="label">Research</span>A personalized LLM memory system for the Huawei XiaoYi AI assistant: it extracts user information worth remembering from conversations, stores it, and retrieves it in later interactions so replies fit the user better.</p>
+      <p class="desc" lang="zh-CN"><span class="label">我的工作</span>设计并实现记忆抽取智能体流水线；对记忆抽取与检索行为进行实验评估与分析；撰写技术报告与实验文档。</p>
+      <p class="desc" lang="en"><span class="label">My role</span>Designed and implemented the memory-extraction agent pipeline; evaluated and analyzed memory extraction and retrieval; wrote technical reports and experiment documentation.</p>
+      <p class="more-link"><span lang="zh-CN">详细 →</span><span lang="en">Details →</span></p>
+    </article>
 
-    <div class="entry" id="alpsbench">
+    <article class="entry card" id="alpsbench">
       <div class="row">
-        <h3>AlpsBench</h3>
+        <h3><a class="stretch" href="/research/alpsbench/">AlpsBench <span class="faint">(SIGIR 2026)</span></a></h3>
         <span class="date">2025.09 – 2026.02</span>
       </div>
       <p class="org"><span lang="zh-CN">科研实习生 · 中国科大数据科学实验室（LDS）</span><span lang="en">Research Intern · Lab for Data Science (LDS), USTC</span></p>
-      <ul class="bullets" lang="zh-CN">
-        <li>参与基准的任务设计与数据整理；</li>
-        <li>参与记忆智能体在记忆与偏好对齐任务上的实验设计与评测；</li>
-        <li>进行结果分析并参与论文写作，论文发表于 SIGIR 2026。</li>
-      </ul>
-      <ul class="bullets" lang="en">
-        <li>Contributed to task design and data curation.</li>
-        <li>Designed and ran evaluations of agent memory systems on memorization and preference-alignment tasks.</li>
-        <li>Analyzed results and contributed to the paper, published at SIGIR 2026.</li>
-      </ul>
-    </div>
+      <p class="desc" lang="zh-CN"><span class="label">研究内容</span>基于 WildChat 真实人机对话构建大模型个性化基准：2,500 条长期交互序列配以人工核验的结构化记忆，覆盖个性化信息的抽取、更新、检索与利用四项任务，系统评测前沿大模型与记忆系统。</p>
+      <p class="desc" lang="en"><span class="label">Research</span>An LLM personalization benchmark built from real human–LLM dialogues in WildChat: 2,500 long-term interaction sequences with human-verified structured memories, covering four tasks (extraction, updating, retrieval and utilization of personal information) to evaluate frontier LLMs and memory systems.</p>
+      <p class="desc" lang="zh-CN"><span class="label">我的工作</span>参与任务设计与数据整理；记忆智能体在记忆与偏好对齐任务上的实验设计与评测；结果分析与论文写作（第六作者）。</p>
+      <p class="desc" lang="en"><span class="label">My role</span>Task design and data curation; designing and running evaluations of agent memory systems on memorization and preference alignment; result analysis and paper writing (sixth author).</p>
+      <p class="more-link"><span lang="zh-CN">详细 →</span><span lang="en">Details →</span></p>
+    </article>
   </section>
 
   <!-- ===================== Publications ===================== -->
