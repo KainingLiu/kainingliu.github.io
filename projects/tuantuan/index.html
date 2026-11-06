@@ -66,8 +66,8 @@
     </div>
     <h1 lang="zh-CN">团团<small>桌面陪伴机器人</small></h1>
     <h1 lang="en">Tuantuan<small>A desktop companion robot</small></h1>
-    <p class="lede" lang="zh-CN">一个直径约 15 厘米、圆滚滚的桌面陪伴机器人，用屏幕画出会动的眼睛。目前处在整机装配设计阶段：整台机器由参数文件和 Python 脚本生成，并自动检查零件干涉和摄像头视线；三维模型可以直接在浏览器里旋转、透视和拆解查看。</p>
-    <p class="lede" lang="en">A round desktop companion robot about 15 cm across, with lively eyes drawn on a screen. It is currently at the assembly-design stage: the whole robot is generated from a parameter file and Python scripts, with automatic checks for part interference and camera sight lines, and its 3D model can be rotated, seen through and exploded right in your browser.</p>
+    <p class="lede" lang="zh-CN">一个放在书桌上陪伴你的小机器人：圆滚滚的，大小和一个碗差不多，用屏幕显示会动的眼睛，带摄像头和轮子。目前外形和内部结构已经设计完成，三维模型可以直接在网页上转动、拆开查看。</p>
+    <p class="lede" lang="en">A little robot that keeps you company on your desk. It is round, about the size of a bowl, shows lively eyes on a screen, and has a camera and wheels. Its shape and inner structure are fully designed, and you can spin and take apart the 3D model right on this page.</p>
     <dl class="facts">
       <div><dt><span lang="zh-CN">尺寸</span><span lang="en">SIZE</span></dt><dd>150 × 150 × 116 mm</dd></div>
       <div><dt><span lang="zh-CN">零件</span><span lang="en">PARTS</span></dt><dd><span lang="zh-CN">83 个（含 14 个 3D 打印件）</span><span lang="en">83, including 14 printed parts</span></dd></div>
@@ -94,62 +94,80 @@
     </p>
   </section>
 
-  <!-- ===================== Design method ===================== -->
-  <section id="method">
-    <h2><span lang="zh-CN">用代码做结构设计</span><span lang="en">Designing in code</span></h2>
-    <div class="prose" lang="zh-CN">
-      <p>团团的结构主要用代码来描述：外形尺寸、零件位置和装配关系写在一份参数文件里，Python 脚本据此生成全部零件、组装成整机，再导出网页上看到的预览模型。改一个参数就能重新生成整台机器，并立刻重新跑一遍检查。</p>
-      <p>每个源文件和外购件模型都记录了哈希值，网页上的每一版预览都能追溯到生成它的那一版源码和参数。</p>
-    </div>
-    <div class="prose" lang="en">
-      <p>Tuantuan's structure is described mainly in code. Overall dimensions, part positions and how parts fit together live in a parameter file, and Python scripts use it to generate every part, assemble the robot and export the preview model you see on this page. Change one parameter and the whole robot is regenerated and re-checked.</p>
-      <p>Every source file and vendor model is recorded with a hash, so each preview on the web can be traced back to the exact sources and parameters that produced it.</p>
-    </div>
-  </section>
-
-  <!-- ===================== Checks ===================== -->
-  <section id="checks">
-    <h2><span lang="zh-CN">自动检查</span><span lang="en">Automatic checks</span></h2>
-    <p class="muted"><span lang="zh-CN">每次生成后自动运行，当前版本的结果：</span><span lang="en">These run after every build; results for the current version:</span></p>
+  <!-- ===================== Highlights ===================== -->
+  <section id="highlights">
+    <h2><span lang="zh-CN">怎么设计的</span><span lang="en">How it was designed</span></h2>
     <ul class="checks">
-      <li lang="zh-CN"><b>零件无干涉</b>整机零件之间没有相互穿透，按装配顺序安装时也不会发生碰撞。</li>
-      <li lang="en"><b>No interference</b>No parts overlap in the assembled robot, and nothing collides along the assembly path.</li>
-      <li lang="zh-CN"><b>打印件可用</b>14 个 3D 打印件的网格检查全部通过。</li>
-      <li lang="en"><b>Printable parts</b>All 14 3D-printed parts pass the mesh checks.</li>
-      <li lang="zh-CN"><b>摄像头视线通畅</b>从摄像头出发的视线检测中，没有一条被挡住。</li>
-      <li lang="en"><b>Clear camera view</b>None of the sight lines traced from the camera are blocked.</li>
-      <li lang="zh-CN"><b>笑眼区域无遮挡</b>屏幕上画眼睛的区域在正面完全可见。</li>
-      <li lang="en"><b>Eyes fully visible</b>The part of the screen where the eyes are drawn is fully visible from the front.</li>
+      <li lang="zh-CN"><b>改一个数字，整台机器跟着变</b>外形尺寸和零件位置都写在一张参数表里，程序据此自动画出全部零件并组装好。想调整设计，改几个数字就行，不用一个个零件重画。</li>
+      <li lang="en"><b>Change one number, the whole robot follows</b>Sizes and part positions live in one parameter table, and a program draws every part and assembles the robot from it. Adjusting the design means changing a few numbers, not redrawing parts by hand.</li>
+      <li lang="zh-CN"><b>电脑先替你“试装”</b>每次修改后，程序自动检查零件会不会互相顶住、能不能顺利装进去、摄像头和眼睛会不会被挡住，在打印之前就把问题找出来。</li>
+      <li lang="en"><b>The computer test-fits it first</b>After every change, the program checks whether parts collide, whether they can actually be put together, and whether the camera or eyes are blocked, catching problems before anything is printed.</li>
+      <li lang="zh-CN"><b>打开网页就能看</b>做好的三维模型直接放在网页上，任何人都能转动、透视、拆开来看，不需要安装专业软件。</li>
+      <li lang="en"><b>See it in your browser</b>The finished 3D model runs right in the browser. Anyone can rotate it, see inside and take it apart, with no special software.</li>
     </ul>
-  </section>
-
-  <!-- ===================== Hardware ===================== -->
-  <section id="hardware">
-    <h2><span lang="zh-CN">主要硬件</span><span lang="en">Main hardware</span></h2>
-    <ul class="bullets">
-      <li>M5Stack CoreS3-Lite</li>
-      <li>Radxa ZERO 3W</li>
-      <li>Waveshare RP2040-Zero</li>
-      <li><span lang="zh-CN">Pololu 电机、轮子与传感器</span><span lang="en">Pololu motors, wheels and sensors</span></li>
-      <li>PiSugar 3 Plus</li>
-      <li>Adafruit HUSB238 USB-C Breakout</li>
-    </ul>
-    <p class="muted">
-      <span lang="zh-CN">装配中使用的是厂商公开的机械参考模型，部分做了简化；尺寸还需要对照实物复核。</span>
-      <span lang="en">The assembly uses vendors' published mechanical reference models, some simplified; dimensions still need to be checked against the real parts.</span>
-    </p>
   </section>
 
   <!-- ===================== Status ===================== -->
   <section id="status">
     <h2><span lang="zh-CN">进展</span><span lang="en">Status</span></h2>
     <div class="prose" lang="zh-CN">
-      <p>当前版本为 v1.0.0（2026 年 10 月 8 日），完成了整机装配设计和上面的自动检查。下一步是打印零件、实物试装，验证装配和功能；装配说明和固件完成后，会整理发布完整的 V1 套件。</p>
+      <p><b>已完成：</b>整机外形和内部结构设计（2026 年 10 月，v1.0.0），并通过了全部自动检查。</p>
+      <p><b>下一步：</b>3D 打印零件、装出第一台实物；再写好程序和装配说明，整理成一套别人也能照着做出来的套件。</p>
     </div>
     <div class="prose" lang="en">
-      <p>The current version is v1.0.0 (October 8, 2026), with the full assembly designed and passing the checks above. Next comes printing the parts and test-fitting a real prototype to validate the fit and function; once the assembly guide and firmware are done, the complete V1 kit will be released.</p>
+      <p><b>Done:</b> the full exterior and interior design (v1.0.0, October 2026), passing every automatic check.</p>
+      <p><b>Next:</b> 3D-print the parts and build the first real robot, then write the software and assembly guide and package it as a kit others can build too.</p>
     </div>
   </section>
+
+  <details class="tech" id="tech">
+    <summary><span lang="zh-CN">技术细节</span><span lang="en">Technical details</span><small><span lang="zh-CN">写给工程师，点击展开</span><span lang="en">for engineers, click to expand</span></small></summary>
+    <!-- ===================== Design method ===================== -->
+    <section id="method">
+      <h2><span lang="zh-CN">用代码做结构设计</span><span lang="en">Designing in code</span></h2>
+      <div class="prose" lang="zh-CN">
+        <p>团团的结构主要用代码来描述：外形尺寸、零件位置和装配关系写在一份参数文件里，Python 脚本据此生成全部零件、组装成整机，再导出网页上看到的预览模型。改一个参数就能重新生成整台机器，并立刻重新跑一遍检查。</p>
+        <p>每个源文件和外购件模型都记录了哈希值，网页上的每一版预览都能追溯到生成它的那一版源码和参数。</p>
+      </div>
+      <div class="prose" lang="en">
+        <p>Tuantuan's structure is described mainly in code. Overall dimensions, part positions and how parts fit together live in a parameter file, and Python scripts use it to generate every part, assemble the robot and export the preview model you see on this page. Change one parameter and the whole robot is regenerated and re-checked.</p>
+        <p>Every source file and vendor model is recorded with a hash, so each preview on the web can be traced back to the exact sources and parameters that produced it.</p>
+      </div>
+    </section>
+
+    <!-- ===================== Checks ===================== -->
+    <section id="checks">
+      <h2><span lang="zh-CN">自动检查</span><span lang="en">Automatic checks</span></h2>
+      <p class="muted"><span lang="zh-CN">每次生成后自动运行，当前版本的结果：</span><span lang="en">These run after every build; results for the current version:</span></p>
+      <ul class="checks">
+        <li lang="zh-CN"><b>零件无干涉</b>整机零件之间没有相互穿透，按装配顺序安装时也不会发生碰撞。</li>
+        <li lang="en"><b>No interference</b>No parts overlap in the assembled robot, and nothing collides along the assembly path.</li>
+        <li lang="zh-CN"><b>打印件可用</b>14 个 3D 打印件的网格检查全部通过。</li>
+        <li lang="en"><b>Printable parts</b>All 14 3D-printed parts pass the mesh checks.</li>
+        <li lang="zh-CN"><b>摄像头视线通畅</b>从摄像头出发的视线检测中，没有一条被挡住。</li>
+        <li lang="en"><b>Clear camera view</b>None of the sight lines traced from the camera are blocked.</li>
+        <li lang="zh-CN"><b>笑眼区域无遮挡</b>屏幕上画眼睛的区域在正面完全可见。</li>
+        <li lang="en"><b>Eyes fully visible</b>The part of the screen where the eyes are drawn is fully visible from the front.</li>
+      </ul>
+    </section>
+
+    <!-- ===================== Hardware ===================== -->
+    <section id="hardware">
+      <h2><span lang="zh-CN">主要硬件</span><span lang="en">Main hardware</span></h2>
+      <ul class="bullets">
+        <li>M5Stack CoreS3-Lite</li>
+        <li>Radxa ZERO 3W</li>
+        <li>Waveshare RP2040-Zero</li>
+        <li><span lang="zh-CN">Pololu 电机、轮子与传感器</span><span lang="en">Pololu motors, wheels and sensors</span></li>
+        <li>PiSugar 3 Plus</li>
+        <li>Adafruit HUSB238 USB-C Breakout</li>
+      </ul>
+      <p class="muted">
+        <span lang="zh-CN">装配中使用的是厂商公开的机械参考模型，部分做了简化；尺寸还需要对照实物复核。</span>
+        <span lang="en">The assembly uses vendors' published mechanical reference models, some simplified; dimensions still need to be checked against the real parts.</span>
+      </p>
+    </section>
+  </details>
 
   <!-- ===================== More ===================== -->
   <section id="more">

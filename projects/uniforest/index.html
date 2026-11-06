@@ -66,13 +66,13 @@
     </div>
     <h1 lang="zh-CN">Uniforest 机器人<small>自主搬运与搭建</small></h1>
     <h1 lang="en">Uniforest Robot<small>Autonomous pick, carry and build</small></h1>
-    <p class="lede" lang="zh-CN">Uniforest 队为 RoboGame 2026 打造的比赛机器人。它分成两半：树莓派 5 负责“看和想”，用两路摄像头识别方块、定位场地并决定下一步；STM32 负责“动”，以 1 kHz 控制四轮底盘和抓取机构。整场比赛中，它按预设策略自动识别、抓取、搬运并搭建方块。</p>
-    <p class="lede" lang="en">The robot Team Uniforest built for RoboGame 2026. It comes in two halves: a Raspberry Pi 5 does the seeing and thinking, using two cameras to find blocks, localize itself on the field and pick the next move; an STM32 does the moving, running the four-wheel chassis and the gripper at 1 kHz. Through a whole match it follows a preset strategy to recognize, grab, carry and stack blocks on its own.</p>
+    <p class="lede" lang="zh-CN">我们为校内机器人比赛 RoboGame 2026 设计制作的全自主机器人。比赛开始后没有人遥控，它自己认路、找方块，把方块抓上车、运到指定区域并一块块搭起来，最终帮助队伍拿下冠军。</p>
+    <p class="lede" lang="en">A fully autonomous robot we designed and built for RoboGame 2026, a robotics competition at our university. Once a match starts, nobody steers it: it finds its own way, spots blocks, picks them up, carries them to the target area and stacks them, and it took our team to the championship.</p>
     <dl class="facts">
       <div><dt><span lang="zh-CN">时间</span><span lang="en">YEAR</span></dt><dd>2026</dd></div>
       <div><dt><span lang="zh-CN">荣誉</span><span lang="en">AWARD</span></dt><dd><span lang="zh-CN">RoboGame 2026 冠军</span><span lang="en">RoboGame 2026 Champion</span></dd></div>
       <div><dt><span lang="zh-CN">团队</span><span lang="en">TEAM</span></dt><dd><span lang="zh-CN">Uniforest 队 · 5 人</span><span lang="en">Team Uniforest · 5 members</span></dd></div>
-      <div><dt><span lang="zh-CN">技术</span><span lang="en">STACK</span></dt><dd>Raspberry Pi 5 · STM32F427 · OpenCV</dd></div>
+      <div><dt><span lang="zh-CN">形式</span><span lang="en">FORM</span></dt><dd><span lang="zh-CN">全自主比赛机器人</span><span lang="en">Fully autonomous robot</span></dd></div>
     </dl>
     <div class="links">
       <a class="chip" href="https://github.com/KainingLiu/uniforest" target="_blank" rel="noopener">GitHub ↗</a>
@@ -82,99 +82,58 @@
   <figure class="shot bare cover">
     <img src="img/robot.jpg" width="1600" height="1067" alt="The Uniforest robot on the competition field next to orange blocks and AprilTag markers">
     <figcaption>
-      <span lang="zh-CN">比赛场地上的 Uniforest 机器人，场边的 AprilTag 标记用于定位。</span>
-      <span lang="en">The Uniforest robot on the field; the AprilTag markers around it are used for localization.</span>
+      <span lang="zh-CN">比赛场地上的 Uniforest 机器人。场边那些像二维码的黑白方块是定位标记，机器人靠它们知道自己在哪。</span>
+      <span lang="en">The Uniforest robot on the field. The QR-code-like squares around it are markers the robot uses to work out where it is.</span>
     </figcaption>
   </figure>
 
-  <!-- ===================== Architecture ===================== -->
-  <section id="architecture">
-    <h2><span lang="zh-CN">系统架构</span><span lang="en">System architecture</span></h2>
-    <div class="prose" lang="zh-CN">
-      <p>机器人采用上下位机分工：上位机做视觉、策略和位置控制这类“慢而复杂”的事，下位机做电机闭环和机构动作这类“快而确定”的事。两者通过一条带 CRC 校验的串口链路通信，协议有独立的 Schema 和版本号，两端按同一份定义收发。</p>
-    </div>
-    <div class="prose" lang="en">
-      <p>The work is split between a host and a microcontroller. The host handles the slow, complex parts (vision, strategy, position control); the MCU handles the fast, deterministic parts (motor loops and mechanism moves). They talk over a CRC-checked serial link whose protocol has its own versioned schema, so both ends follow one definition.</p>
-    </div>
-    <div class="arch">
-      <div class="node">
-        <div class="k">HOST · Python</div>
-        <h3><span lang="zh-CN">上位机：树莓派 5</span><span lang="en">Host: Raspberry Pi 5</span></h3>
-        <p class="muted">8 GB · OpenCV</p>
-        <ul class="bullets" lang="zh-CN">
-          <li>两路摄像头：一路看方块、舱内数量和建筑，一路识别 AprilTag 定位</li>
-          <li>Task 库 + PlanA/B/C 等策略包，由同一个执行器运行</li>
-          <li>20 ms 位置外环、速度规划与 IMU 航向保持</li>
-          <li>通信、心跳、设备预检</li>
-        </ul>
-        <ul class="bullets" lang="en">
-          <li>Two cameras: one for blocks, the load count and the build, one for AprilTag localization</li>
-          <li>A task library plus strategy packs (PlanA/B/C, …) run by one executor</li>
-          <li>20 ms position loop, speed planning and IMU heading hold</li>
-          <li>Comms, heartbeat and device pre-checks</li>
-        </ul>
-      </div>
-      <div class="wire">
-        <b>UART · 115200</b>
-        <i></i>
-        <span>CRC16 · schema v5</span>
-      </div>
-      <div class="node">
-        <div class="k">MCU · C / HAL</div>
-        <h3><span lang="zh-CN">下位机：STM32F427</span><span lang="en">MCU: STM32F427</span></h3>
-        <p class="muted"><span lang="zh-CN">RoboMaster A 板 · 裸机，无 RTOS</span><span lang="en">RoboMaster A board · bare metal, no RTOS</span></p>
-        <ul class="bullets" lang="zh-CN">
-          <li>1 kHz 四轮 M3508 速度 PID，CAN 接收电机反馈</li>
-          <li>四路舵机、双步进电机、气泵与电磁阀吸盘</li>
-          <li>非阻塞执行 Grap1–3 抓取与 Build1–3 搭建动作</li>
-          <li>JY61P IMU 航向、50 Hz 遥测回传</li>
-        </ul>
-        <ul class="bullets" lang="en">
-          <li>1 kHz speed PID on four M3508 motors, with feedback over CAN</li>
-          <li>Four servos, two steppers and a pump-and-valve suction cup</li>
-          <li>Non-blocking Grap1–3 (grab) and Build1–3 (stack) sequences</li>
-          <li>JY61P IMU heading and 50 Hz telemetry</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== Strategy ===================== -->
-  <section id="strategy">
-    <h2><span lang="zh-CN">策略系统</span><span lang="en">Strategy system</span></h2>
-    <div class="prose" lang="zh-CN">
-      <p>比赛中的每个环节（抓起始方块、去某个区域搜索、投放、搭建……）都被写成一个可复用、可单独测试的 Task；策略包只负责把这些 Task 按顺序组合起来，所有策略共用同一个执行器。这样换策略只需要换一份路线，不必改动控制代码。下面是其中一套策略 PlanC 的路线：</p>
-    </div>
-    <div class="prose" lang="en">
-      <p>Each part of a match (grabbing the starting block, searching an area, dropping off, building, …) is a reusable task that can be tested on its own. A strategy pack just chains tasks in order, and every strategy runs on the same executor, so switching strategy means swapping a route, not touching control code. Here is the route of one strategy, PlanC:</p>
-    </div>
-    <ol class="flow" aria-label="PlanC">
-      <li>Task0-1</li><li>Task1-1</li><li>Task0-3</li><li>Task1-2</li><li>Task2-1</li><li>Task3-4</li><li>Task2-2</li><li>Task3-2</li><li>Task1-3</li><li>Task2-2</li><li>Task3-3</li>
+  <!-- ===================== What it does ===================== -->
+  <section id="match">
+    <h2><span lang="zh-CN">它在比赛里做什么</span><span lang="en">What it does in a match</span></h2>
+    <ol class="steps">
+      <li>
+        <div>
+          <h3><span lang="zh-CN">认路</span><span lang="en">Find its way</span></h3>
+          <p lang="zh-CN">场地四周贴着像二维码一样的定位标记，机器人用摄像头看到它们，就能随时知道自己在场地的哪个位置、朝向哪里。</p>
+          <p lang="en">Markers that look like QR codes surround the field. When the robot's camera sees them, it knows exactly where it is and which way it is facing.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h3><span lang="zh-CN">找方块、抓上车</span><span lang="en">Find and pick up blocks</span></h3>
+          <p lang="zh-CN">另一个摄像头负责在场地里找方块。找到后开过去，用吸盘和夹爪把方块抓起来放进车上的货舱。</p>
+          <p lang="en">A second camera looks for blocks. The robot drives over and uses a suction cup and gripper to load them into its on-board bay.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h3><span lang="zh-CN">运过去、搭起来</span><span lang="en">Carry and build</span></h3>
+          <p lang="zh-CN">攒够方块后，它把方块运到指定区域，一块块稳稳地搭成建筑。</p>
+          <p lang="en">With enough blocks on board, it drives to the target area and stacks them into a structure, one at a time.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h3><span lang="zh-CN">全程自己做决定</span><span lang="en">Decide everything itself</span></h3>
+          <p lang="zh-CN">整场比赛没有人遥控。走哪条路线、先做什么、遇到意外怎么办，都是我们提前设计好的策略，由机器人自己判断执行。</p>
+          <p lang="en">Nobody controls it during the match. The route, the order of jobs and what to do when things go wrong all come from strategies we designed in advance, and the robot carries them out on its own.</p>
+        </div>
+      </li>
     </ol>
-    <div class="prose" lang="zh-CN">
-      <p>相邻 Task 之间会交接航向零点和舱内方块数量；如果某次搜索耗尽仍没找到足够的方块，可以触发一次补抓，再进入搭建。</p>
-    </div>
-    <div class="prose" lang="en">
-      <p>Neighbouring tasks hand over the heading reference and the number of blocks on board; if a search runs out without finding enough blocks, the robot can make one extra grab attempt before it builds.</p>
-    </div>
   </section>
 
-  <!-- ===================== Reliability ===================== -->
-  <section id="reliability">
-    <h2><span lang="zh-CN">可靠性设计</span><span lang="en">Built to be reliable</span></h2>
+  <!-- ===================== Highlights ===================== -->
+  <section id="highlights">
+    <h2><span lang="zh-CN">设计亮点</span><span lang="en">Design highlights</span></h2>
     <ul class="checks">
-      <li lang="zh-CN"><b>失联即停</b>超过 200 ms 收不到有效指令，下位机立即停止底盘、步进电机和吸盘并取消动作；重新连上后也不会自动续跑。</li>
-      <li lang="en"><b>Stop on link loss</b>If no valid command arrives for 200 ms, the MCU stops the chassis, steppers and suction and cancels the move; it does not resume on its own after reconnecting.</li>
-      <li lang="zh-CN"><b>视觉可降级</b>视觉失效时按任务预算和超时降级继续比赛；通信异常、遥测过期、急停和机构故障则直接终止。</li>
-      <li lang="en"><b>Vision can degrade</b>If vision fails, the robot falls back within each task's time budget and keeps going; comms faults, stale telemetry, e-stop and mechanism faults still end the run.</li>
-      <li lang="zh-CN"><b>底盘与机构并行</b>机构收尾时可以先放行底盘移动，节省时间，但仍要等两边都完成才算动作结束。</li>
-      <li lang="en"><b>Chassis and gripper in parallel</b>The chassis may start moving while the mechanism finishes, saving time, but a move only counts as done when both are.</li>
-      <li lang="zh-CN"><b>实时性有保证</b>电机反馈在 CAN 中断里接收，避免主循环发送遥测时漏收；1 kHz 速度环在定时器中断中运行。</li>
-      <li lang="en"><b>Real-time by design</b>Motor feedback is read in the CAN interrupt so telemetry sends cannot starve it, and the 1 kHz speed loop runs in a timer interrupt.</li>
-      <li lang="zh-CN"><b>协议有校验</b>每一帧都带序号和 CRC16 校验，协议定义版本化，上下位机按同一份 Schema 收发。</li>
-      <li lang="en"><b>Checked protocol</b>Every frame carries a sequence number and CRC16, and the protocol definition is versioned so both sides share one schema.</li>
-      <li lang="zh-CN"><b>不上车也能测</b>上位机有无硬件检查和单元测试，下位机可无硬件编译；每次调参和验证都记录在变更日志里。</li>
-      <li lang="en"><b>Testable off the robot</b>The host has hardware-free checks and unit tests, the firmware builds without hardware, and every tuning and validation run is logged in a changelog.</li>
+      <li lang="zh-CN"><b>“大脑”和“小脑”分工</b>一块小电脑负责看和想（识别、定位、做决定），一块控制板负责又快又准地动（驱动轮子和机械臂），各做自己最擅长的事。</li>
+      <li lang="en"><b>A brain and a cerebellum</b>A small computer does the seeing and thinking (recognizing, locating, deciding), while a control board handles fast, precise movement (wheels and arm). Each does what it is best at.</li>
+      <li lang="zh-CN"><b>打法像搭积木</b>比赛动作被拆成一个个小任务，换打法只要重新排列组合，比赛间隙就能根据对手和场地调整策略。</li>
+      <li lang="en"><b>Strategies like building blocks</b>Every action in a match is a small, reusable task. Changing strategy is just rearranging them, so we could adjust between matches.</li>
+      <li lang="zh-CN"><b>出了问题先保安全</b>和“大脑”失联超过 0.2 秒就立即停车；摄像头一时看不清时，会退而求其次继续比赛，而不是卡在原地。</li>
+      <li lang="en"><b>Safety first when things go wrong</b>If it loses contact with its “brain” for 0.2 seconds, it stops immediately. If the camera briefly cannot see, it falls back to a simpler plan and keeps going instead of freezing.</li>
+      <li lang="zh-CN"><b>不上场地也能调试</b>大部分功能不用上车就能测试，每次调参都有记录，把宝贵的场地时间留给真正的实战演练。</li>
+      <li lang="en"><b>Testable off the field</b>Most features can be tested without the robot, and every tuning session is logged, so precious field time goes to real practice runs.</li>
     </ul>
   </section>
 
@@ -198,6 +157,100 @@
       </figure>
     </div>
   </section>
+
+  <details class="tech" id="tech">
+    <summary><span lang="zh-CN">技术细节</span><span lang="en">Technical details</span><small><span lang="zh-CN">写给工程师，点击展开</span><span lang="en">for engineers, click to expand</span></small></summary>
+    <!-- ===================== Architecture ===================== -->
+    <section id="architecture">
+      <h2><span lang="zh-CN">系统架构</span><span lang="en">System architecture</span></h2>
+      <div class="prose" lang="zh-CN">
+        <p>机器人采用上下位机分工：上位机做视觉、策略和位置控制这类“慢而复杂”的事，下位机做电机闭环和机构动作这类“快而确定”的事。两者通过一条带 CRC 校验的串口链路通信，协议有独立的 Schema 和版本号，两端按同一份定义收发。</p>
+      </div>
+      <div class="prose" lang="en">
+        <p>The work is split between a host and a microcontroller. The host handles the slow, complex parts (vision, strategy, position control); the MCU handles the fast, deterministic parts (motor loops and mechanism moves). They talk over a CRC-checked serial link whose protocol has its own versioned schema, so both ends follow one definition.</p>
+      </div>
+      <div class="arch">
+        <div class="node">
+          <div class="k">HOST · Python</div>
+          <h3><span lang="zh-CN">上位机：树莓派 5</span><span lang="en">Host: Raspberry Pi 5</span></h3>
+          <p class="muted">8 GB · OpenCV</p>
+          <ul class="bullets" lang="zh-CN">
+            <li>两路摄像头：一路看方块、舱内数量和建筑，一路识别 AprilTag 定位</li>
+            <li>Task 库 + PlanA/B/C 等策略包，由同一个执行器运行</li>
+            <li>20 ms 位置外环、速度规划与 IMU 航向保持</li>
+            <li>通信、心跳、设备预检</li>
+          </ul>
+          <ul class="bullets" lang="en">
+            <li>Two cameras: one for blocks, the load count and the build, one for AprilTag localization</li>
+            <li>A task library plus strategy packs (PlanA/B/C, …) run by one executor</li>
+            <li>20 ms position loop, speed planning and IMU heading hold</li>
+            <li>Comms, heartbeat and device pre-checks</li>
+          </ul>
+        </div>
+        <div class="wire">
+          <b>UART · 115200</b>
+          <i></i>
+          <span>CRC16 · schema v5</span>
+        </div>
+        <div class="node">
+          <div class="k">MCU · C / HAL</div>
+          <h3><span lang="zh-CN">下位机：STM32F427</span><span lang="en">MCU: STM32F427</span></h3>
+          <p class="muted"><span lang="zh-CN">RoboMaster A 板 · 裸机，无 RTOS</span><span lang="en">RoboMaster A board · bare metal, no RTOS</span></p>
+          <ul class="bullets" lang="zh-CN">
+            <li>1 kHz 四轮 M3508 速度 PID，CAN 接收电机反馈</li>
+            <li>四路舵机、双步进电机、气泵与电磁阀吸盘</li>
+            <li>非阻塞执行 Grap1–3 抓取与 Build1–3 搭建动作</li>
+            <li>JY61P IMU 航向、50 Hz 遥测回传</li>
+          </ul>
+          <ul class="bullets" lang="en">
+            <li>1 kHz speed PID on four M3508 motors, with feedback over CAN</li>
+            <li>Four servos, two steppers and a pump-and-valve suction cup</li>
+            <li>Non-blocking Grap1–3 (grab) and Build1–3 (stack) sequences</li>
+            <li>JY61P IMU heading and 50 Hz telemetry</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Strategy ===================== -->
+    <section id="strategy">
+      <h2><span lang="zh-CN">策略系统</span><span lang="en">Strategy system</span></h2>
+      <div class="prose" lang="zh-CN">
+        <p>比赛中的每个环节（抓起始方块、去某个区域搜索、投放、搭建……）都被写成一个可复用、可单独测试的 Task；策略包只负责把这些 Task 按顺序组合起来，所有策略共用同一个执行器。这样换策略只需要换一份路线，不必改动控制代码。下面是其中一套策略 PlanC 的路线：</p>
+      </div>
+      <div class="prose" lang="en">
+        <p>Each part of a match (grabbing the starting block, searching an area, dropping off, building, …) is a reusable task that can be tested on its own. A strategy pack just chains tasks in order, and every strategy runs on the same executor, so switching strategy means swapping a route, not touching control code. Here is the route of one strategy, PlanC:</p>
+      </div>
+      <ol class="flow" aria-label="PlanC">
+        <li>Task0-1</li><li>Task1-1</li><li>Task0-3</li><li>Task1-2</li><li>Task2-1</li><li>Task3-4</li><li>Task2-2</li><li>Task3-2</li><li>Task1-3</li><li>Task2-2</li><li>Task3-3</li>
+      </ol>
+      <div class="prose" lang="zh-CN">
+        <p>相邻 Task 之间会交接航向零点和舱内方块数量；如果某次搜索耗尽仍没找到足够的方块，可以触发一次补抓，再进入搭建。</p>
+      </div>
+      <div class="prose" lang="en">
+        <p>Neighbouring tasks hand over the heading reference and the number of blocks on board; if a search runs out without finding enough blocks, the robot can make one extra grab attempt before it builds.</p>
+      </div>
+    </section>
+
+    <!-- ===================== Reliability ===================== -->
+    <section id="reliability">
+      <h2><span lang="zh-CN">可靠性设计</span><span lang="en">Built to be reliable</span></h2>
+      <ul class="checks">
+        <li lang="zh-CN"><b>失联即停</b>超过 200 ms 收不到有效指令，下位机立即停止底盘、步进电机和吸盘并取消动作；重新连上后也不会自动续跑。</li>
+        <li lang="en"><b>Stop on link loss</b>If no valid command arrives for 200 ms, the MCU stops the chassis, steppers and suction and cancels the move; it does not resume on its own after reconnecting.</li>
+        <li lang="zh-CN"><b>视觉可降级</b>视觉失效时按任务预算和超时降级继续比赛；通信异常、遥测过期、急停和机构故障则直接终止。</li>
+        <li lang="en"><b>Vision can degrade</b>If vision fails, the robot falls back within each task's time budget and keeps going; comms faults, stale telemetry, e-stop and mechanism faults still end the run.</li>
+        <li lang="zh-CN"><b>底盘与机构并行</b>机构收尾时可以先放行底盘移动，节省时间，但仍要等两边都完成才算动作结束。</li>
+        <li lang="en"><b>Chassis and gripper in parallel</b>The chassis may start moving while the mechanism finishes, saving time, but a move only counts as done when both are.</li>
+        <li lang="zh-CN"><b>实时性有保证</b>电机反馈在 CAN 中断里接收，避免主循环发送遥测时漏收；1 kHz 速度环在定时器中断中运行。</li>
+        <li lang="en"><b>Real-time by design</b>Motor feedback is read in the CAN interrupt so telemetry sends cannot starve it, and the 1 kHz speed loop runs in a timer interrupt.</li>
+        <li lang="zh-CN"><b>协议有校验</b>每一帧都带序号和 CRC16 校验，协议定义版本化，上下位机按同一份 Schema 收发。</li>
+        <li lang="en"><b>Checked protocol</b>Every frame carries a sequence number and CRC16, and the protocol definition is versioned so both sides share one schema.</li>
+        <li lang="zh-CN"><b>不上车也能测</b>上位机有无硬件检查和单元测试，下位机可无硬件编译；每次调参和验证都记录在变更日志里。</li>
+        <li lang="en"><b>Testable off the robot</b>The host has hardware-free checks and unit tests, the firmware builds without hardware, and every tuning and validation run is logged in a changelog.</li>
+      </ul>
+    </section>
+  </details>
 
   <!-- ===================== More ===================== -->
   <section id="more">

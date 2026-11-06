@@ -66,13 +66,13 @@
     </div>
     <h1 lang="zh-CN">MemoCat 记忆猫<small>懂课堂、懂组会，也懂你</small></h1>
     <h1 lang="en">MemoCat<small>Gets your lectures, your meetings, and you</small></h1>
-    <p class="lede" lang="zh-CN">一只常驻电脑桌面的布偶猫。它在后台持续听写、分辨说话人、判断你正处在什么场景，再按你定义的方式把对话整理成结构化报告，存进可检索、可溯源的本地记忆库；你也可以随时开口和它聊天，让它帮你回忆、提醒和办事。</p>
-    <p class="lede" lang="en">A ragdoll cat that lives on your desktop. In the background it transcribes what is said, tells speakers apart, works out what kind of conversation you are in, and writes it up as a structured report in the format you define, stored in a searchable, source-traceable local memory. You can also just talk to it, and it will recall things, remind you and get small jobs done.</p>
+    <p class="lede" lang="zh-CN">一只住在电脑桌面上的 AI 小猫。上课、开会前点它一下，它就在后台帮你听写、分清谁在说话，结束后自动整理成课堂笔记或会议纪要；之后想不起“上次讨论了什么”，直接问它就行。</p>
+    <p class="lede" lang="en">An AI cat that lives on your computer desktop. Click it before a lecture or meeting and it quietly writes down what is said and who said it, then turns everything into lecture notes or meeting minutes when you are done. Later, if you forget what was discussed, just ask it.</p>
     <dl class="facts">
       <div><dt><span lang="zh-CN">时间</span><span lang="en">YEAR</span></dt><dd>2026</dd></div>
       <div><dt><span lang="zh-CN">荣誉</span><span lang="en">AWARD</span></dt><dd><span lang="zh-CN">“一〇七杯”智能体赛道本科生组特等奖</span><span lang="en">107 Cup Grand Prize, Agent Track (Undergraduate)</span></dd></div>
       <div><dt><span lang="zh-CN">团队</span><span lang="en">TEAM</span></dt><dd><span lang="zh-CN">时客队 · 4 人</span><span lang="en">Team Shike · 4 members</span></dd></div>
-      <div><dt><span lang="zh-CN">技术</span><span lang="en">STACK</span></dt><dd>Rust · Tauri 2 · React 19</dd></div>
+      <div><dt><span lang="zh-CN">形式</span><span lang="en">FORM</span></dt><dd><span lang="zh-CN">电脑桌面应用</span><span lang="en">Desktop app</span></dd></div>
     </dl>
     <div class="links">
       <a class="chip" href="https://github.com/KainingLiu/memocatdoc" target="_blank" rel="noopener"><span lang="zh-CN">项目文档</span><span lang="en">Project docs</span> ↗</a>
@@ -91,14 +91,14 @@
   <section id="why">
     <h2><span lang="zh-CN">为什么做 MemoCat</span><span lang="en">Why MemoCat</span></h2>
     <div class="prose" lang="zh-CN">
-      <p>人在说话时产生的信息最密集：一次授课、一场组会、一轮头脑风暴，最有价值的内容大多在口头交流中产生，也流失得最彻底。手写跟不上语速，记录又和思考争夺同一份注意力；即使录音和逐字稿留了下来，也很少有人会重听、重读，它们最终堆进一个再也不会打开的文件夹，我们把它叫作“记录墓地”。</p>
-      <p>存储解决了“留下”，却没有解决“用上”。真正缺的一步，是把口头表达自动整理成可以直接使用的知识。MemoCat 想把“整理”这件一直靠人工完成的事交给 AI，让使用者只需要把话说好、把问题想清楚。</p>
-      <p class="callout"><b>核心想法：</b>整理规则应该由用户按场景定义，而不是由产品预设。数学课需要定理与推导，组会需要每个人的进展和下周计划，产品讨论需要决策点和待办。</p>
+      <p>上课、开会、组会时，最有价值的内容往往是嘴上说出来的，也最容易丢：手写跟不上语速，边记边想又容易分心；就算录了音、转成了文字，事后也很少有人会再去翻。</p>
+      <p>MemoCat 想把“记录和整理”这件事交给 AI：你只管专心听、专心讨论，它在后台把内容整理好，等你需要时一问就有。</p>
+      <p class="callout"><b>和普通的录音转文字有什么不同？</b>它不是把一大段逐字稿丢给你，而是按场合整理成能直接用的笔记：数学课整理定理和推导，组会整理每个人的进展和下周计划，讨论会整理结论和待办。整理成什么样，也可以由你自己决定。</p>
     </div>
     <div class="prose" lang="en">
-      <p>Speech is where people produce information most densely. A lecture, a group meeting or a brainstorm is where the most valuable ideas come up, and also where they are lost most completely. Handwriting cannot keep up with speech, and taking notes competes with thinking for the same attention. Even when recordings and transcripts survive, almost nobody listens to or reads them again; they pile up in a folder that is never reopened, which we call the “record graveyard”.</p>
-      <p>Storage solved keeping things, not using them. The missing step is turning speech into knowledge you can actually use. MemoCat hands that step, organizing, which has always been manual work, over to AI, so people only need to speak well and think clearly.</p>
-      <p class="callout"><b>Key idea:</b> the rules for organizing notes should be defined by users for each scene, not preset by the product. A math lecture needs theorems and derivations, a group meeting needs everyone's progress and next week's plan, and a product discussion needs decisions and action items.</p>
+      <p>In lectures, meetings and group discussions, the most valuable ideas are usually spoken out loud, and they are also the easiest to lose. Handwriting cannot keep up, taking notes pulls attention away from thinking, and even when there is a recording or transcript, almost nobody goes back to it.</p>
+      <p>MemoCat hands the note-taking and organizing over to AI. You focus on listening and discussing; it tidies everything up in the background, and the answer is one question away when you need it.</p>
+      <p class="callout"><b>How is this different from plain speech-to-text?</b> Instead of handing you a wall of transcript, it turns each occasion into notes you can actually use: theorems and derivations for a math lecture, everyone's progress and next steps for a group meeting, decisions and to-dos for a discussion. You can also decide for yourself what the notes should look like.</p>
     </div>
   </section>
 
@@ -108,12 +108,12 @@
     <div class="split">
       <div>
         <div class="prose" lang="zh-CN">
-          <p>MemoCat 的唯一入口是桌面角落的一只布偶猫（也可以换成别的形象）。窗口透明、置顶、不抢焦点，可以拖到屏幕任何位置；鼠标悬停时出现工具条：记录、对话、听写、设置。</p>
-          <p>上课或开会前点一下开始记录，之后就可以忘掉它：转写、场景判断和整理都在后台自动完成。需要回顾时再打开工作台，按时间线或场景浏览报告，全文检索说过的任何一句话，并跳回原始对话甚至原始录音。</p>
+          <p>平时它就是桌面角落里的一只布偶猫，可以拖到屏幕任何地方，不挡视线也不打扰工作。鼠标移上去会出现几个按钮：开始记录、和它聊天、语音打字、设置。</p>
+          <p>上课或开会前点一下“记录”，然后就可以把它忘掉。结束后打开工作台，整理好的笔记已经在那里；想找某一句话，搜一下就能找到，还能点回去听当时的原声。</p>
         </div>
         <div class="prose" lang="en">
-          <p>The only entry point is a ragdoll cat in the corner of your desktop (other skins are available). Its window is transparent, always on top and never steals focus, and you can drag it anywhere. Hovering shows a toolbar: record, talk, dictate, settings.</p>
-          <p>Click once before a lecture or meeting and forget about it: transcription, scene detection and organizing all happen in the background. When you want to look back, open the workspace to browse reports by time or scene, search everything that was said, and jump back to the original conversation or even the original audio.</p>
+          <p>Most of the time it is just a ragdoll cat sitting in the corner of your screen. You can drag it anywhere, and it stays out of your way. Hover over it and a few buttons appear: record, chat, voice typing and settings.</p>
+          <p>Click “record” before a lecture or meeting, then forget about it. Afterwards, open the workspace and the finished notes are waiting. Looking for something someone said? Search for it, and you can even jump back and listen to the original audio.</p>
         </div>
       </div>
       <figure class="shot bare">
@@ -125,139 +125,44 @@
 
   <!-- ===================== Features ===================== -->
   <section id="features">
-    <h2><span lang="zh-CN">核心能力</span><span lang="en">What it does</span></h2>
+    <h2><span lang="zh-CN">它能做什么</span><span lang="en">What it does</span></h2>
     <div class="feature-grid">
       <div class="feature">
         <div class="num">01</div>
-        <h3><span lang="zh-CN">无感记录</span><span lang="en">Ambient recording</span></h3>
-        <p lang="zh-CN">后台持续采集与转写，声纹识别区分说话人，文字、时间戳与说话人统一存入同一条时间线。</p>
-        <p lang="en">Continuous capture and transcription in the background. Voiceprints tell speakers apart, and text, timestamps and speakers share one timeline.</p>
+        <h3><span lang="zh-CN">自动记录</span><span lang="en">Takes notes for you</span></h3>
+        <p lang="zh-CN">开着就行，不用手动操作。它会把听到的话转成文字，并分清每句话是谁说的。</p>
+        <p lang="en">Just leave it running. It writes down what it hears and keeps track of who said each line.</p>
       </div>
       <div class="feature">
         <div class="num">02</div>
-        <h3><span lang="zh-CN">按场景整理</span><span lang="en">Scene-aware notes</span></h3>
-        <p lang="zh-CN">自动判断当前是课堂、会议、组会还是问诊，场景结束后调用对应插件生成结构化报告；插件可以由用户自己定义。</p>
-        <p lang="en">Detects whether you are in a lecture, meeting, group meeting or consultation, and runs the matching plugin to write a structured report when it ends. Users can write their own plugins.</p>
+        <h3><span lang="zh-CN">自动整理成笔记</span><span lang="en">Turns talk into notes</span></h3>
+        <p lang="zh-CN">能分辨现在是在上课、开会还是讨论，结束后自动整理成对应格式的笔记或纪要。</p>
+        <p lang="en">It can tell whether you are in a lecture, a meeting or a discussion, and writes the right kind of notes or minutes when it ends.</p>
       </div>
       <div class="feature">
         <div class="num">03</div>
-        <h3><span lang="zh-CN">可溯源的长期记忆</span><span lang="en">Traceable memory</span></h3>
-        <p lang="zh-CN">原始对话与整理报告双路召回，每个回答都标注出处，可一键跳回原句和录音；可选接入云端长期记忆。</p>
-        <p lang="en">Recalls from both raw transcripts and reports. Every answer cites its source and links back to the exact sentence and audio. Cloud memory is optional.</p>
+        <h3><span lang="zh-CN">回答有据可查</span><span lang="en">Answers you can check</span></h3>
+        <p lang="zh-CN">问它过去的事，它会给出答案并标明出处，点一下就能跳回原话、听到原声，不会凭空编造。</p>
+        <p lang="en">Ask about anything from the past and it answers with a source. One click takes you to the exact words and audio, so nothing is made up.</p>
       </div>
       <div class="feature">
         <div class="num">04</div>
-        <h3><span lang="zh-CN">实时语音对话</span><span lang="en">Real-time voice agent</span></h3>
-        <p lang="zh-CN">全双工语音对话，随时可以打断；能回忆过去的内容、设置提醒，并把复杂任务交给后台智能体，聊天和干活互不耽误。</p>
-        <p lang="en">Full-duplex voice chat you can interrupt at any time. It recalls past conversations, sets reminders and hands bigger jobs to a background agent, so chatting and working never block each other.</p>
+        <h3><span lang="zh-CN">直接开口聊天</span><span lang="en">Just talk to it</span></h3>
+        <p lang="zh-CN">像和人说话一样跟它对话，随时可以打断。可以让它回忆上周讨论了什么、帮你设个提醒，或者把麻烦事交给它在后台慢慢办。</p>
+        <p lang="en">Talk to it like a person and interrupt whenever you like. Ask what was discussed last week, have it set a reminder, or hand it a bigger job to finish in the background.</p>
       </div>
       <div class="feature">
         <div class="num">05</div>
-        <h3><span lang="zh-CN">语音输入法</span><span lang="en">Voice typing</span></h3>
-        <p lang="zh-CN">按下快捷键说话，转写结果直接插入当前应用的光标处，失败时自动降级为粘贴或复制。</p>
-        <p lang="en">Press a hotkey and speak. The text lands at the cursor of whatever app you are in, falling back to paste or copy when needed.</p>
+        <h3><span lang="zh-CN">语音打字</span><span lang="en">Voice typing</span></h3>
+        <p lang="zh-CN">按一个快捷键说话，文字直接出现在你正在用的任何软件里。</p>
+        <p lang="en">Press a shortcut and speak; the words appear in whatever app you are using.</p>
       </div>
       <div class="feature">
         <div class="num">06</div>
-        <h3><span lang="zh-CN">待办与提醒</span><span lang="en">To-dos &amp; reminders</span></h3>
-        <p lang="zh-CN">从对话和会议中自动提取待办事项（负责人、截止时间），确认后进入提醒日历并按时提醒。</p>
-        <p lang="en">Pulls action items (owner, due date) out of conversations and meetings; once confirmed they go on a reminder calendar and fire on time.</p>
+        <h3><span lang="zh-CN">自动列待办</span><span lang="en">To-dos and reminders</span></h3>
+        <p lang="zh-CN">会上说到“谁、什么时候、做什么”，它会自动记成待办，你确认后到点提醒。</p>
+        <p lang="en">When a meeting settles who does what by when, it turns that into a to-do and, once you confirm, reminds you on time.</p>
       </div>
-    </div>
-  </section>
-
-  <!-- ===================== Architecture ===================== -->
-  <section id="design">
-    <h2><span lang="zh-CN">系统设计</span><span lang="en">How it is built</span></h2>
-    <div class="prose" lang="zh-CN">
-      <p>MemoCat 的核心是一条把语音变成结构化知识的流水线。系统是<b>本地优先</b>的：原始音频、声纹、对话记录、整理报告和智能体状态都保存在用户自己的电脑上，只有需要模型处理的文本和音频片段才会发往云端。</p>
-    </div>
-    <div class="prose" lang="en">
-      <p>At its core MemoCat is a pipeline that turns speech into structured knowledge. It is <b>local-first</b>: raw audio, voiceprints, transcripts, reports and agent state all stay on the user's own computer, and only the text and audio snippets a model has to process are sent to the cloud.</p>
-    </div>
-    <ol class="steps">
-      <li>
-        <div>
-          <h3><span lang="zh-CN">语音采集</span><span lang="en">Capture</span></h3>
-          <p lang="zh-CN">WebRTC VAD 以 30 ms 为一帧检测语音：停顿 1.2 秒即封块送转写，连续讲话 12 秒强制切分，短于 0.5 秒的片段丢弃；原始音频按内容哈希存储，方便回听与溯源。</p>
-          <p lang="en">WebRTC VAD on 30 ms frames: a 1.2 s pause seals a chunk for transcription, continuous speech is cut at 12 s, and chunks under 0.5 s are dropped. Raw audio is stored by content hash for playback and tracing.</p>
-        </div>
-      </li>
-      <li>
-        <div>
-          <h3><span lang="zh-CN">转写与说话人识别</span><span lang="en">Transcription &amp; speakers</span></h3>
-          <p lang="zh-CN">云端 ASR（Qwen3-ASR-Flash 等）输出带时间戳的文本；本地用 ONNX Runtime 运行 CAM++ 提取 256 维声纹，以 0.90 / 0.85 两档阈值匹配正式声纹与临时声纹。</p>
-          <p lang="en">Cloud ASR (Qwen3-ASR-Flash and others) returns timestamped text, while CAM++ runs locally on ONNX Runtime to extract 256-d voiceprints, matched against confirmed and provisional speakers at 0.90 / 0.85 thresholds.</p>
-        </div>
-      </li>
-      <li>
-        <div>
-          <h3><span lang="zh-CN">场景判断</span><span lang="en">Scene detection</span></h3>
-          <p lang="zh-CN">每积累 10 句或每隔 45 秒，用大模型做一次轻量判断，配合时间确认状态机识别场景的开始与结束，决定触发哪个整理插件。</p>
-          <p lang="en">Every 10 sentences or 45 seconds, a lightweight LLM call plus a time-confirmation state machine decides when a scene starts and ends, and which plugin should run.</p>
-        </div>
-      </li>
-      <li>
-        <div>
-          <h3><span lang="zh-CN">结构化整理</span><span lang="en">Structured notes</span></h3>
-          <p lang="zh-CN">插件用声明式清单定义提示词、输出 Schema 与规则，并先经过编译器校验；生成的报告必须通过 Schema 校验和溯源校验，失败时把错误信息回传给模型定向修复。</p>
-          <p lang="en">Plugins declare their prompts, output schema and rules in a manifest that a compiler checks first. Every report must pass schema and source-tracing checks; failures are sent back to the model for a targeted fix.</p>
-        </div>
-      </li>
-      <li>
-        <div>
-          <h3><span lang="zh-CN">记忆与检索</span><span lang="en">Memory &amp; retrieval</span></h3>
-          <p lang="zh-CN">报告与原始对话存入 SQLite（FTS5 全文索引），通过句子编号精确关联；检索时双路召回、带出处作答，也可以接入 MemOS / OpenMem 做语义召回。</p>
-          <p lang="en">Reports and transcripts go into SQLite with FTS5 full-text search, linked by sentence IDs. Retrieval draws on both and always answers with sources; MemOS / OpenMem can be plugged in for semantic recall.</p>
-        </div>
-      </li>
-    </ol>
-
-    <div class="prose" lang="zh-CN">
-      <p>实时对话基于 Qwen-Audio Realtime 的 WebSocket 全双工接口，注册了 6 个工具：记忆召回、记忆写入、提醒、待办列表、待办更新和后台任务委派。复杂任务交给后台的 Hermes 智能体执行，它通过 MCP 只读访问记忆库，任何写操作都要用户在桌宠气泡上批准。整理插件还能“自进化”：系统根据反馈生成改进提案，用历史对话回放对比新旧版本，审核后生效，并支持一键回滚。</p>
-    </div>
-    <div class="prose" lang="en">
-      <p>Voice chat runs on the full-duplex Qwen-Audio Realtime WebSocket API with six tools: recall memory, save memory, set a reminder, list to-dos, update to-dos and delegate a background task. Complex jobs go to a background Hermes agent that reads the memory store through read-only MCP tools; any write needs the user's approval in a bubble above the pet. Plugins can also improve themselves: the system drafts changes from feedback, replays past conversations to compare old and new versions, and applies a change only after review, with one-click rollback.</p>
-    </div>
-    <figure class="shot diagram">
-      <a href="img/architecture.webp"><img src="img/architecture.webp" width="1536" height="1024" loading="lazy" alt="Architecture diagram of the real-time dialogue runtime, Hermes delegation and the reminder scheduler"></a>
-      <figcaption>
-        <span lang="zh-CN">实时对话与后台委托架构（点击查看大图）：对话状态机在空闲、说话、聆听、思考、工作之间切换；复杂任务委托给后台 Hermes 执行，待办由调度服务按时投递。</span>
-        <span lang="en">Real-time dialogue and delegation (click to enlarge): a state machine moves between idle, speaking, listening, thinking and working; complex jobs are delegated to a background Hermes agent, and a scheduler delivers reminders on time.</span>
-      </figcaption>
-    </figure>
-  </section>
-
-  <!-- ===================== Stack ===================== -->
-  <section id="stack">
-    <h2><span lang="zh-CN">技术栈</span><span lang="en">Tech stack</span></h2>
-    <div class="table-wrap">
-      <table class="spec">
-        <tr>
-          <th><span lang="zh-CN">后端</span><span lang="en">Backend</span></th>
-          <td><span lang="zh-CN">Rust 工作区（25 个 crate）：</span><span lang="en">Rust workspace of 25 crates: </span><code>tokio</code> <code>cpal</code> <code>webrtc-vad</code> <code>rusqlite</code> <code>ort</code></td>
-        </tr>
-        <tr>
-          <th><span lang="zh-CN">桌面壳</span><span lang="en">Desktop shell</span></th>
-          <td><span lang="zh-CN">Tauri 2：透明、无边框、置顶、不抢焦点的桌宠窗口</span><span lang="en">Tauri 2: a transparent, frameless, always-on-top pet window that never steals focus</span></td>
-        </tr>
-        <tr>
-          <th><span lang="zh-CN">前端</span><span lang="en">Frontend</span></th>
-          <td>React 19 · TypeScript · Vite</td>
-        </tr>
-        <tr>
-          <th><span lang="zh-CN">存储</span><span lang="en">Storage</span></th>
-          <td><span lang="zh-CN">7 个本地 SQLite 库（对话时间线、记忆库、声纹库、提醒、审批、智能体会话、应用状态）；音频按内容哈希存储</span><span lang="en">Seven local SQLite databases (timeline, memory, voiceprints, reminders, approvals, agent sessions, app state); audio stored by content hash</span></td>
-        </tr>
-        <tr>
-          <th><span lang="zh-CN">模型</span><span lang="en">Models</span></th>
-          <td><span lang="zh-CN">Qwen3-ASR-Flash（转写）· Qwen-Audio Realtime（实时对话）· DeepSeek（场景判断、整理、检索问答）· CAM++（本地声纹）</span><span lang="en">Qwen3-ASR-Flash (transcription) · Qwen-Audio Realtime (voice chat) · DeepSeek (scene detection, notes, Q&amp;A) · CAM++ (local voiceprints)</span></td>
-        </tr>
-        <tr>
-          <th><span lang="zh-CN">智能体</span><span lang="en">Agents</span></th>
-          <td><span lang="zh-CN">Hermes 后台智能体（ACP 协议）· MCP 只读记忆工具 · 写操作审批</span><span lang="en">Hermes background agent (ACP) · read-only MCP memory tools · approval for every write</span></td>
-        </tr>
-      </table>
     </div>
   </section>
 
@@ -265,14 +170,14 @@
   <section id="different">
     <h2><span lang="zh-CN">有什么不同</span><span lang="en">What makes it different</span></h2>
     <ul class="checks">
-      <li lang="zh-CN"><b>整理规则可定制</b>常见的语音纪要产品用同一套模板处理所有场景；MemoCat 让每个场景、每个人都可以有自己的整理插件。</li>
-      <li lang="en"><b>Customizable organizing</b>Typical voice-notes apps apply one template to every scene; in MemoCat every scene, and every person, can have its own plugin.</li>
-      <li lang="zh-CN"><b>无感的入口</b>用一只桌宠代替臃肿的前端，记录、对话和听写都在同一个入口完成，不必来回切换软件。</li>
-      <li lang="en"><b>An ambient entry point</b>A desktop pet replaces a heavy front end; recording, chatting and dictation all happen in one place, with no app switching.</li>
-      <li lang="zh-CN"><b>每个回答都有出处</b>回答必须能回落到原始对话和录音，方便核对，不让模型凭空发挥。</li>
-      <li lang="en"><b>Every answer has a source</b>Answers must trace back to the original conversation and audio, so they can be checked rather than taken on trust.</li>
-      <li lang="zh-CN"><b>本地优先</b>原始数据留在本机，云端只处理必要的片段；密钥与普通配置分开保管，不进入日志。</li>
-      <li lang="en"><b>Local-first</b>Raw data stays on your machine and the cloud sees only what it must; API keys are stored apart from settings and never logged.</li>
+      <li lang="zh-CN"><b>整理方式可以自己定</b>同类产品大多一套模板用到底；MemoCat 里每种场合、每个人都可以有自己的整理方式。</li>
+      <li lang="en"><b>You decide what notes look like</b>Similar apps use one template for everything. In MemoCat, every occasion and every person can have their own format.</li>
+      <li lang="zh-CN"><b>一个入口全搞定</b>记录、聊天、语音打字都在桌面这只猫身上完成，不用在几个软件之间来回切换。</li>
+      <li lang="en"><b>One place for everything</b>Recording, chatting and voice typing all happen through the cat on your desktop, with no switching between apps.</li>
+      <li lang="zh-CN"><b>每个回答都有出处</b>回答都能对回原话和录音，方便核对，不让 AI 瞎编。</li>
+      <li lang="en"><b>Every answer has a source</b>Every answer links back to the original words and audio, so you can check it instead of trusting the AI blindly.</li>
+      <li lang="zh-CN"><b>隐私优先</b>录音和记录都保存在你自己的电脑上，只有需要 AI 处理的片段才会上传。</li>
+      <li lang="en"><b>Privacy first</b>Recordings and notes stay on your own computer; only the pieces the AI must process are sent online.</li>
     </ul>
   </section>
 
@@ -296,6 +201,104 @@
       </figure>
     </div>
   </section>
+
+  <details class="tech" id="tech">
+    <summary><span lang="zh-CN">技术细节</span><span lang="en">Technical details</span><small><span lang="zh-CN">写给工程师，点击展开</span><span lang="en">for engineers, click to expand</span></small></summary>
+    <!-- ===================== Architecture ===================== -->
+    <section id="design">
+      <h2><span lang="zh-CN">系统设计</span><span lang="en">How it is built</span></h2>
+      <div class="prose" lang="zh-CN">
+        <p>MemoCat 的核心是一条把语音变成结构化知识的流水线。系统是<b>本地优先</b>的：原始音频、声纹、对话记录、整理报告和智能体状态都保存在用户自己的电脑上，只有需要模型处理的文本和音频片段才会发往云端。</p>
+      </div>
+      <div class="prose" lang="en">
+        <p>At its core MemoCat is a pipeline that turns speech into structured knowledge. It is <b>local-first</b>: raw audio, voiceprints, transcripts, reports and agent state all stay on the user's own computer, and only the text and audio snippets a model has to process are sent to the cloud.</p>
+      </div>
+      <ol class="steps">
+        <li>
+          <div>
+            <h3><span lang="zh-CN">语音采集</span><span lang="en">Capture</span></h3>
+            <p lang="zh-CN">WebRTC VAD 以 30 ms 为一帧检测语音：停顿 1.2 秒即封块送转写，连续讲话 12 秒强制切分，短于 0.5 秒的片段丢弃；原始音频按内容哈希存储，方便回听与溯源。</p>
+            <p lang="en">WebRTC VAD on 30 ms frames: a 1.2 s pause seals a chunk for transcription, continuous speech is cut at 12 s, and chunks under 0.5 s are dropped. Raw audio is stored by content hash for playback and tracing.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3><span lang="zh-CN">转写与说话人识别</span><span lang="en">Transcription &amp; speakers</span></h3>
+            <p lang="zh-CN">云端 ASR（Qwen3-ASR-Flash 等）输出带时间戳的文本；本地用 ONNX Runtime 运行 CAM++ 提取 256 维声纹，以 0.90 / 0.85 两档阈值匹配正式声纹与临时声纹。</p>
+            <p lang="en">Cloud ASR (Qwen3-ASR-Flash and others) returns timestamped text, while CAM++ runs locally on ONNX Runtime to extract 256-d voiceprints, matched against confirmed and provisional speakers at 0.90 / 0.85 thresholds.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3><span lang="zh-CN">场景判断</span><span lang="en">Scene detection</span></h3>
+            <p lang="zh-CN">每积累 10 句或每隔 45 秒，用大模型做一次轻量判断，配合时间确认状态机识别场景的开始与结束，决定触发哪个整理插件。</p>
+            <p lang="en">Every 10 sentences or 45 seconds, a lightweight LLM call plus a time-confirmation state machine decides when a scene starts and ends, and which plugin should run.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3><span lang="zh-CN">结构化整理</span><span lang="en">Structured notes</span></h3>
+            <p lang="zh-CN">插件用声明式清单定义提示词、输出 Schema 与规则，并先经过编译器校验；生成的报告必须通过 Schema 校验和溯源校验，失败时把错误信息回传给模型定向修复。</p>
+            <p lang="en">Plugins declare their prompts, output schema and rules in a manifest that a compiler checks first. Every report must pass schema and source-tracing checks; failures are sent back to the model for a targeted fix.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3><span lang="zh-CN">记忆与检索</span><span lang="en">Memory &amp; retrieval</span></h3>
+            <p lang="zh-CN">报告与原始对话存入 SQLite（FTS5 全文索引），通过句子编号精确关联；检索时双路召回、带出处作答，也可以接入 MemOS / OpenMem 做语义召回。</p>
+            <p lang="en">Reports and transcripts go into SQLite with FTS5 full-text search, linked by sentence IDs. Retrieval draws on both and always answers with sources; MemOS / OpenMem can be plugged in for semantic recall.</p>
+          </div>
+        </li>
+      </ol>
+
+      <div class="prose" lang="zh-CN">
+        <p>实时对话基于 Qwen-Audio Realtime 的 WebSocket 全双工接口，注册了 6 个工具：记忆召回、记忆写入、提醒、待办列表、待办更新和后台任务委派。复杂任务交给后台的 Hermes 智能体执行，它通过 MCP 只读访问记忆库，任何写操作都要用户在桌宠气泡上批准。整理插件还能“自进化”：系统根据反馈生成改进提案，用历史对话回放对比新旧版本，审核后生效，并支持一键回滚。</p>
+      </div>
+      <div class="prose" lang="en">
+        <p>Voice chat runs on the full-duplex Qwen-Audio Realtime WebSocket API with six tools: recall memory, save memory, set a reminder, list to-dos, update to-dos and delegate a background task. Complex jobs go to a background Hermes agent that reads the memory store through read-only MCP tools; any write needs the user's approval in a bubble above the pet. Plugins can also improve themselves: the system drafts changes from feedback, replays past conversations to compare old and new versions, and applies a change only after review, with one-click rollback.</p>
+      </div>
+      <figure class="shot diagram">
+        <a href="img/architecture.webp"><img src="img/architecture.webp" width="1536" height="1024" loading="lazy" alt="Architecture diagram of the real-time dialogue runtime, Hermes delegation and the reminder scheduler"></a>
+        <figcaption>
+          <span lang="zh-CN">实时对话与后台委托架构（点击查看大图）：对话状态机在空闲、说话、聆听、思考、工作之间切换；复杂任务委托给后台 Hermes 执行，待办由调度服务按时投递。</span>
+          <span lang="en">Real-time dialogue and delegation (click to enlarge): a state machine moves between idle, speaking, listening, thinking and working; complex jobs are delegated to a background Hermes agent, and a scheduler delivers reminders on time.</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- ===================== Stack ===================== -->
+    <section id="stack">
+      <h2><span lang="zh-CN">技术栈</span><span lang="en">Tech stack</span></h2>
+      <div class="table-wrap">
+        <table class="spec">
+          <tr>
+            <th><span lang="zh-CN">后端</span><span lang="en">Backend</span></th>
+            <td><span lang="zh-CN">Rust 工作区（25 个 crate）：</span><span lang="en">Rust workspace of 25 crates: </span><code>tokio</code> <code>cpal</code> <code>webrtc-vad</code> <code>rusqlite</code> <code>ort</code></td>
+          </tr>
+          <tr>
+            <th><span lang="zh-CN">桌面壳</span><span lang="en">Desktop shell</span></th>
+            <td><span lang="zh-CN">Tauri 2：透明、无边框、置顶、不抢焦点的桌宠窗口</span><span lang="en">Tauri 2: a transparent, frameless, always-on-top pet window that never steals focus</span></td>
+          </tr>
+          <tr>
+            <th><span lang="zh-CN">前端</span><span lang="en">Frontend</span></th>
+            <td>React 19 · TypeScript · Vite</td>
+          </tr>
+          <tr>
+            <th><span lang="zh-CN">存储</span><span lang="en">Storage</span></th>
+            <td><span lang="zh-CN">7 个本地 SQLite 库（对话时间线、记忆库、声纹库、提醒、审批、智能体会话、应用状态）；音频按内容哈希存储</span><span lang="en">Seven local SQLite databases (timeline, memory, voiceprints, reminders, approvals, agent sessions, app state); audio stored by content hash</span></td>
+          </tr>
+          <tr>
+            <th><span lang="zh-CN">模型</span><span lang="en">Models</span></th>
+            <td><span lang="zh-CN">Qwen3-ASR-Flash（转写）· Qwen-Audio Realtime（实时对话）· DeepSeek（场景判断、整理、检索问答）· CAM++（本地声纹）</span><span lang="en">Qwen3-ASR-Flash (transcription) · Qwen-Audio Realtime (voice chat) · DeepSeek (scene detection, notes, Q&amp;A) · CAM++ (local voiceprints)</span></td>
+          </tr>
+          <tr>
+            <th><span lang="zh-CN">智能体</span><span lang="en">Agents</span></th>
+            <td><span lang="zh-CN">Hermes 后台智能体（ACP 协议）· MCP 只读记忆工具 · 写操作审批</span><span lang="en">Hermes background agent (ACP) · read-only MCP memory tools · approval for every write</span></td>
+          </tr>
+        </table>
+      </div>
+    </section>
+  </details>
 
   <!-- ===================== More ===================== -->
   <section id="more">

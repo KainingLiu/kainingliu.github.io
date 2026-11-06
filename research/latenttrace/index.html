@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LatentTrace · 刘铠宁</title>
-<meta name="description" content="LatentTrace：用参数化向量库作为记忆媒介，探究具有原生记忆能力的 AI 模型。LatentTrace: AI models with native memory, using a parameterized vector store as the memory medium.">
+<meta name="description" content="LatentTrace：让 AI 模型拥有自己的记忆。用参数化向量库作为记忆媒介，探究具有原生记忆能力的 AI 模型。LatentTrace: giving AI models a memory of their own.">
 <meta name="author" content="Kaining Liu">
 <meta name="theme-color" content="#ffffff">
 <link rel="canonical" href="https://kainingliu.com/research/latenttrace/">
@@ -54,31 +54,39 @@
   </header>
 
   <section id="content">
-    <h2><span lang="zh-CN">研究内容</span><span lang="en">Research</span></h2>
-    <p class="desc" lang="zh-CN">用参数化向量库作为记忆媒介，探究具有原生记忆能力的 AI 模型。</p>
-    <p class="desc" lang="en">Using a parameterized vector store as the memory medium to explore AI models with native memory.</p>
-    <p class="desc" lang="zh-CN">今天的大模型只有一种记忆：上下文里的文本。对话越长，上下文越长，计算越慢越贵，最终受窗口长度限制。外挂的记忆系统（如检索增强）把“存什么、什么时候取”交给人写的规则或另一个模型，记忆管理并不在模型自身的学习之中。</p>
-    <p class="desc" lang="en">Today’s LLMs have only one kind of memory: the text in their context. The longer the history, the longer the context, the slower and costlier the computation, until it hits the window limit. External memory systems such as retrieval augmentation leave what to store and when to fetch it to hand-written rules or a separate model, so memory management is not part of what the model itself learns.</p>
-    <p class="desc" lang="zh-CN">本课题让模型拥有一块由向量组成、可以持续增长的记忆：</p>
-    <p class="desc" lang="en">This project gives the model a growing memory made of vectors:</p>
+    <h2><span lang="zh-CN">一句话介绍</span><span lang="en">In one sentence</span></h2>
+    <p class="desc" lang="zh-CN"><b>让 AI 模型像人一样拥有自己的记忆。</b>（课题原名：用参数化向量库作为记忆媒介，探究具有原生记忆能力的 AI 模型。）</p>
+    <p class="desc" lang="en"><b>Giving AI models a memory of their own, the way people have one.</b> (Formal title: using a parameterized vector store as the memory medium to explore AI models with native memory.)</p>
+  </section>
+
+  <section id="problem">
+    <h2><span lang="zh-CN">要解决什么问题</span><span lang="en">The problem</span></h2>
+    <p class="desc" lang="zh-CN">今天的 AI 聊天助手其实“记不住事”：它每次回答时，能参考的只有眼前这段对话的文字。聊得越久，要从头重读的内容越多，速度越慢、成本越高；超过一定长度，就只能把前面的内容忘掉。</p>
+    <p class="desc" lang="en">Today's AI chat assistants cannot really remember. Each time they answer, all they can look at is the text of the current conversation. The longer you talk, the more they have to re-read from the start, so they get slower and more expensive, and past a certain length they simply have to forget the beginning.</p>
+    <p class="desc" lang="zh-CN">市面上的“记忆功能”大多是在模型外面另配一个笔记本，由人写好规则决定记什么、什么时候去翻。模型本身并没有学会怎样记忆。</p>
+    <p class="desc" lang="en">Most “memory features” on the market bolt an external notebook onto the model, with hand-written rules deciding what to write down and when to look things up. The model itself never learns how to remember.</p>
+  </section>
+
+  <section id="approach">
+    <h2><span lang="zh-CN">我们的思路</span><span lang="en">Our approach</span></h2>
     <ul class="bullets" lang="zh-CN">
-      <li><b>写入的是理解，而不是原文：</b>模型把自己处理信息时的内部表示存入向量库；</li>
-      <li><b>存取由模型自己学会：</b>什么时候存、存什么、什么时候回忆，都是模型在训练中学到的行为，不依赖外部检索器或人工规则；</li>
-      <li><b>清空上下文后仍能作答：</b>原文离开上下文之后，模型可以凭向量记忆继续回答相关问题；</li>
-      <li><b>对原模型改动尽量小：</b>能直接沿用预训练模型和已有的训练、推理流程。</li>
+      <li><b>记住的是理解，而不是原文：</b>模型把自己读懂之后的“印象”存进一块可以不断增长的记忆里，而不是一字不落地抄下来；</li>
+      <li><b>记什么、何时回想，由模型自己学会：</b>通过训练将原生记忆能力融入模型，不依赖外部规则；</li>
+      <li><b>原文不在眼前也能想起来：</b>即使对话内容已经被清空，模型依然能凭记忆回答相关问题；</li>
+      <li><b>容易落地：</b>对现有模型改动很小，可以沿用已有的训练和使用方式。</li>
     </ul>
     <ul class="bullets" lang="en">
-      <li><b>It stores understanding, not raw text:</b> the model writes its own internal representations into the vector store.</li>
-      <li><b>The model learns to use it:</b> when to store, what to store and when to recall are behaviors learned in training, with no external retriever or hand-written rules.</li>
-      <li><b>It answers after the context is cleared:</b> once the original text has left the context, the model can still answer from its vector memory.</li>
-      <li><b>Minimal changes to the base model:</b> pretrained models and existing training and inference pipelines can be reused.</li>
+      <li><b>Remember the understanding, not the words:</b> the model stores its own “impression” of what it has read in a memory that keeps growing, instead of copying text word for word.</li>
+      <li><b>The model learns what to remember and when to recall:</b> training builds this native memory into the model itself, with no external rules.</li>
+      <li><b>Recall without the original text:</b> even after the conversation has been cleared, the model can still answer questions about it from memory.</li>
+      <li><b>Easy to adopt:</b> it needs very few changes to existing models and works with today's training and deployment pipelines.</li>
     </ul>
   </section>
 
   <section id="role">
     <h2><span lang="zh-CN">负责部分</span><span lang="en">My Role</span></h2>
-    <p class="desc" lang="zh-CN">独立进行思路调研、模型架构设计、数据集构造和模型训练。</p>
-    <p class="desc" lang="en">I independently carry out the literature survey, model architecture design, dataset construction and model training.</p>
+    <p class="desc" lang="zh-CN">作为课题负责人，独立完成前期调研、模型设计、训练数据构建和模型训练。</p>
+    <p class="desc" lang="en">As project lead, I independently carry out the literature survey, model design, training-data construction and model training.</p>
   </section>
 
   <section id="status">

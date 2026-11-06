@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AlpsBench · 刘铠宁</title>
-<meta name="description" content="AlpsBench：基于真实对话的大模型个性化基准，SIGIR 2026。AlpsBench: an LLM personalization benchmark built from real dialogues, SIGIR 2026.">
+<meta name="description" content="AlpsBench：一份检验 AI 能否记住并读懂用户的“考卷”，基于真实对话构建，发表于 SIGIR 2026。AlpsBench: a test of whether AI can remember and understand its users, SIGIR 2026.">
 <meta name="author" content="Kaining Liu">
 <meta name="theme-color" content="#ffffff">
 <link rel="canonical" href="https://kainingliu.com/research/alpsbench/">
@@ -54,38 +54,52 @@
   </header>
 
   <section id="content">
-    <h2><span lang="zh-CN">研究内容</span><span lang="en">Research</span></h2>
-    <p class="desc" lang="zh-CN">大模型正在成为长期陪伴用户的助手，个性化能力越来越重要，但缺少一个可靠的评测标准：已有基准要么不考察个性化信息的管理，要么使用和真实对话差别很大的合成对话。</p>
-    <p class="desc" lang="en">As LLMs become long-term assistants, personalization matters more and more, yet there is no reliable yardstick: existing benchmarks either ignore how personal information is managed or rely on synthetic dialogues that differ from real conversations.</p>
-    <p class="desc" lang="zh-CN">AlpsBench 基于 WildChat 中的真实人机对话，构建了 2,500 条长期交互序列，并为每条序列配上人工核验的结构化记忆，覆盖个性化信息从产生到使用的完整过程，共四项任务：</p>
-    <p class="desc" lang="en">AlpsBench is built from real human–LLM dialogues in WildChat: 2,500 long-term interaction sequences, each paired with human-verified structured memories. It covers the whole life cycle of personal information through four tasks:</p>
+    <h2><span lang="zh-CN">一句话介绍</span><span lang="en">In one sentence</span></h2>
+    <p class="desc" lang="zh-CN"><b>一份检验 AI 能不能“记住你、懂你”的考卷，用真实聊天记录出题，论文发表于信息检索领域国际顶级会议 SIGIR 2026。</b></p>
+    <p class="desc" lang="en"><b>A test of whether an AI can remember and understand you, built from real chat logs and published at SIGIR 2026, a top international conference in information retrieval.</b></p>
+  </section>
+
+  <section id="problem">
+    <h2><span lang="zh-CN">为什么需要它</span><span lang="en">Why it is needed</span></h2>
+    <p class="desc" lang="zh-CN">AI 助手越来越像长期陪伴用户的伙伴，“记住你是谁、懂你喜欢什么”变得越来越重要。但怎样衡量一个 AI 在这方面做得好不好，一直缺少可靠的标准：已有的测试要么不考这件事，要么用的是人工编出来的对话，和真实聊天差别很大。</p>
+    <p class="desc" lang="en">AI assistants are becoming long-term companions, so remembering who you are and what you like matters more and more. Yet there has been no reliable way to measure how well an AI does this: existing tests either skip it or use made-up conversations that look little like real chats.</p>
+  </section>
+
+  <section id="approach">
+    <h2><span lang="zh-CN">我们做了什么</span><span lang="en">What we built</span></h2>
+    <p class="desc" lang="zh-CN">我们从真实的人与 AI 聊天记录中整理出 2,500 段长期对话，并人工核对了每段对话里“AI 应该记住什么”。考卷分四关：</p>
+    <p class="desc" lang="en">We assembled 2,500 long-running conversations from real human–AI chat logs and checked by hand what an AI should remember from each one. The test has four parts:</p>
     <ul class="bullets" lang="zh-CN">
-      <li><b>抽取：</b>从对话中识别用户的特征与信息；</li>
-      <li><b>更新：</b>用户信息变化时修正已有记忆；</li>
-      <li><b>检索：</b>找出与当前对话相关的记忆；</li>
-      <li><b>利用：</b>用记忆生成贴合用户偏好的回答。</li>
+      <li><b>记下来：</b>能否从聊天中发现用户的特点和信息；</li>
+      <li><b>及时更新：</b>用户情况变了，能否修正旧的记忆；</li>
+      <li><b>想得起：</b>能否找出和当前话题相关的记忆；</li>
+      <li><b>用得好：</b>能否据此给出真正合用户心意的回答。</li>
     </ul>
     <ul class="bullets" lang="en">
-      <li><b>Extraction:</b> identify user traits and information in dialogue.</li>
-      <li><b>Updating:</b> revise stored memories when user information changes.</li>
-      <li><b>Retrieval:</b> find the memories relevant to the current conversation.</li>
-      <li><b>Utilization:</b> use memories to produce responses aligned with the user’s preferences.</li>
+      <li><b>Notice:</b> can it pick up the user's traits and details from the chat?</li>
+      <li><b>Update:</b> when the user's situation changes, does it correct what it remembered?</li>
+      <li><b>Recall:</b> can it find the memories that matter for the current topic?</li>
+      <li><b>Use:</b> does it turn them into answers that genuinely suit the user?</li>
     </ul>
-    <p class="desc" lang="zh-CN">在前沿大模型和记忆系统上的评测发现：模型难以可靠地抽取隐含的用户特征；记忆更新即使在最强的模型上也存在明显瓶颈；干扰记忆很多时检索准确率大幅下降；显式记忆机制能提高回忆率，但不一定带来更贴合偏好、更有共情的回答。</p>
-    <p class="desc" lang="en">Evaluations of frontier LLMs and memory systems show that models struggle to extract latent user traits reliably; memory updating hits a ceiling even for the strongest models; retrieval accuracy drops sharply with many distractor memories; and explicit memory improves recall but does not guarantee more preference-aligned or empathetic responses.</p>
+  </section>
+
+  <section id="findings">
+    <h2><span lang="zh-CN">主要发现</span><span lang="en">What we found</span></h2>
+    <p class="desc" lang="zh-CN">我们用它测试了目前最先进的 AI 模型和记忆系统，发现：用户没有明说的特点，AI 很难察觉；用户情况变化后，即使最强的模型也常常没能更新记忆；记忆一多，AI 就容易找错；有了记忆功能，AI 能想起更多事，但不一定因此更懂用户、更有温度。</p>
+    <p class="desc" lang="en">Testing today's most advanced AI models and memory systems, we found that AI rarely notices traits users do not state outright; even the strongest models often fail to update when a user's situation changes; with many memories, AI easily picks the wrong one; and while memory features help AI recall more, they do not necessarily make it more understanding or more caring.</p>
   </section>
 
   <section id="role">
     <h2><span lang="zh-CN">负责部分</span><span lang="en">My Role</span></h2>
     <ul class="bullets" lang="zh-CN">
-      <li>参与基准的任务设计与数据整理；</li>
-      <li>参与记忆智能体在记忆与偏好对齐任务上的实验设计与评测；</li>
-      <li>进行结果分析并参与论文写作（第六作者）。</li>
+      <li>参与考题设计和数据整理；</li>
+      <li>设计并运行对 AI 记忆系统的测试；</li>
+      <li>分析结果并参与论文写作（第六作者）。</li>
     </ul>
     <ul class="bullets" lang="en">
-      <li>Contributed to task design and data curation.</li>
-      <li>Designed and ran evaluations of agent memory systems on memorization and preference-alignment tasks.</li>
-      <li>Analyzed results and contributed to writing the paper (sixth author).</li>
+      <li>Helped design the test tasks and prepare the data.</li>
+      <li>Designed and ran the evaluations of AI memory systems.</li>
+      <li>Analyzed the results and helped write the paper (sixth author).</li>
     </ul>
   </section>
 
